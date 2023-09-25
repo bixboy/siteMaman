@@ -1,0 +1,22 @@
+.presTop {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    min-width: 100%;
+    padding: 3em;
+}
+
+.presTop div h1 {
+    font-size: 42px;
+}
+
+.presTop div p {
+    font-size: 21px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 24px 0px;
+}
+
+.txt {
+    width: 100%;
+    padding: 35px;
+}
