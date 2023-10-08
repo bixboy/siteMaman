@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Main é merveille</title>
 
     <link rel="stylesheet" href="css\body.css">
     <link rel="stylesheet" href="css\index-components\navbar.css">
     <link rel="stylesheet" href="css\index-components\footer.css">
     <link rel="stylesheet" href="css\index-components\top.css">
     <link rel="stylesheet" href="css\index-components\presTop.css">
+    <link rel="stylesheet" href="css\index-components\fournisseurs.css">
     
     <link rel='stylesheet' href='css\index-components\slider.css'>
 </head>
 <body>
         <nav class="box_navbar">
-            <div class="logo"><img src="resources\logo.png" alt="logo" class="logo_img"></div>
-            <a class="JBL" href="index.html">JBL</a>
+            <a class="logo" href="index.html"> <img src="recources\logo.png" alt="logo"> </a>
 
             <ul class="linksOrdi">
                 <li class="acti" style="margin: 0px 15px;"><a href="index.html">Home</a></li>
-                <li style="margin: 0px 15px;"><a href="aPropos.html" class="boutique">A propos</a></li>
-                <li style="margin: 0px 15px;"><a href="realisations/realisations.php">Réalisations</a></li>
+                <li style="margin: 0px 15px;"><a href="realisations.html">Réalisations</a></li>
                 <li style="margin: 0px 15px;"><a href="prestations.html">Prestations</a></li>
-                <li style="margin: 0px 15px;"><a href="contact.html">Contact</a></li>
+                <li style="margin: 0px 15px;"><a href="contact\contact.html">Contact</a></li>
             </ul>
 
             <div class="menu" id="menu"> 
@@ -41,10 +40,9 @@
         <div class="nav-links">
             <ul class="links">
                 <li class="acti"><a href="index.html">Home</a></li>
-                <li><a href="aPropos.html" class="boutique">A propos</a></li>
-                <li><a href="realisations/realisations.php">Réalisations</a></li>
+                <li><a href="realisations.html">Réalisations</a></li>
                 <li><a href="prestations.html">Prestations</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact\contact.html">Contact</a></li>
             </ul>
 
             <ul class="infs">
@@ -53,18 +51,6 @@
                 <div class="tel"> <img src="resources\tel.png" alt="tel-icon"> <a href="tel:+33650500950">Appelez-nous</a></div>
 
                 <div class="mail"> <img src="resources\email.png" alt="mail-icon"> <a href="mailto:jblepb@yahoo.com">jblepb@yahoo.com</a></div>
-
-                <div class="hBox">
-                <h2>Horaires :</h2>
-                <div class="week"> 
-                    <span>Lund - Vend</span>
-                    <span>09:00 - 17:30</span>
-                </div>
-                <div class="week">
-                    <span>Sam - Dim</span>
-                    <span>Fermé</span>
-                </div>
-                </div>
 
                 <div class="media">
                 <div class="icon_media_menu">
@@ -80,21 +66,19 @@
 
     </nav>
 
+    <div class="overlay"></div>
+
     <div class="top_container">
         <div>
-            <img src="recources\1140x641.jpg" alt="topIMG">
+            <img src="recources\Realisations\Background1.jpg" alt="topIMG">
         </div>
     </div>
 
     <div class="presTop">
-
         <div class="avAp" style="position: relative;width: 93%;">
             <div class="container">
                 <div class="slider slider--tokyo">
-                  <div class="slider__before"></div>
-                  <div class="slider__separator"></div>
-                  <div class="slider__after"></div>
-                  <input class="slider__range" type="range" min="0" max="100" value="50"/>
+                  <img class="slider__before" src="recources\Realisations\Siege7.jpg">
                 </div>
             </div>
         </div>
@@ -117,6 +101,28 @@
         </div>
     </div>
     <script src='main.js'></script>
+
+    <div class="containerFourni">
+
+      <h1>Nos fournisseurs</h1>
+
+      <div class="listFourni">
+
+        <div class="boxFourni">
+          <div class="fourni1"> <img src="recources\1140x641.jpg" alt="Fournisseur"> </div>
+        </div>
+
+        <div class="boxFourni">
+          <div class="fourni1"> <img src="recources\1140x641.jpg" alt="Fournisseur"> </div>
+        </div>
+
+        <div class="boxFourni">
+          <div class="fourni1"> <img src="recources\1140x641.jpg" alt="Fournisseur"> </div>
+        </div>
+
+      </div>
+
+    </div>
 
     <footer class="box_footer">
         <div class="content">
@@ -148,5 +154,67 @@
 
         </div>
     </footer>
+
+    <script class="navbar">
+      // Script NavBar
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var navbar = document.querySelector('.box_navbar');
+        var scrollDistance = 25;
+
+        if (window.pageYOffset > scrollDistance) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > scrollDistance) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        });
+      });
+    </script>
+
+    <script class="Menu">
+        // Script Menu
+
+        const menuToggle = document.getElementById('menu');
+        const navLinks = document.querySelector(".nav-links");
+        const background = document.querySelector(".background-menu");
+        const body = document.body;
+
+        menuToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          menuToggle.classList.toggle('activeM');
+          navLinks.classList.toggle('mobile-menu');
+
+          if (navLinks.classList.contains('mobile-menu')) {
+            disableScroll();
+          } else {
+            enableScroll();
+          }
+        });
+
+        body.addEventListener('click', (event) => {
+          if (!navLinks.contains(event.target)) {
+            menuToggle.classList.remove('activeM');
+            navLinks.classList.remove('mobile-menu');
+            enableScroll();
+          }
+        });
+
+        function disableScroll() {
+          document.body.classList.add('no-scroll');
+          background.classList.toggle('active')
+        }
+
+        function enableScroll() {
+          document.body.classList.remove('no-scroll');
+          background.classList.remove('active')
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Main é merveille réalisations</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description de votre site pour les pages de recherche Google">
+    <link rel="stylesheet" href="../css\body.css">
+    <link rel="stylesheet" href="../css\index-components\navbar.css">
+    <link rel="stylesheet" href="../css\index-components\footer.css">
+    <link rel="stylesheet" href="../css\index-components\top.css">
+    <link rel="stylesheet" href="../css\realisations-components\slidepopup.css">
+    <link rel="stylesheet" href="../css\realisations-components\contact.css">
+    <link rel="stylesheet" href="../css/realisations-components/real.css">
+</head>
+<body>
+  <nav class="box_navbar">
+    <a class="logo" href="index.html"> <img src="recources\logo.png" alt="logo"> </a>
+
+    <ul class="linksOrdi">
+        <li class="acti" style="margin: 0px 15px;"><a href="index.html">Home</a></li>
+        <li style="margin: 0px 15px;"><a href="realisations.html">Réalisations</a></li>
+        <li style="margin: 0px 15px;"><a href="prestations.html">Prestations</a></li>
+        <li style="margin: 0px 15px;"><a href="contact\contact.html">Contact</a></li>
+    </ul>
+
+    <div class="menu" id="menu"> 
+        <div class="menu-btn">
+            <label for="menu-check">
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="nav-links">
+      <ul class="links">
+          <li class="acti"><a href="index.html">Home</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="contact\contact.html">Contact</a></li>
+      </ul>
+
+      <ul class="infs">
+          <h1 class="nameNav">Entreprise J.B.L </h1>
+
+          <div class="tel"> <img src="resources\tel.png" alt="tel-icon"> <a href="tel:+33650500950">Appelez-nous</a></div>
+
+          <div class="mail"> <img src="resources\email.png" alt="mail-icon"> <a href="mailto:jblepb@yahoo.com">jblepb@yahoo.com</a></div>
+
+          <div class="media">
+          <div class="icon_media_menu">
+              <a href="https://www.instagram.com/j.b.l_enduitpeinture/" class="icon-box"><img src="resources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
+              <a href="https://www.facebook.com/profile.php?id=100086647767783" class="icon-box"><img src="resources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
+          </div>
+          </div>
+
+        </ul>
+    </div>
+
+    <div class="background-menu"></div>
+
+  </nav>
+
+  <div class="overlay"></div>
+
+  <div class="top_container">
+    <div>
+        <img src="recources\Realisations\Background1.jpg" alt="topIMG">
+    </div>
+  </div>
+
+    <div class="box-top">
+      <div class="title-top">
+        <h1>Les réalisations</h1>
+        <p>Tout les realisations en photos</p>
+      </div>
+    </div>  
+
+    <div class="contact">
+      <div>
+        <h1> Contacter nous</h1>
+        <span class="trait"></span>
+        <a href="tel:+33650500950"><img src="../recources\tel.png" alt="tel"> Appel</a>
+      </div>
+    </div>
+
+    <footer class="box_footer">
+      <div class="content">
+
+        <div class="links-footer">
+          <ul class="list">
+            <li style="padding: 5px;"><a href="legal\mentionsLegal.html" class="txt_footer"> Mentions légal</a></li>
+            <div class="line"></div>
+            <li style="padding: 5px;"><a href="legal\politiqueConf.html" class="txt_footer"> Politique de confidentialité</a> </li>
+            <div class="line"></div>
+            <li style="padding: 5px;"><a href="contact/contact.html" class="txt_footer"> nous contacter</a> </li>
+            <div class="line"></div>
+            <li style="padding: 5px;"><span class="txt_footer" style="font-size: 13px;text-decoration: unset;" id="copy"> © 2023 Main é merveille</span></li>
+            <div class="line"></div>
+          </ul>
+
+          <div class="media">
+            <div class="icon_media">
+              <a href="https://www.instagram.com/j.b.l_enduitpeinture/" class="icon-box"><img src="recources\instagram.png" alt="instagram" style="height: 29px;"></a>
+              <a href="https://www.facebook.com/profile.php?id=100086647767783" class="icon-box"><img src="recources\facebook.png" alt="facebook" style="height: 29px;"></a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="topReturn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+          <img src="resources\arrow.png" alt="top">
+        </div>
+
+      </div>
+    </footer>
+
+    <script class="navbar">
+        // Script NavBar
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var navbar = document.querySelector('.box_navbar');
+          var scrollDistance = 25;
+
+          if (window.pageYOffset > scrollDistance) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+
+          window.addEventListener('scroll', function() {
+            if (window.pageYOffset > scrollDistance) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+          });
+        });
+    </script>
+
+    <script class="Menu">
+        // Script Menu
+
+        const menuToggle = document.getElementById('menu');
+        const navLinks = document.querySelector(".nav-links");
+        const background = document.querySelector(".background-menu");
+        const body = document.body;
+
+        menuToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          menuToggle.classList.toggle('activeM');
+          navLinks.classList.toggle('mobile-menu');
+
+          if (navLinks.classList.contains('mobile-menu')) {
+            disableScroll();
+          } else {
+            enableScroll();
+          }
+        });
+
+        body.addEventListener('click', (event) => {
+          if (!navLinks.contains(event.target)) {
+            menuToggle.classList.remove('activeM');
+            navLinks.classList.remove('mobile-menu');
+            enableScroll();
+          }
+        });
+
+        function disableScroll() {
+          document.body.classList.add('no-scroll');
+          background.classList.toggle('active')
+        }
+
+        function enableScroll() {
+          document.body.classList.remove('no-scroll');
+          background.classList.remove('active')
+        }
+      </script>
+
+      <script>
+        function scrollTop() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      </script>
+</body>
+</html>

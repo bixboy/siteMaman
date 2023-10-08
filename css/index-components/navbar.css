@@ -12,21 +12,13 @@
 }
 
 .box_navbar.scrolled {
-    background-color: #0a3e40;
+    background-color: rgb(124 120 120);
     box-shadow: 0px 2px 12px 4px rgb(0 0 0 / 88%);
   }
 
-.logo_img {
-    height: 76px;
-}
-
-.JBL {
-    font-size: 37px;
-    font-family: cursive;
-    color: #e7e7e7;
+.logo {
     padding-bottom: 8px;
     z-index: 10;
-    font-weight: bold;
     padding-right: 15px;
 }
 
@@ -109,7 +101,7 @@
 }
 
 .acti {
-  background-color: #808080b0;
+  background-color: #bcbcbcb0;
   border-radius: 8px;
 }
 
@@ -248,7 +240,7 @@
   }
 
   .linksOrdi li:hover {
-    background-color: #808080b0;
+    background-color: #bcbcbcb0;
     border-radius: 8px;
   }
   
@@ -295,12 +287,16 @@
   }
 
   .logo {
-    display: none;
+    font-size: 60px;
+    margin-left: 140px;
+    margin-top: 101px;
+    height: 20vh;
   }
 
-  .JBL {
-    font-size: 60px;
-    padding-left: 140px;
+  .logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
 }

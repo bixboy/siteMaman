@@ -1,0 +1,132 @@
+h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 20px;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+  
+  ul {
+    list-style-type: disc;
+    margin-left: 40px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .consent {
+    margin-top: 30px;
+  }
+  
+  .consent label {
+    font-weight: bold;
+  }
+  
+  .consent a {
+    color: #007bff;
+  }
+  
+  .consent span {
+    color: #ff0000;
+  }
+  
+  .submit {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #form_button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #form_button:hover {
+    background-color: #0056b3;
+  }
+
+  .infs {
+    margin-left: unset !important;
+  }
+
+  .infs h1 {
+    text-align: unset;
+  }
+
+  .links {
+    margin-left: unset !important;
+  }
+
+  .hBox h2 {
+    margin-top: unset !important;
+  }
+
+  .title-top p {
+    margin-bottom: unset !important;
+  }
+
+  .title-top h1 {
+    font-size: clamp(0px,7vw,29px);
+  }
+
+  .list {
+    margin-left: unset;
+  }
+
+  .titleConf {
+    font-size: 28px;
+    font-family: math;
+    color: #03037e;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .txtConf {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .JBL {
+    text-decoration: unset !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    .txtConf {
+      padding: 25px 20%;
+    }
+
+    p {
+      font-size: 21px;
+      text-align: center;
+    }
+
+    li {
+      font-size: 21px;
+    }
+
+    h2 {
+      font-size: 33px;
+    }
+
+    .title-top h1 {
+      font-size: clamp(26px,8vw,40px) !important;
+    }
+  }

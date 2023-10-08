@@ -1,0 +1,96 @@
+.infTop {
+    padding: 7px 20px 0px;
+}
+
+.telTop {
+    height: 26px;
+    margin-bottom: 13px;
+    margin-top: 10px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.telTop img {
+    height: 100%;
+    rotate: 10deg;
+    padding-right: 8px;
+}
+
+.telTop a {
+    font-size: 17px;
+    font-family: cursive;
+    color: #4f4f4f;
+    text-decoration: underline 2px;
+    transition: 0.3s ease-in-out;
+}
+
+.mailTop {
+    height: 26px;
+    margin-bottom: 10px;
+    margin-top: 13px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.mailTop img {
+    height: 100%;
+    padding-right: 8px;
+}
+
+.mailTop a {
+    font-size: 17px;
+    font-family: cursive;
+    color: #4f4f4f;
+    text-decoration: underline 2px;
+    transition: 0.3s ease-in-out;
+}
+
+.local {
+
+}
+.titreLocal {
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .infTop {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mailTop {
+        margin-left: 30px;
+    }
+
+    .mailTop a:hover {
+        color: #cfa7a7;
+    }
+
+    .telTop a:hover {
+        color: #cfa7a7;
+    }  
+
+    .local {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    .titreLocal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .local h1 {
+        margin-right: 43px;
+    }
+
+}

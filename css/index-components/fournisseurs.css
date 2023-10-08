@@ -1,0 +1,29 @@
+.containerFourni {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerFourni h1 {
+    font-size: 50px;
+}
+
+.listFourni {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.boxFourni {
+    width: 40vh;
+    padding: 13px;
+}
+
+.fourni1 {
+    width: 100%;
+}
+
+.fourni1 img{
+    width: 100%;
+    object-fit: cover;
+}
