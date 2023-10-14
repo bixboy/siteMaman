@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="../css\realisations-components\slidepopup.css">
     <link rel="stylesheet" href="../css\realisations-components\contact.css">
     <link rel="stylesheet" href="../css/realisations-components/real.css">
+
+    <link rel='stylesheet' href='css\index-components\slider.css'>
 </head>
 <body>
   <nav class="box_navbar">
     <a class="logo" href="index.html"> <img src="recources\logo.png" alt="logo"> </a>
 
     <ul class="linksOrdi">
-        <li class="acti" style="margin: 0px 15px;"><a href="index.html">Home</a></li>
-        <li style="margin: 0px 15px;"><a href="realisations.html">Réalisations</a></li>
+        <li style="margin: 0px 15px;"><a href="index.html">Home</a></li>
+        <li class="acti" style="margin: 0px 15px;"><a href="realisations.html">Réalisations</a></li>
         <li style="margin: 0px 15px;"><a href="prestations.html">Prestations</a></li>
         <li style="margin: 0px 15px;"><a href="contact\contact.html">Contact</a></li>
     </ul>
@@ -45,7 +47,7 @@
       </ul>
 
       <ul class="infs">
-          <h1 class="nameNav">Entreprise J.B.L </h1>
+          <h1 class="nameNav">Entreprise Main é Merveille </h1>
 
           <div class="tel"> <img src="resources\tel.png" alt="tel-icon"> <a href="tel:+33650500950">Appelez-nous</a></div>
 
@@ -76,9 +78,54 @@
     <div class="box-top">
       <div class="title-top">
         <h1>Les réalisations</h1>
-        <p>Tout les realisations en photos</p>
+        <p>Toutes les realisations en photos</p>
       </div>
     </div>  
+
+    <div class="container-center"> 
+
+      <img id="myImg" src="../recources\Realisations\Siege1.4.jpeg" alt="Siege1" style="width:100%;max-width:300px;height: 34vh;object-fit: cover;">
+
+      <img id="myImg" src="../recources\Realisations\Siege2.1.jpg" alt="Siege2" style="width:100%;max-width:300px">
+
+      <img id="myImg" src="../recources\Realisations\Siege3.jpg" alt="Siege3" style="width:100%;max-width:300px">
+
+      <img id="myImg" src="../recources\Realisations\Siege4.jpg" alt="Siege4" style="width:100%;max-width:300px">
+
+      <img id="myImg" src="../recources\Realisations\Siege6.jpg" alt="Siege5" style="width:100%;max-width:300px">
+
+      <img id="myImg" src="../recources\Realisations\Siege7.1.jpg" alt="Siege6" style="width:100%;max-width:300px">
+
+      <img id="myImg2" src="../recources\Realisations\Siege5.jpg" alt="Siege7" style="width:100%;max-width:300px">
+      
+      <img id="myImg2" src="../recources\Realisations\Coussins1.jpg" alt="Siege8" style="width:100%;max-width:300px">
+
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+
+        <div class="container" id="img01">
+          <div class="slider slider--tokyo">
+            <div class="slider__before" style="width: 50%;"></div>
+            <div class="slider__separator"></div>
+            <div class="slider__after"></div>
+            <input class="slider__range" type="range" min="0" max="100" value="50"/>
+          </div>
+        </div>
+
+        <div id="caption"></div>
+      </div>
+
+      <div id="myModalIMG" class="modal">
+        <span class="close2">&times;</span>
+        <img class="modal-content" id="image">
+        <div id="caption2"></div>
+      </div>
+      
+      <script src='main.js'></script>
+
+    </div>
 
     <div class="contact">
       <div>
@@ -188,6 +235,102 @@
             behavior: 'smooth'
           });
         }
+      </script>
+
+      <script class="modalImage">
+        // Get the modal
+        var images = document.querySelectorAll('#myImg');
+        var modal = document.getElementById("myModal");
+
+        images.forEach(function(image) {
+            image.addEventListener("click", function() {
+                modal.style.display = "block";
+            });
+        });
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+          modal.style.display = "none";
+          close();
+        }
+      </script>
+      
+      <script>
+
+        var images2 = document.querySelectorAll('#myImg2');
+        var modal2 = document.getElementById('myModalIMG');
+        var modalImg = document.getElementById("image");
+
+        images2.forEach(function(image2) {
+          image2.addEventListener("click", function() {
+            modal2.style.display = "block";
+            modalImg.src = this.src;
+          });
+        });
+
+        var span2 = document.getElementsByClassName("close2")[0];
+        span2.onclick = function() { 
+          modal2.style.display = "none";
+          close();
+        }
+      </script>
+
+      <script>
+        const container1 = document.querySelector('.slider__before');
+        const container2 = document.querySelector('.slider__after');
+        const sliderSeparator = document.querySelector('.slider__separator');
+
+        const button1 = document.querySelector('img[alt="Siege1"]');
+        const button2 = document.querySelector('img[alt="Siege2"]');
+        const button3 = document.querySelector('img[alt="Siege3"]');
+        const button4 = document.querySelector('img[alt="Siege4"]');
+        const button5 = document.querySelector('img[alt="Siege5"]');
+        const button6 = document.querySelector('img[alt="Siege6"]');
+
+        function close() {
+          container1.classList.remove('activ1');
+          container2.classList.remove('activ1');
+
+          container1.classList.remove('activ2', 'activ3', 'activ4', 'activ5', 'activ6');
+          container2.classList.remove('activ2', 'activ3', 'activ4', 'activ5', 'activ6');
+
+          sliderSeparator.style = 'left: 50%';
+          container1.style = 'width: 50%';
+        }
+
+        button1.addEventListener('click', function() {
+          container1.classList.toggle('activ1');
+          container2.classList.toggle('activ1');
+        });
+
+        button2.addEventListener('click', function() {
+          container1.classList.toggle('activ2');
+          container2.classList.toggle('activ2');
+        });
+
+        button3.addEventListener('click', function() {
+          container1.classList.toggle('activ3');
+          container2.classList.toggle('activ3');
+        });
+
+        button4.addEventListener('click', function() {
+          container1.classList.toggle('activ4');
+          container2.classList.toggle('activ4');
+        });
+
+        button5.addEventListener('click', function() {
+          container1.classList.toggle('activ5');
+          container2.classList.toggle('activ5');
+        });
+
+        button6.addEventListener('click', function() {
+          container1.classList.toggle('activ6');
+          container2.classList.toggle('activ6');
+        });
+
       </script>
 </body>
 </html>
