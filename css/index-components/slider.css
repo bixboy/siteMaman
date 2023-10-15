@@ -57,8 +57,10 @@
     overflow:hidden;
   }
 
+  
   .slider__before.activ1 {
     background-image:url('../../recources/Realisations/Siege1.3.jpg') !important;
+
   }
   .slider__before.activ2 {
     background-image:url('../../recources/Realisations/Siege2.jpg') !important;
