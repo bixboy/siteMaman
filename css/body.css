@@ -9,3 +9,7 @@
 body {
     background-color: #ededed;
 }
+
+body.no-scroll {
+    overflow: hidden;
+}

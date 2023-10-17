@@ -21,8 +21,8 @@
 
     <ul class="linksOrdi">
       <li style="margin: 0px 15px;"><a href="../index.html">Home</a></li>
+      <li style="margin: 0px 15px; cursor: pointer;"><a href="../index.html#prestations">Prestations</a></li>
       <li style="margin: 0px 15px;"><a href="../realisations.html">Réalisations</a></li>
-      <li style="margin: 0px 15px;"><a href="../prestations.html">Prestations</a></li>
       <li style="margin: 0px 15px;" class="acti"><a href="../contact\contact.html">Contact</a></li>
 
     </ul>
@@ -69,7 +69,7 @@
 
     <div class="pcTop">
       <div class="boxImgTop">
-        <img src="../recources\1140x641.jpg" alt="prestations">
+        <img src="../recources\Realisations\Background1.jpg" alt="prestations">
         <div class="coverImg">
           <h1>Contactez-nous</h1>
           <span>Pour avoir plus d'informations <br> envoyer nous un mail ou appelez-nous</span>
@@ -222,6 +222,15 @@
 
       function scrollToCenter() {
         midle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    </script>
+
+    <script>
+      function scrollToCenter(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: 'center' });
+        }
       }
     </script>
 

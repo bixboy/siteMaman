@@ -22,8 +22,8 @@
 
     <ul class="linksOrdi">
         <li style="margin: 0px 15px;"><a href="index.html">Home</a></li>
+        <li style="margin: 0px 15px; cursor: pointer;"><a href="index.html#prestations">Prestations</a></li>
         <li class="acti" style="margin: 0px 15px;"><a href="realisations.html">Réalisations</a></li>
-        <li style="margin: 0px 15px;"><a href="prestations.html">Prestations</a></li>
         <li style="margin: 0px 15px;"><a href="contact\contact.html">Contact</a></li>
     </ul>
 
@@ -84,22 +84,23 @@
 
     <div class="container-center"> 
       
-      <div><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege1.4.jpeg" alt="Siege1" style="width:100%;max-width:300px;height: 34vh;object-fit: cover;"></div>
+      <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege1.4.jpeg" alt="1" style="width:100%;max-width:300px;height: 34vh;object-fit: cover;"></div>
 
-      <div><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege2.1.jpg" alt="Siege2" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege2.1.jpg" alt="2" style="width:100%;max-width:300px"></div>
 
-      <div><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege3.jpg" alt="Siege3" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege3.jpg" alt="3" style="width:100%;max-width:300px"></div>
 
-      <div><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege4.jpg" alt="Siege4" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege4.jpg" alt="4" style="width:100%;max-width:300px"></div>
 
-      <div><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege6.jpg" alt="Siege5" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege6.jpg" alt="5" style="width:100%;max-width:300px"></div>
 
-      <div><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege7.1.jpg" alt="Siege6" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege7.1.jpg" alt="6" style="width:100%;max-width:300px"></div>
 
-      <div><span>Siege Voltaire</span><img id="myImg2" src="../recources\Realisations\Siege5.jpg" alt="Siege7" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger2"><span>Siege Voltaire</span><img id="myImg2" src="../recources\Realisations\Siege5.jpg" alt="7" style="width:100%;max-width:300px"></div>
       
-      <div><span>Siege Voltaire</span><img id="myImg2" src="../recources\Realisations\Coussins1.jpg" alt="Siege8" style="width:100%;max-width:300px"></div>
+      <div class="modal-trigger2"><span>Siege Voltaire</span><img id="myImg2" src="../recources\Realisations\Coussins1.jpg" alt="8" style="width:100%;max-width:300px"></div>
 
+    </div>
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -107,9 +108,9 @@
 
         <div class="container" id="img01">
           <div class="slider slider--tokyo">
-            <div class="slider__before" style="width: 50%;"></div>
+            <img class="slider__before"></img>
             <div class="slider__separator"></div>
-            <div class="slider__after"></div>
+            <img class="slider__after" ></img>
             <input class="slider__range" type="range" min="0" max="100" value="50"/>
           </div>
         </div>
@@ -124,8 +125,6 @@
       </div>
       
       <script src='main.js'></script>
-
-    </div>
 
     <div class="contact">
       <div>
@@ -259,15 +258,21 @@
       </script>
       
       <script>
+        var modalTriggers = document.querySelectorAll('.modal-trigger2');
 
         var images2 = document.querySelectorAll('#myImg2');
         var modal2 = document.getElementById('myModalIMG');
         var modalImg = document.getElementById("image");
 
-        images2.forEach(function(image2) {
+        modalTriggers.forEach(function(image2) {
           image2.addEventListener("click", function() {
             modal2.style.display = "block";
-            modalImg.src = this.src;
+
+            Body.style.overflow = "hidden";
+
+            var imageElement = this.querySelector('img');
+            var imageUrl = imageElement.src;
+            modalImg.src = imageUrl;
           });
         });
 
@@ -276,61 +281,68 @@
           modal2.style.display = "none";
           close();
         }
+
+        window.addEventListener('click', function (event) {
+          if (event.target == modal2) {
+            modal2.style.display = 'none';
+            close();
+          }
+        });
       </script>
 
       <script>
-        const container1 = document.querySelector('.slider__before');
-        const container2 = document.querySelector('.slider__after');
-        const sliderSeparator = document.querySelector('.slider__separator');
+        var modalTriggers = document.querySelectorAll('.modal-trigger1');
+        var container1 = document.querySelector('.slider__before');
+        var container2 = document.querySelector('.slider__after');
+        var sliderSeparator = document.querySelector('.slider__separator');
+        var myModal = document.querySelector('#myModal');
 
-        const button1 = document.querySelector('img[alt="Siege1"]');
-        const button2 = document.querySelector('img[alt="Siege2"]');
-        const button3 = document.querySelector('img[alt="Siege3"]');
-        const button4 = document.querySelector('img[alt="Siege4"]');
-        const button5 = document.querySelector('img[alt="Siege5"]');
-        const button6 = document.querySelector('img[alt="Siege6"]');
+        var Body = document.body;
 
         function close() {
-          container1.classList.remove('activ1');
-          container2.classList.remove('activ1');
+            var currentActivClass = getActivClass(container1);
+            container1.classList.remove(currentActivClass);
+            container2.classList.remove(currentActivClass);
+            sliderSeparator.style.left = '50%';
+            container1.style.width = '50%';
 
-          container1.classList.remove('activ2', 'activ3', 'activ4', 'activ5', 'activ6');
-          container2.classList.remove('activ2', 'activ3', 'activ4', 'activ5', 'activ6');
-
-          sliderSeparator.style = 'left: 50%';
-          container1.style = 'width: 50%';
+            Body.style.overflow = "";
         }
 
-        button1.addEventListener('click', function() {
-          container1.classList.toggle('activ1');
-          container2.classList.toggle('activ1');
+        function getActivClass(element) {
+            var classes = element.classList;
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i].startsWith('activ')) {
+                    return classes[i];
+                }
+            }
+            return null;
+        }
+
+        modalTriggers.forEach(function (trigger) {
+            trigger.addEventListener('click', function() {
+                close();
+                var alt = trigger.querySelector('img').getAttribute('alt');
+                var newActivClass = 'activ' + alt;
+                container1.classList.add(newActivClass);
+                container2.classList.add(newActivClass);
+                myModal.style.display = "block";
+
+                Body.style.overflow = "hidden";
+                
+            });
         });
 
-        button2.addEventListener('click', function() {
-          container1.classList.toggle('activ2');
-          container2.classList.toggle('activ2');
-        });
+      </script>
 
-        button3.addEventListener('click', function() {
-          container1.classList.toggle('activ3');
-          container2.classList.toggle('activ3');
-        });
 
-        button4.addEventListener('click', function() {
-          container1.classList.toggle('activ4');
-          container2.classList.toggle('activ4');
-        });
-
-        button5.addEventListener('click', function() {
-          container1.classList.toggle('activ5');
-          container2.classList.toggle('activ5');
-        });
-
-        button6.addEventListener('click', function() {
-          container1.classList.toggle('activ6');
-          container2.classList.toggle('activ6');
-        });
-
+      <script>
+        function scrollToCenter(sectionId) {
+          var section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: 'center' });
+          }
+        }
       </script>
 </body>
 </html>

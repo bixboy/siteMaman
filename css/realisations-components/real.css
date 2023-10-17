@@ -139,6 +139,21 @@
   padding-top: 5px;
 }
 
+.modal-trigger1 span, .modal-trigger2 span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.modal-trigger1, .modal-trigger2 {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.modal-trigger1:hover, .modal-trigger2:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
   .modal-content {
