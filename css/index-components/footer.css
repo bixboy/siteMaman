@@ -8,6 +8,7 @@
 .content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .links-footer {
@@ -132,7 +133,8 @@
     }
 
     .topReturn {
-        display: none;
+        margin: 0;
+        margin-right: 10vh;
     }
 
     .icon_media {
