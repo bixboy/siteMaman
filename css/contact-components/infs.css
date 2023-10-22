@@ -48,10 +48,22 @@
 }
 
 .local {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .titreLocal {
+    margin-bottom: 12px;
+}
 
+.titreLocal h1 {
+    font-size: 22px;
+}
+
+@media screen and (max-width: 768px) {
+    .map iframe {
+        width: 39vh;
+    }
 }
 
 @media screen and (min-width: 768px) {

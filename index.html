@@ -44,21 +44,21 @@
             <ul class="links">
                 <li class="acti"><a href="index.html">Home</a></li>
                 <li><a href="realisations.html">Réalisations</a></li>
-                <li><a href="prestations.html">Prestations</a></li>
+                <li><a onclick="scrollToCenter('prestations')">Prestations</a></li>
                 <li><a href="contact\contact.html">Contact</a></li>
             </ul>
 
             <ul class="infs">
                 <h1 class="nameNav">Entreprise Main é Merveille </h1>
 
-                <div class="tel"> <img src="resources\tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-mois</a></div>
+                <div class="tel"> <img src="recources\tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-mois</a></div>
 
-                <div class="mail"> <img src="resources\email.png" alt="mail-icon"> <a href="mailto:mainemerveille@outlook.fr">mainemerveille@outlook.fr</a></div>
+                <div class="mail"> <img src="recources\email.png" alt="mail-icon"> <a href="mailto:mainemerveille@outlook.fr">mainemerveille@outlook.fr</a></div>
 
                 <div class="media">
                 <div class="icon_media_menu">
-                    <a href="https://www.instagram.com/j.b.l_enduitpeinture/" class="icon-box"><img src="resources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
-                    <a href="https://www.facebook.com/profile.php?id=100086647767783" class="icon-box"><img src="resources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
+                    <a href="https://www.instagram.com/j.b.l_enduitpeinture/" class="icon-box"><img src="recources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
+                    <a href="https://www.facebook.com/profile.php?id=100086647767783" class="icon-box"><img src="recources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
                 </div>
                 </div>
 
@@ -87,11 +87,11 @@
         </div>
 
         <div class="txt">
-            <h1>25 ans d'expérience</h1>
-            <p>Je vous propose de créer votre projet déco, en accord avec vous même et votre mode de vie et de répondre à vos besoins et vos envies en tenant compte de vos contraintes budgétaires et techniques.</p>
-            <p>Je n’ai qu’un objectif : répondre à vos attentes et rester à votre écoute ! Un décor réussi, c’est une ambiance qui vous ressemble.</p>
-            <p>Pour pouvoir faire correspondre chaque projet à votre personnalité, je m'appuie sur des partenaires de renommée internationale tels que les peintures Little Greene dont je suis revendeur sur Caen, des éditeurs de revêtements muraux au savoir-faire unique comme Casamance, Elitis, Cole and Son, Omexco et des éditeurs de textiles comme Jab, Romo, pour l’équipement de fenêtre, des stores et jetés de lit. Vous pourrez tous les retrouver à mon atelier sur Caen.</p>
-            <p>Mon inspiration ? je la puise dans tout ce qui m’entoure : une nouvelle tendance, un moment de vie, la nature … C’est pourquoi, chaque projet d’agencement doit se nourrir de votre histoire et de vos goûts. Ils seront mon fil conducteur pour faire de chez vous, un lieu unique.</p>
+            <h1>A propos</h1>
+            <p>Les trésors que peuvent produirent nos mains.</p>
+            <p>associés à un savoir faire, m'ont toujours émerveillé c'est naturellement que le nom "Main é Merveille" a vu le jour.</p>
+            <p>Rendre beau avec les mains m'a toujours animé tout autant que la déco et l'ameublement.</p>
+            <p>c'est pourquoi j'ai fait une reconversion professionnelle pour être tapissière d'ameublement, pour vous proposer d'embélir vos fauteuils et les rendre uniques.</p>
         </div>
     </div>
 
@@ -107,27 +107,35 @@
 
     <div class="ContainerPresta">
 
-      <div class="custom-shape-divider-bottom-1697567982">
+      <div class="custom-shape-divider-bottom-1697993228">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
             <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
             <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
         </svg>
-      </div>
+    </div>
 
       <div class="listePresta" id="prestations">
-        <h1>Mes services</h1>
-        <p class="linePresta"></p>
-        <div>
+        <div id="boxPresta" style="display: flex;flex-direction: column;align-items: flex-start;width: 100%;">
+          <h1>Mes services</h1>
+          <p class="linePresta"></p>
+        </div>
+
+        <div class="boxList">
 
           <div>
-            <h2>refection</h2>
-            <span>sieges coussin</span>
+            <h2>Restaurations de Chaises :</h2>
+            <img src="recources\CASAL.jpg" alt="Chaises restaurations">
           </div>
 
           <div>
-            <h2>refection</h2>
-            <span>sieges coussins</span>
+            <h2>Restaurations de canapés :</h2>
+            <img src="recources\CASAL.jpg" alt="Canapés restaurations">
+          </div>
+
+          <div>
+            <h2>Restaurations de fauteuils :</h2>
+            <img src="recources\CASAL.jpg" alt="Fauteuils restaurations">
           </div>
 
         </div>
@@ -230,6 +238,12 @@
           }
         });
 
+        function close() {
+          menuToggle.classList.remove('activeM');
+          navLinks.classList.remove('mobile-menu');
+          enableScroll();
+        }
+
         body.addEventListener('click', (event) => {
           if (!navLinks.contains(event.target)) {
             menuToggle.classList.remove('activeM');
@@ -253,6 +267,7 @@
       function scrollToCenter(sectionId) {
         var section = document.getElementById(sectionId);
         if (section) {
+          close();
           section.scrollIntoView({ behavior: "smooth", block: 'center' });
         }
       }

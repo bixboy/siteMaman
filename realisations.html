@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../css\index-components\navbar.css">
     <link rel="stylesheet" href="../css\index-components\footer.css">
     <link rel="stylesheet" href="../css\index-components\top.css">
+    <link rel="stylesheet" href="../css\contact-components\top.css">
+    <link rel="stylesheet" href="../css\prestations-components\top.css">
     <link rel="stylesheet" href="../css\realisations-components\slidepopup.css">
     <link rel="stylesheet" href="../css\realisations-components\contact.css">
     <link rel="stylesheet" href="../css/realisations-components/real.css">
@@ -45,21 +47,21 @@
       <ul class="links">
           <li class="acti"><a href="index.html">Home</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="index.html#prestations">Prestations</a></li>
           <li><a href="contact\contact.html">Contact</a></li>
       </ul>
 
       <ul class="infs">
           <h1 class="nameNav">Entreprise Main é Merveille </h1>
 
-          <div class="tel"> <img src="resources\tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-mois</a></div>
+          <div class="tel"> <img src="recources\tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-mois</a></div>
 
-          <div class="mail"> <img src="resources\email.png" alt="mail-icon"> <a href="mailto:mainemerveille@outlook.fr">mainemerveille@outlook.fr</a></div>
+          <div class="mail"> <img src="recources\email.png" alt="mail-icon"> <a href="mailto:mainemerveille@outlook.fr">mainemerveille@outlook.fr</a></div>
 
           <div class="media">
           <div class="icon_media_menu">
-              <a href="https://www.instagram.com/j.b.l_enduitpeinture/" class="icon-box"><img src="resources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
-              <a href="https://www.facebook.com/profile.php?id=100086647767783" class="icon-box"><img src="resources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
+              <a href="https://www.instagram.com/j.b.l_enduitpeinture/" class="icon-box"><img src="recources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
+              <a href="https://www.facebook.com/profile.php?id=100086647767783" class="icon-box"><img src="recources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
           </div>
           </div>
 
@@ -72,21 +74,26 @@
 
   <div class="overlay"></div>
 
-  <div class="top_container">
-    <div>
-        <img src="recources\Realisations\Background1.jpg" alt="topIMG">
+  <div class="pcTop">
+    <div class="boxImgTop">
+      <img src="../recources\Realisations\Background1.jpg" alt="prestations">
+      <div class="coverImg">
+        <h1>Toute mes réalisations</h1>
+        <span>Pour avoir plus d'informations <br> envoyer moi un mail ou appelez-moi</span>
+        <button onclick="scrollToCenter()">Voir les réalisations <p class="fleche"> ^ </p></button>
+      </div>
     </div>
   </div>
 
-  <div style="    display: flex; justify-content: center; flex-direction: column; padding: 0px 20vh 2vh 20vh; align-items: center;">
-    <div class="box-top">
-      <div class="title-top">
+  <div id="containerImg" style="display: flex; justify-content: center; flex-direction: column; padding: 0px 20vh 2vh 20vh; align-items: center;">
+    <div class="boxTitleTop">
+      <div class="titletTop">
         <h1>Les réalisations</h1>
         <p></p>
       </div>
     </div>  
 
-    <div class="container-center"> 
+    <div class="container-center" id="containerSieges"> 
       
       <div class="modal-trigger1"><span>Siege Voltaire</span><img id="myImg" src="../recources\Realisations\Siege1.4.jpeg" alt="1" style="width:100%;max-width:300px;height: 34vh;object-fit: cover;"></div>
 
@@ -341,13 +348,12 @@
       </script>
 
 
-      <script>
-        function scrollToCenter(sectionId) {
-          var section = document.getElementById(sectionId);
-          if (section) {
-            section.scrollIntoView({ behavior: "smooth", block: 'center' });
-          }
-        }
-      </script>
+    <script>
+      const midle = document.getElementById('containerSieges');
+
+      function scrollToCenter() {
+        midle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    </script>
 </body>
 </html>

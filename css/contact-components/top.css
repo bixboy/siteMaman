@@ -68,8 +68,6 @@
     display: none;
 }
 
-@media screen and (min-width: 768px) {
-
     .txtDesc h1 {
         text-align: center;
         font-size: 33px;
@@ -185,4 +183,34 @@
         color: #fcfcfc;
     }
 
+@media screen and (max-width: 768px) {
+    .fleche {
+        margin-right: 10px;
+    }
+
+    .coverImg h1 {
+        font-size: 30px;
+    }
+
+    .coverImg span {
+        font-size: 16px;
+        font-weight: lighter;
+    }
+
+    .coverImg {
+        padding-left: 15px;
+        width: 58%;
+        top: 57%;
+    }
+
+    .coverImg button {
+        height: 66px;
+        width: 179px;
+        font-size: 17px;
+        margin-left: 0;
+    }
+
+    .txtDesc p {
+        text-align: unset;
+    }
 }
