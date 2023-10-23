@@ -42,7 +42,7 @@
     box-shadow: 0 0 6px 4px rgb(0 0 0 / 30%);
     height: 45px;
     width: 45px;
-    outline: 2px solid #119a9f;
+    outline: 2px solid #8b6238;
     transition-property: outline-offset, outline-color, background-color;
     transition-duration: 0.25s;
     align-items: center;
@@ -50,7 +50,7 @@
 }
 .icon-box:hover {
     outline-offset: 4px;
-    background-color: #05787e;
+    background-color: #684f36;
     outline-color: rgb(214, 214, 214);
     animation: shake 0.25s;
 }
@@ -142,7 +142,7 @@
     }
 
     .txt_footer {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .list li {

@@ -20,7 +20,7 @@
     z-index: 11;
     padding: 4px 5px;
     margin-right: 17px;
-    background-color: #0b4446;
+    background-color: #533f2b;
     transition: all 0.3s ease-in-out;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 50%);
@@ -120,7 +120,7 @@
 }
 
 .infs {
-  background-color: #177f8366;
+  background-color: #533f2b;
   height: 46%;
   padding: 13px 5px;
 }
