@@ -21,6 +21,7 @@
     height:100%;
     background-size:cover;
     pointer-events: none;
+    user-select: none;
   }
 
   .slider__after.activ1 {
@@ -31,10 +32,10 @@
     background-image:url('../../recources/Realisations/Siege2.1.jpg') !important;
   }
   .slider__after.activ3 {
-    background-image:url('../../recources/Realisations/Siege3.1,4.1.jpg') !important;
+    background-image:url('../../recources/Realisations/Siege3.1.jpg') !important;
   }
   .slider__after.activ4 {
-    background-image:url('../../recources/Realisations/Siege3.1,4.1.jpg') !important;
+    background-image:url('../../recources/Realisations/Siege4.1.jpg') !important;
   }
 
   .slider__after.activ5 {
@@ -55,6 +56,7 @@
     background-size:cover;
     pointer-events: none;
     overflow:hidden;
+    user-select: none;
   }
 
   

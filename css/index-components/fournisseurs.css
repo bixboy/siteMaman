@@ -46,4 +46,8 @@
         width: 23vh;
         height: 23vh;
     }
+
+    .containerFourni h1 {
+        font-size: 28px;
+    }
 }

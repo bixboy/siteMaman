@@ -77,6 +77,10 @@
 
 .listePresta img {
     height: 18vh;
+    width: 18vh;
+    border-radius: 10px;
+    box-shadow: 4px 12px 15px 0px rgb(0 0 0 / 49%);
+    margin-left: 10px;
 }
 
 .custom-shape-divider-bottom-1697993228 {
@@ -120,9 +124,9 @@
     }
 
     .listePresta h2 {
-        font-size: 25px;
+        font-size: 28px;
         text-align: center;
-        padding-right: 25px;
+        padding-right: 0;
     }
 
     .listePresta h1 {
@@ -136,15 +140,21 @@
     }
 
     .linePresta {
-        width: 33vh;
+        width: 20vh;
     }
 
     .listePresta img {
-        height: 18vh;
+        height: 21vh;
+        width: 21vh;
+        margin: 0;
     }
 
     #boxPresta {
         align-items: center !important;
+    }
+
+    .boxList div {
+        flex-direction: column;
     }
 }
 
