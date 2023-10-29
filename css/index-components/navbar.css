@@ -129,6 +129,8 @@
   padding-left: 10px;
   padding-top: 12px;
   color: #fbfbfb;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .hBox {
@@ -156,8 +158,8 @@
 
 .tel {
   height: 26px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 16px;
+  margin-top: 23px;
   margin-left: 8px;
   display: flex;
   align-items: center;
@@ -177,7 +179,7 @@
 
 .mail {
   height: 26px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-top: 10px;
   margin-left: 8px;
   display: flex;
