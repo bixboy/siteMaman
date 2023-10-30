@@ -92,7 +92,7 @@
 .box_navbar ul li a {
     border-radius: 15px;
     padding: 0.2rem 1rem 0.2rem 1rem;
-    font-size: 25px;
+    font-size: 30px;
     color: #fbfbfb;
 }
 
@@ -131,6 +131,8 @@
   color: #fbfbfb;
   text-align: center;
   text-decoration: underline;
+  font-family: math;
+  font-size: 25px;
 }
 
 .hBox {
@@ -192,7 +194,7 @@
 }
 
 .mail a {
-  font-size: 17px;
+  font-size: 15px;
   color: #ffffff;
   text-decoration: underline 2px;
 }
