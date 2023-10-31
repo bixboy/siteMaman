@@ -121,7 +121,7 @@
 
 .infs {
   background-color: #533f2b;
-  height: 46%;
+  height: 55%;
   padding: 13px 5px;
 }
 
@@ -234,7 +234,19 @@
 
 @media screen and (max-width: 355px) {
   .links {
-    margin-bottom: -5%;
+    margin-bottom: 10%;
+  }
+
+  .box_navbar ul li a {
+    font-size: 26px;
+  }
+
+  .infs h1 {
+    font-size: 23px;
+  }
+
+  .mail a {
+    font-size: 14px;
   }
 }
 

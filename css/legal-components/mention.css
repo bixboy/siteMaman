@@ -21,7 +21,7 @@ h1 {
   }
 
   .infs h1 {
-    text-align: unset;
+    text-align: center;
   }
 
   .links {
@@ -60,7 +60,7 @@ h1 {
   }
 
   .JBL {
-    text-decoration: unset !important;
+    text-decoration:unset  !important;
   }
 
   @media screen and (min-width: 768px) {

@@ -15,11 +15,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 7px 20px;
 }
 
 .boxFourni {
     width: 40vh;
-    height: 26vh;
+    height: 20vh;
     padding: 13px;
 }
 
@@ -49,5 +52,9 @@
 
     .containerFourni h1 {
         font-size: 28px;
+    }
+
+    .boxFourni {
+        height: 27vh;
     }
 }
