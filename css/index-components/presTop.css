@@ -60,6 +60,7 @@
 
 .listePresta h1 {
     font-size: 45px;
+    padding-left: 8%;
 }
 
 .boxList {
@@ -131,6 +132,7 @@
 
     .listePresta h1 {
         text-align: center;
+        padding-left: unset;
     }
 
     .boxList {
@@ -140,7 +142,7 @@
     }
 
     .linePresta {
-        width: 20vh;
+        width: 100%;
     }
 
     .listePresta img {
