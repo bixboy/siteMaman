@@ -92,8 +92,17 @@
 .box_navbar ul li a {
     border-radius: 15px;
     padding: 0.2rem 1rem 0.2rem 1rem;
-    font-size: 25px;
+    font-size: 30px;
     color: #fbfbfb;
+}
+
+.links li a {
+  background-color: #533f2b;
+  box-shadow: 4px 12px 15px 0px rgb(0 0 0 / 49%);
+} 
+
+.acti_mobil {
+  background-color: #9a6a3a !important;
 }
 
 .acti {
@@ -121,7 +130,7 @@
 
 .infs {
   background-color: #533f2b;
-  height: 46%;
+  height: 55%;
   padding: 13px 5px;
 }
 
@@ -131,6 +140,8 @@
   color: #fbfbfb;
   text-align: center;
   text-decoration: underline;
+  font-family: math;
+  font-size: 25px;
 }
 
 .hBox {
@@ -174,7 +185,6 @@
 .tel a {
   font-size: 17px;
   color: #ffffff;
-  text-decoration: underline 2px;
 }
 
 .mail {
@@ -192,9 +202,8 @@
 }
 
 .mail a {
-  font-size: 17px;
+  font-size: 15px;
   color: #ffffff;
-  text-decoration: underline 2px;
 }
 
 .icon_media_menu {
@@ -232,7 +241,19 @@
 
 @media screen and (max-width: 355px) {
   .links {
-    margin-bottom: -5%;
+    margin-bottom: 10%;
+  }
+
+  .box_navbar ul li a {
+    font-size: 26px;
+  }
+
+  .infs h1 {
+    font-size: 23px;
+  }
+
+  .mail a {
+    font-size: 14px;
   }
 }
 
