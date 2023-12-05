@@ -42,6 +42,7 @@
 @media screen and (max-width: 768px) {
     .listFourni {
         overflow-x: scroll;
+        justify-content: unset;
         width: 100%;
     }
 
