@@ -25,25 +25,25 @@
   }
 
   .slider__after.activ1 {
-    background-image:url('../../recources/Realisations/Siege1.4.jpeg');
+    background-image:url('../../recources/Realisations/Siege1.4.webp');
     background-position: center;
   }
   .slider__after.activ2 {
-    background-image:url('../../recources/Realisations/Siege2.1.jpg');
+    background-image:url('../../recources/Realisations/Siege2.1.webp');
   }
   .slider__after.activ3 {
-    background-image:url('../../recources/Realisations/Siege3.1.jpg');
+    background-image:url('../../recources/Realisations/Siege3.1.webp');
   }
   .slider__after.activ4 {
-    background-image:url('../../recources/Realisations/Siege4.1.jpg');
+    background-image:url('../../recources/Realisations/Siege4.1.webp');
   }
 
   .slider__after.activ5 {
-    background-image:url('../../recources/Realisations/Siege6.jpg');
+    background-image:url('../../recources/Realisations/Siege6.webp');
   }
 
   .slider__after.activ6 {
-    background-image:url('../../recources/Realisations/Siege7.jpg');
+    background-image:url('../../recources/Realisations/Siege7.webp');
   }
   
   .slider__before {
@@ -61,25 +61,25 @@
 
   
   .slider__before.activ1 {
-    background-image:url('../../recources/Realisations/Siege1.3.jpg');
+    background-image:url('../../recources/Realisations/Siege1.3.webp');
 
   }
   .slider__before.activ2 {
-    background-image:url('../../recources/Realisations/Siege2.jpg');
+    background-image:url('../../recources/Realisations/Siege2.webp');
   }
   .slider__before.activ3 {
-    background-image:url('../../recources/Realisations/Siege3.jpg');
+    background-image:url('../../recources/Realisations/Siege3.webp');
   }
   .slider__before.activ4 {
-    background-image:url('../../recources/Realisations/Siege4.jpg');
+    background-image:url('../../recources/Realisations/Siege4.webp');
   }
 
   .slider__before.activ5 {
-    background-image:url('../../recources/Realisations/Siege6.1.jpeg');
+    background-image:url('../../recources/Realisations/Siege6.1.webp');
   }
 
   .slider__before.activ6 {
-    background-image:url('../../recources/Realisations/Siege7.1.jpg');
+    background-image:url('../../recources/Realisations/Siege7.1.webp');
   }
   
   .slider__before:before {

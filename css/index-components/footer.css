@@ -143,10 +143,15 @@
 
     .txt_footer {
         font-size: 14px;
+        padding-right: 10px;
     }
 
     .list li {
         padding: 10px !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
     }
 
     .line {
