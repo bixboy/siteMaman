@@ -45,6 +45,10 @@
   .slider__after.activ6 {
     background-image:url('../../recources/Realisations/Siege7.webp');
   }
+
+  .slider__after.activ7 {
+    background-image:url('../../recources/Realisations/siege11.webp');
+  }
   
   .slider__before {
     position:absolute;
@@ -80,6 +84,10 @@
 
   .slider__before.activ6 {
     background-image:url('../../recources/Realisations/Siege7.1.webp');
+  }
+
+  .slider__before.activ7 {
+    background-image:url('../../recources/Realisations/siege11.1.webp');
   }
   
   .slider__before:before {
