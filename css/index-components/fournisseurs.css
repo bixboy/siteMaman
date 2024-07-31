@@ -7,8 +7,9 @@
 }
 
 .containerFourni h1 {
-    font-size: 50px;
+    font-size: 45px;
     padding-bottom: 5px;
+    text-decoration: underline 3px;
 }
 
 .listFourni {
@@ -40,6 +41,8 @@
 }
 .boxList div h2 {
     font-family: "Lucida Handwriting", cursive;
+    font-size: 20px;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {
