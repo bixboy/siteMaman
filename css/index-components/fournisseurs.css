@@ -36,6 +36,7 @@
     font-family: "Lucida Handwriting", cursive;
     font-size: 20px;
     text-align: center;
+    margin-top: 12px;
 }
 
 .listFourni {
@@ -75,5 +76,10 @@
 
     .boxFourni {
         height: 27vh;
+    }
+
+    .boxList div h2 {
+
+        margin-top: 0;
     }
 }

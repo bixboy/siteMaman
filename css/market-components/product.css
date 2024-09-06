@@ -1,0 +1,172 @@
+.product-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 140px auto 50px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 64vh;
+}
+
+.product-image {
+    align-content: center;
+}
+
+.product-image img {
+    max-width: 45vh;
+    max-height: 60vh;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+/* Effet de survol */
+.product-image img:hover {
+  transform: scale(1.05); /* Agrandit légèrement l'image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ajoute une ombre */
+}
+
+.product-details {
+    margin-left: 20px;
+    flex: 1;
+    align-content: center;
+}
+
+.product-details h1 {
+    font-size: 2rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #e67e22;
+    margin-left: 10px;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.buy-button {
+    background-color: #e67e22;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    height: 60px;
+    width: 155px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 2px rgb(181 133 20 / 89%);
+    font-size: 21px;
+    transition: all 0.3s ease-in-out;
+}
+
+.buy-button:hover {
+    background-color: #ff983c;
+}
+
+.buy-button img {
+    width: 3vh;
+    margin-left: 10px;
+}
+
+/* Conteneur du slider */
+.slider-container {
+    position: relative;
+    max-width: 600px; /* Vous pouvez ajuster la largeur selon vos besoins */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px; /* Pour des coins arrondis */
+}
+
+/* Les images du slider */
+.sliderProduct img {
+    width: 100%;
+    display: none; /* Masque toutes les images par défaut */
+}
+
+.sliderProduct img.active {
+    display: block; /* Affiche uniquement l'image active */
+    opacity: 1;
+}
+
+/* Boutons de navigation (précédent et suivant) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 49%;
+    width: 30px;
+    height: 45px;
+    margin-top: -15px; /* Centrer verticalement */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 25%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Change la couleur au survol */
+}
+
+/* Les flèches sont masquées si une seule image */
+.sliderProduct img.only-image ~ .prev,
+.sliderProduct img.only-image ~ .next {
+    display: none;
+}
+
+/* Animation de transition */
+.sliderProduct img.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@media only screen and (max-width: 767px) {
+    .product-container {
+        max-width: 41vh;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .slider-container {
+        max-width: 37vh;
+        max-height: 40vh;
+    }
+
+    .Product {
+        padding: 0!important;
+    }
+
+    .product-details h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .description {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .lines {
+        margin-left: 0 !important;
+    }
+}

@@ -108,6 +108,7 @@
 .acti {
   background-color: rgb(181 159 137 / 67%);
   border-radius: 8px;
+  box-shadow: 5px 5px 9px 2px rgb(153 153 153 / 32%);
 }
 
 .box_navbar .nav-links ul li {
@@ -267,6 +268,9 @@
 
   .linksOrdi li {
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .linksOrdi li:hover {
@@ -279,6 +283,7 @@
     border-radius: 15px;
     padding: 0.7rem 1rem 0.7rem 1rem;
     font-size: 28px;
+    text-align: center;
 }
 
 .box_navbar ul li a:hover {

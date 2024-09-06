@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5QGTNVK7');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <title>Vente - Main é merveille - Tapissier d'ameublement</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Main é Merveille a Caen, votre tapissier d'ameublement expérimenté, offre des services de restauration, rénovation et création de sièges sur mesure. Experts en tapisserie, nous redonnons vie à vos meubles anciens ou modernes, en utilisant des tissus de qualité et des techniques artisanales. Découvrez un savoir-faire traditionnel pour sublimer vos assises avec des créations uniques et personnalisées.">
+    <link rel="icon" href="recources/favicon.ico" type="image/x-icon">
+    
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/index-components/navbar.css">
+    <link rel="stylesheet" href="css/index-components/footer.css">
+    <link rel="stylesheet" href="css/index-components/top.css">
+    <link rel="stylesheet" href="css/contact-components/top.css">
+    <link rel="stylesheet" href="css/market-components/market.css">
+
+  </head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QGTNVK7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <nav class="box_navbar">
+    <a class="logo" href="index.html"> <img src="recources\favicon.ico" alt="main e merveille"> </a>
+
+    <ul class="linksOrdi">
+        <li style="margin: 0px 15px;"><a href="index.html">Home</a></li>
+        <li style="margin: 0px 15px;"><a href="index.html#prestations">Mes services</a></li>
+        <li style="margin: 0px 15px;"><a href="realisations.html">Réalisations</a></li>
+        <li class="acti" style="margin: 0px 15px; cursor: pointer;"><a href="market.html">Vente Fauteuils</a></li>
+        <li style="margin: 0px 15px;"><a href="contact\contact.html">Contact</a></li>
+    </ul>
+
+    <div class="menu" id="menu"> 
+        <div class="menu-btn">
+            <label for="menu-check">
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="nav-links">
+      <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#prestations">Mes services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a class="acti_mobil" href="market.html">Vente Fauteuils</a></li>
+          <li><a href="contact\contact.html">Contact</a></li>
+      </ul>
+
+      <ul class="infs">
+          <h1 class="nameNav">Entreprise Main é Merveille </h1>
+
+          <div class="tel"> <img src="recources\tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-moi</a></div>
+
+          <div class="mail"> <img src="recources\email.png" alt="mail-icon"> <a href="mailto:mainemerveille@gmail.com">mainemerveille@Gmail.com</a></div>
+
+          <div class="media">
+          <div class="icon_media_menu">
+              <a href="" class="icon-box"><img src="recources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
+              <a href="https://www.facebook.com/profile.php?id=61553945070512" class="icon-box"><img src="recources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
+          </div>
+          </div>
+
+        </ul>
+    </div>
+
+    <div class="background-menu"></div>
+  </nav>
+  <div class="overlay"></div>
+
+  <div class="pcTop">
+    <div class="boxImgTop">
+      <img src="../recources\Realisations\Background1.webp" alt="prestations">
+      <div class="coverImg" style="top: 49%;">
+        <h1>Vente et Refection</h1>
+        <span>Vous avez envie d'un fauteuil <br> mais vous n'en possedez pas : deux solutions <br> un fauteuil déja fait ou un fauteuil à refaire. </span>
+        <button onclick="scrollToCenter()">Voir les Produits <p class="fleche"> ^ </p></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="Container" style="display: flex; flex-direction: column; padding: 10px 20vh 2vh 20vh; align-items: center;">
+
+    <div class="titletTop" style="padding-top: 35px; padding-bottom: 15px;">
+      <h1 style="font-size: 40px; text-align: center;">Les fauteuils</h1>
+      <p></p>
+    </div> 
+
+    <div class="category-filter">
+      <button class="filter-btn0" data-filter="all">Tous</button>
+      <button class="filter-btn1" data-filter="category1">Fauteuils Restaurés</button>
+      <button class="filter-btn2" data-filter="category2">Fauteuils à Rénover</button>
+    </div>
+  
+    <div class="product-list" id="listProduct">
+        <!-- Produit dans la catégorie 1 -->
+        <div class="product-item category1" data-id="1" data-name="Chaises Louis XVI" data-state="Fauteuil Prêt\n à l'Emploi" data-description="Paire de chaises Louis-XVI\nTissu velour et bois légèrment vielli." data-images='["recources/Produits/fauteuil1.jpg", "recources/Produits/Fauteuil1.2.jpg", "recources/Produits/fauteuil1.3.jpg"]'>
+            <a class="image-container">
+                <img src="recources/Produits/fauteuil1.jpg" alt="Chaises Louis XVI"> 
+                <div class="overlay">Chaises Louis XVI</div>
+            </a>
+            <h2 id="product-name-mobile">Chaises Louis XVI</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+      
+        <div class="product-item category1" data-id="2" data-name="Pouf et coussins" data-state="Fauteuil Prêt\n à l'Emploi" data-description="Pouf et coussins tissu en velour." data-images='["recources/Produits/fauteuil2.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\fauteuil2.jpg" alt="Pouf et coussins"> 
+                <div class="overlay">Pouf et coussins</div>
+            </a>
+            <h2 id="product-name-mobile">Pouf et coussins</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+        <div class="product-item category1" data-id="3" data-name="Chaise de nourrice" data-state="Fauteuil Prêt\n à l'Emploi" data-description="Chaise de nourrice assise basse tissu art déco." data-images='["recources/Produits/fauteuil3.jpg"]'>
+              <a class="image-container">
+                  <img src="recources\Produits\fauteuil3.jpg" alt="Chaise de nourrice"> 
+                  <div class="overlay">Chaise de nourrice</div>
+              </a>
+              <h2 id="product-name-mobile">Chaise de nourrice</h2>
+              <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+
+        <!-- Produit dans la catégorie 2 -->
+        <div class="product-item category2" data-id="4" data-name="Duo cabriolet et chaise" data-state="Fauteuil\n à Personnaliser" data-description="Pour ce duo prevoir réfection peinture."data-images='["recources/Produits/siege1.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\siege1.jpg" alt="Duo cabriolet et chaise"> 
+                <div class="overlay">Duo cabriolet et chaise</div>
+            </a>
+            <h2 id="product-name-mobile">Duo cabriolet et chaise</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+        <div class="product-item category2" data-id="5" data-name="Paire de bergères" data-state="Fauteuil\n à Personnaliser" data-description="Deux bergères." data-images='["recources/Produits/siege2.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\siege2.jpg" alt="Paire de bergères"> 
+                <div class="overlay">Paire de bergères</div>
+            </a>
+            <h2 id="product-name-mobile">Paire de bergères</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+        <div class="product-item category2" data-id="7" data-name="fauteuil Chauffeuse" data-state="Fauteuil\n à Personnaliser" data-description="fauteuil Chauffeuse déja mis à blanc." data-images='["recources/Produits/siege3.jpg", "recources/Produits/siege3.2.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\siege3.jpg" alt="fauteuil Chauffeuse"> 
+                <div class="overlay">Fauteuil Chauffeuse</div>
+            </a>
+            <h2 id="product-name-mobile">Fauteuil Chauffeuse</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+        <div class="product-item category2" data-id="8" data-name="fauteuil studio" data-state="Fauteuil\n à Personnaliser" data-description="fauteuil studio des années 50." data-images='["recources/Produits/siege4.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\siege4.jpg" alt="fauteuil studio"> 
+                <div class="overlay">Fauteuil studio</div>
+            </a>
+            <h2 id="product-name-mobile">Fauteuil studio</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+        <div class="product-item category2" data-id="9" data-name="Paire de petits fauteuils" data-state="Fauteuil\n à Personnaliser" data-description="Deux petits fauteuils." data-images='["recources/Produits/siege5.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\siege5.jpg" alt="Paire de petits fauteuils"> 
+                <div class="overlay">Paire de petits fauteuils</div>
+            </a>
+            <h2 id="product-name-mobile">Paire de petits fauteuils</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+
+        <div class="product-item category2" data-id="9" data-name="Bergère" data-state="Fauteuil\n à Personnaliser" data-description="Grosse bergère bois impecable déja cérusé." data-images='["recources/Produits/siege6.jpg"]'>
+            <a class="image-container">
+                <img src="recources\Produits\siege6.jpg" alt="Bergère"> 
+                <div class="overlay">Bergère</div>
+            </a>
+            <h2 id="product-name-mobile">Bergère</h2>
+            <a href="product.html" class="view-details">Voir les détails</a>
+        </div>
+      
+        <!-- Produit dans les deux catégories -->
+    </div>
+    <div class="loader-container" id="loader">
+      <div class="loader-box">
+          <div class="loader"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+    <footer class="box_footer">
+      <div class="content">
+
+        <div class="links-footer">
+          <ul class="list">
+            <li style="padding: 5px;"><a href="legal\mentionsLegal.html" class="txt_footer"> Mentions légales</a><div class="lines"></div></li>
+
+            <li style="padding: 5px;"><a href="legal\politiqueConf.html" class="txt_footer"> Politique de confidentialité</a> <div class="lines"></div></li>
+            
+            <li style="padding: 5px;"><a href="..\contact/contact.html" class="txt_footer"> Me contacter</a> <div class="lines"></div></li>
+
+            <li style="padding: 5px;"><span class="txt_footer" style="font-size: 13px;text-decoration: unset;"> © 2023 Main é merveille</span><div class="lines"></div></li>
+          </ul>
+
+          <div class="media">
+            <div class="icon_media">
+              <a href="" class="icon-box"><img src="recources\instagram.png" alt="instagram" style="height: 29px;"></a>
+              <a href="https://www.facebook.com/profile.php?id=61553945070512" class="icon-box"><img src="recources\facebook.png" alt="facebook" style="height: 29px;"></a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="topReturn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+          <img src="recources\arrow.png" alt="top">
+        </div>
+
+      </div>
+    </footer>
+
+    <script class="navbar">
+        // Script NavBar
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var navbar = document.querySelector('.box_navbar');
+          var scrollDistance = 25;
+
+          if (window.pageYOffset > scrollDistance) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+
+          window.addEventListener('scroll', function() {
+            if (window.pageYOffset > scrollDistance) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+          });
+        });
+    </script>
+
+    <script class="OpenProductPage">
+      document.querySelectorAll('.view-details').forEach(button => {
+          button.addEventListener('click', function(e) {
+              e.preventDefault();
+              const productItem = this.closest('.product-item');
+              const productId = productItem.getAttribute('data-id');
+              const productName = productItem.getAttribute('data-name');
+              const productState = productItem.getAttribute('data-state');
+              const productDescription = productItem.getAttribute('data-description');
+              const productImages = JSON.parse(productItem.getAttribute('data-images'));
+
+              // Stocker les détails du produit dans le localStorage
+              localStorage.setItem('product', JSON.stringify({
+                  id: productId,
+                  name: productName,
+                  state: productState,
+                  description: productDescription,
+                  images: productImages
+              }));
+
+              // Rediriger vers la page des détails du produit
+              window.location.href = 'product.html';
+          });
+      });
+    </script>
+
+    <script class="Menu">
+        // Script Menu
+
+        const menuToggle = document.getElementById('menu');
+        const navLinks = document.querySelector(".nav-links");
+        const background = document.querySelector(".background-menu");
+        const body = document.body;
+
+        menuToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          menuToggle.classList.toggle('activeM');
+          navLinks.classList.toggle('mobile-menu');
+
+          if (navLinks.classList.contains('mobile-menu')) {
+            disableScroll();
+          } else {
+            enableScroll();
+          }
+        });
+
+        body.addEventListener('click', (event) => {
+          if (!navLinks.contains(event.target)) {
+            menuToggle.classList.remove('activeM');
+            navLinks.classList.remove('mobile-menu');
+            enableScroll();
+          }
+        });
+
+        function disableScroll() {
+          document.body.classList.add('no-scroll');
+          background.classList.toggle('active')
+        }
+
+        function enableScroll() {
+          document.body.classList.remove('no-scroll');
+          background.classList.remove('active')
+        }
+      </script>
+
+      <script>
+        function scrollTop() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      </script>
+
+    <script>
+      const midle = document.getElementById('listProduct');
+
+      function scrollToCenter() {
+        midle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.category-filter button');
+        const products = document.querySelectorAll('.product-item');
+        const loader = document.getElementById('loader');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+            
+                // Afficher le loader
+                loader.style.display = 'flex';
+            
+                // Simuler un temps de chargement
+                setTimeout(() => {
+                    products.forEach(product => {
+                        if (filter === 'all') {
+                            product.style.display = 'flex';
+                        } else if (product.classList.contains(filter)) {
+                            product.style.display = 'flex';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                  
+                    // Masquer le loader une fois le filtrage terminé
+                    loader.style.display = 'none';
+                }, 500); // 500ms de délai pour simuler un chargement
+            });
+        });
+    });
+    </script>
+</body>
+</html>
