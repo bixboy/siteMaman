@@ -21,6 +21,7 @@
     height:100%;
     background-size:cover;
     pointer-events: none;
+    -webkit-user-select: none;
     user-select: none;
   }
 
@@ -57,6 +58,14 @@
   .slider__after.activ9 {
     background-image:url('../../recources/Realisations/siege13.webp');
   }
+
+  .slider__after.activ10{
+    background-image:url('../../recources/Realisations/Siege14.1.webp');
+  }
+
+  .slider__after.activ11{
+    background-image:url('../../recources/Realisations/Siege15.1.webp');
+  }
   
   .slider__before {
     position:absolute;
@@ -68,6 +77,7 @@
     background-size:cover;
     pointer-events: none;
     overflow:hidden;
+    -webkit-user-select: none;
     user-select: none;
   }
 
@@ -104,6 +114,14 @@
 
   .slider__before.activ9 {
     background-image:url('../../recources/Realisations/Siege13.1.webp');
+  }
+
+  .slider__before.activ10{
+    background-image:url('../../recources/Realisations/Siege14.webp');
+  }
+
+  .slider__before.activ11{
+    background-image:url('../../recources/Realisations/Siege15.webp');
   }
   
   .slider__before:before {
