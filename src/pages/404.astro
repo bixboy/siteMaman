@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@data/site';
+
+const pageUrl = `${siteConfig.baseUrl}/404`;
+---
+<BaseLayout title="Page introuvable — Main é merveille" description="Cette page n'existe pas." canonical={pageUrl}>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Page introuvable</h1>
+      <p class="section__intro">
+        La page que vous recherchez n'existe plus ou a changé d'adresse. Retournez à
+        l'accueil pour explorer les services de tapisserie d'ameublement.
+      </p>
+      <a class="btn" href="/">Revenir à l'accueil</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+    text-align: center;
+    display: grid;
+    gap: var(--spacing-md);
+    justify-items: center;
+  }
+</style>

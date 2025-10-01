@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { projects } from '@data/projects';
+import ProjectCard from '@components/ProjectCard.astro';
+import { siteConfig } from '@data/site';
+import { projectSchema } from '@utils/schema';
+
+const pageUrl = `${siteConfig.baseUrl}/realisations`;
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Réalisations', url: pageUrl }
+];
+const structuredData = projects.map((project) => projectSchema(project));
+---
+<BaseLayout
+  title="Réalisations avant/après — Main é merveille"
+  description="Galerie de restaurations de fauteuils, chaises et canapés : garnissage traditionnel, tissus d'éditeur et finitions main."
+  canonical={pageUrl}
+  structuredData={structuredData}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Réalisations avant/après</h1>
+      <p class="section__intro">
+        Parcourez une sélection de projets de réfection de fauteuils, chaises et canapés.
+        Chaque transformation illustre le soin apporté aux matières et aux finitions.
+      </p>
+      <form class="filters" id="filtre-categorie" aria-label="Filtrer les réalisations">
+        <label for="categorie">Catégorie</label>
+        <select id="categorie" name="categorie">
+          <option value="toutes">Toutes</option>
+          <option value="fauteuil">Fauteuils</option>
+          <option value="chaise">Chaises</option>
+          <option value="canape">Canapés</option>
+        </select>
+      </form>
+      <div class="grid" data-gallery>
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+  <script type="module" is:inline>
+    const select = document.querySelector('#categorie');
+    const cards = Array.from(document.querySelectorAll('[data-gallery] .project-card'));
+    select?.addEventListener('change', () => {
+      const value = select.value;
+      cards.forEach((card) => {
+        const link = card.querySelector('a');
+        if (!link) return;
+        if (value === 'toutes') {
+          card.removeAttribute('hidden');
+          return;
+        }
+        const dataset = link.dataset.category;
+        if (dataset) {
+          if (dataset === value) {
+            card.removeAttribute('hidden');
+          } else {
+            card.setAttribute('hidden', '');
+          }
+        } else {
+          card.removeAttribute('hidden');
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .filters {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  select {
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(45, 42, 38, 0.2);
+    font-size: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+</style>

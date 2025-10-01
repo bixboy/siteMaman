@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@data/site';
+
+const pageUrl = `${siteConfig.baseUrl}/legal/mentions-legales`;
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Mentions légales', url: pageUrl }
+];
+---
+<BaseLayout
+  title="Mentions légales — Main é merveille"
+  description="Mentions légales du site Main é merveille, tapissière d'ameublement."
+  canonical={pageUrl}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Mentions légales</h1>
+      <p class="section__intro">
+        Conformément aux articles 6-III et 19 de la loi pour la Confiance dans l'Économie
+        Numérique (LCEN).
+      </p>
+      <div class="legal">
+        <section>
+          <h2>Éditeur</h2>
+          <p>
+            {siteConfig.name}<br />
+            {siteConfig.address.streetAddress}<br />
+            {siteConfig.address.postalCode} {siteConfig.address.addressLocality}<br />
+            Email : <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><br />
+            Téléphone : {siteConfig.phone}<br />
+            SIRET : {siteConfig.siret}
+          </p>
+        </section>
+        <section>
+          <h2>Hébergement</h2>
+          <p>
+            Hébergeur à compléter<br />
+            Adresse à compléter<br />
+            Téléphone : à compléter
+          </p>
+        </section>
+        <section>
+          <h2>Propriété intellectuelle</h2>
+          <p>
+            Les contenus textes, visuels et photographies présents sur ce site sont la
+            propriété de {siteConfig.name}. Toute reproduction partielle ou totale doit faire
+            l'objet d'une autorisation préalable.
+          </p>
+        </section>
+        <section>
+          <h2>Responsabilité</h2>
+          <p>
+            Les informations communiquées sur le site sont fournies à titre indicatif. Malgré
+            des mises à jour régulières, {siteConfig.name} ne saurait être tenue responsable
+            de modifications ultérieures.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .legal {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+</style>

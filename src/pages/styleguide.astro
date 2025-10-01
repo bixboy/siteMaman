@@ -1,0 +1,137 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@data/site';
+
+const pageUrl = `${siteConfig.baseUrl}/styleguide`;
+---
+<BaseLayout
+  title="Styleguide — Main é merveille"
+  description="Palette, typographies et composants du site Main é merveille."
+  canonical={pageUrl}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Styleguide</h1>
+      <p class="section__intro">
+        Référence rapide pour la palette, la typographie et les composants communs utilisés
+        sur le site Main é merveille.
+      </p>
+      <section>
+        <h2>Palette de couleurs</h2>
+        <div class="palette">
+          <div style="--color: var(--color-background)">
+            <span>Fond ivoire</span>
+            <code>#f9f6f1</code>
+          </div>
+          <div style="--color: var(--color-surface)">
+            <span>Surface</span>
+            <code>#ffffff</code>
+          </div>
+          <div style="--color: var(--color-text)">
+            <span>Texte</span>
+            <code>#2d2a26</code>
+          </div>
+          <div style="--color: var(--color-accent)">
+            <span>Accent terracotta</span>
+            <code>#b05c44</code>
+          </div>
+          <div style="--color: var(--color-accent-dark)">
+            <span>Accent foncé</span>
+            <code>#8e4a36</code>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Typographie</h2>
+        <div class="typography">
+          <div>
+            <h1>H1 — Cormorant Garamond 48/56</h1>
+            <h2>H2 — Cormorant Garamond 36/44</h2>
+            <h3>H3 — Cormorant Garamond 28/32</h3>
+            <p>Corps de texte — Work Sans 16/26.</p>
+            <small>Small — Work Sans 14/22.</small>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Boutons</h2>
+        <div class="components">
+          <button class="btn" type="button">Bouton principal</button>
+          <button class="btn btn--outline" type="button">Bouton secondaire</button>
+        </div>
+      </section>
+      <section>
+        <h2>Cartes</h2>
+        <div class="components">
+          <article class="card" style="max-width: 20rem">
+            <h3>Titre de carte</h3>
+            <p>
+              Texte descriptif pour présenter un service ou un projet. Garnissage traditionnel
+              et finitions main.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section>
+        <h2>Alertes</h2>
+        <p class="alert">Alertes informatives à utiliser pour les messages système.</p>
+      </section>
+      <section>
+        <h2>Rythme vertical</h2>
+        <p>
+          Espacements principaux : XS 8px, S 16px, M 24px, L 40px, XL 64px. À appliquer entre
+          les sections pour maintenir un rythme respirant.
+        </p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .palette {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+
+  .palette div {
+    background: var(--color);
+    color: #1f1c19;
+    border-radius: 1rem;
+    padding: var(--spacing-md);
+    display: grid;
+    gap: 0.5rem;
+    box-shadow: 0 12px 24px rgba(45, 42, 38, 0.1);
+  }
+
+  .palette code {
+    font-family: 'Work Sans', monospace;
+  }
+
+  .typography h1,
+  .typography h2,
+  .typography h3 {
+    margin: 0 0 0.5rem;
+  }
+
+  .components {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .alert {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    background: rgba(176, 92, 68, 0.12);
+    border: 1px solid rgba(176, 92, 68, 0.3);
+  }
+</style>

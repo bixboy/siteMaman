@@ -1,0 +1,119 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { products } from '@data/products';
+import { siteConfig } from '@data/site';
+import { productSchema } from '@utils/schema';
+
+export async function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+const pageUrl = `${siteConfig.baseUrl}/vente-fauteuils/${product.slug}`;
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Vente fauteuils', url: `${siteConfig.baseUrl}/vente-fauteuils` },
+  { name: product.name, url: pageUrl }
+];
+---
+<BaseLayout
+  title={`${product.name} — Fauteuil restauré à vendre`}
+  description={product.description}
+  canonical={pageUrl}
+  structuredData={productSchema(product)}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="section">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="/vente-fauteuils">← Retour aux fauteuils</a>
+      </p>
+      <div class="product">
+        <div class="product__media">
+          <img src={product.image.src} alt={product.image.alt} loading="lazy" decoding="async" />
+        </div>
+        <div class="product__content">
+          <h1 class="section__heading">{product.name}</h1>
+          <p class="product__price">{product.price}</p>
+          <p class="product__status">{product.status}</p>
+          <p>{product.description}</p>
+          <dl class="product__details">
+            <div>
+              <dt>Dimensions</dt>
+              <dd>{product.dimensions}</dd>
+            </div>
+            <div>
+              <dt>Matériaux</dt>
+              <dd>{product.materials}</dd>
+            </div>
+          </dl>
+          <a class="btn" href="mailto:mainemerveille@gmail.com?subject=Intérêt pour ${product.name}">
+            Réserver cette pièce
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .breadcrumb {
+    margin: 0;
+  }
+
+  .product {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .product__media img {
+    width: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 16px 40px rgba(45, 42, 38, 0.1);
+  }
+
+  .product__content {
+    display: grid;
+    gap: var(--spacing-sm);
+  }
+
+  .product__price {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .product__status {
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .product__details {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  @media (min-width: 60rem) {
+    .product {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+  }
+</style>

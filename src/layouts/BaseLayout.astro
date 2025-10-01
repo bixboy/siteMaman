@@ -1,0 +1,83 @@
+---
+import '@styles/global.css';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import CookieBanner from '@components/CookieBanner.astro';
+import StickyContact from '@components/StickyContact.astro';
+import { siteConfig } from '@data/site';
+
+const {
+  title = 'Main é merveille — Tapissière d\'ameublement : réfection fauteuils, chaises & canapés',
+  description = siteConfig.description,
+  canonical = siteConfig.baseUrl,
+  structuredData,
+  breadcrumbs
+} = Astro.props as {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  breadcrumbs?: { name: string; url: string }[];
+};
+---
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#b05c44" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {structuredData && Array.isArray(structuredData) ? (
+      structuredData.map((schema) => (
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      ))
+    ) : structuredData ? (
+      <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+    ) : null}
+    {breadcrumbs ? (
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: breadcrumbs.map((crumb, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: crumb.name,
+            item: crumb.url
+          }))
+        })}
+      </script>
+    ) : null}
+  </head>
+  <body>
+    <a href="#contenu" class="skip-link">Aller au contenu</a>
+    <Header />
+    <main id="contenu">
+      <slot />
+    </main>
+    <Footer />
+    <StickyContact />
+    <CookieBanner />
+    {siteConfig.analytics.enabled ? (
+      <script
+        type="text/partytown"
+        data-pt-src={`${siteConfig.analytics.plausibleDomain}/js/script.js`}
+        data-domain="main-e-merveille.fr"
+      ></script>
+    ) : null}
+  </body>
+</html>

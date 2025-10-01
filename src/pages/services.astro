@@ -1,0 +1,152 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { services, techniques, processSteps, faqs } from '@data/services';
+import { siteConfig } from '@data/site';
+
+const pageUrl = `${siteConfig.baseUrl}/services`;
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Services', url: pageUrl }
+];
+---
+<BaseLayout
+  title="Services de tapisserie d'ameublement — Main é merveille"
+  description="Restauration de fauteuils, chaises et canapés : garnissage traditionnel, tissus d'éditeur, collecte et livraison. Découvrez le savoir-faire Main é merveille."
+  canonical={pageUrl}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Services de tapisserie d'ameublement</h1>
+      <p class="section__intro">
+        Réfection de sièges avec garnissage traditionnel et techniques contemporaines pour
+        vos fauteuils, chaises et canapés. Conseils personnalisés sur les tissus, les
+        finitions et le confort.
+      </p>
+      <div class="grid grid--three">
+        {services.map((service) => (
+          <article class="card">
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section section--techniques">
+    <div class="container">
+      <h2 class="section__heading">Techniques & matières</h2>
+      <div class="grid techniques__grid">
+        {techniques.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.content}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2 class="section__heading">Processus de restauration</h2>
+      <ol class="process__list">
+        {processSteps.map((step, index) => (
+          <li>
+            <span class="process__index">{index + 1}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+  <section class="section section--faq">
+    <div class="container">
+      <h2 class="section__heading">FAQ tapisserie d'ameublement</h2>
+      <div class="faq">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <p>
+        Besoin d'un conseil ? <a href="/contact">Contactez l'atelier</a> pour un devis ou un
+        rendez-vous.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .techniques__grid {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .process__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--spacing-sm);
+  }
+
+  .process__list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-sm);
+    align-items: start;
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: 1rem;
+    box-shadow: 0 10px 28px rgba(45, 42, 38, 0.08);
+  }
+
+  .process__index {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+  }
+
+  .section--techniques {
+    background: var(--color-surface);
+  }
+
+  .section--faq {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .faq {
+    display: grid;
+    gap: 1rem;
+  }
+
+  details {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(45, 42, 38, 0.08);
+  }
+
+  summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  summary:focus {
+    outline: 2px solid var(--color-accent);
+  }
+</style>

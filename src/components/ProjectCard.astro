@@ -1,0 +1,115 @@
+---
+import type { Project } from '@data/projects';
+const { project } = Astro.props as { project: Project };
+---
+<article class="project-card">
+  <a
+    class="project-card__link"
+    href={`/realisations/${project.slug}`}
+    data-category={project.category}
+  >
+    <div class="project-card__images">
+      <figure>
+        <img
+          src={project.beforeImage.src}
+          alt={`Avant restauration : ${project.beforeImage.alt}`}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Avant</figcaption>
+      </figure>
+      <figure>
+        <img
+          src={project.afterImage.src}
+          alt={`Après restauration : ${project.afterImage.alt}`}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Après</figcaption>
+      </figure>
+    </div>
+    <div class="project-card__content">
+      <h3>{project.title}</h3>
+      <p>{project.summary}</p>
+      <ul class="project-card__tags">
+        {project.techniques.slice(0, 2).map((technique) => (
+          <li>{technique}</li>
+        ))}
+      </ul>
+    </div>
+  </a>
+</article>
+<style>
+  .project-card {
+    background: var(--color-surface);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(45, 42, 38, 0.1);
+    border: 1px solid rgba(45, 42, 38, 0.06);
+  }
+
+  .project-card__link {
+    display: grid;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .project-card__images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  figure {
+    margin: 0;
+    position: relative;
+  }
+
+  figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-card__content {
+    padding: var(--spacing-md);
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.65rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .project-card__tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .project-card__tags li {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(176, 92, 68, 0.12);
+    color: var(--color-accent);
+    font-size: 0.85rem;
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import { siteConfig } from '@data/site';
+---
+<footer>
+  <div class="footer__inner">
+    <div>
+      <h2 class="footer__title">{siteConfig.name}</h2>
+      <p>
+        Atelier de tapisserie d'ameublement — réfection de fauteuils, chaises et canapés
+        à la demande.
+      </p>
+      <a class="footer__mail" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+    </div>
+    <div>
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/realisations">Réalisations</a></li>
+        <li><a href="/vente-fauteuils">Vente fauteuils</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/legal/mentions-legales">Mentions légales</a></li>
+        <li><a href="/legal/politique-confidentialite">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Coordonnées</h3>
+      <p>
+        {siteConfig.address.streetAddress}<br />
+        {siteConfig.address.postalCode} {siteConfig.address.addressLocality}
+      </p>
+      <p>{siteConfig.phone}</p>
+      <p>Zone d'intervention : {siteConfig.serviceArea}</p>
+      <p>SIRET : {siteConfig.siret}</p>
+    </div>
+  </div>
+  <p class="footer__bottom">© {new Date().getFullYear()} {siteConfig.name}. Tous droits réservés.</p>
+</footer>
+<style>
+  .footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm) var(--spacing-md);
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .footer__title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.875rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .footer__mail {
+    font-weight: 600;
+  }
+
+  .footer__bottom {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+    opacity: 0.7;
+  }
+
+  @media (min-width: 50rem) {
+    .footer__inner {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

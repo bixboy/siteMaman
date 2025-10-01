@@ -1,0 +1,66 @@
+---
+import { siteConfig } from '@data/site';
+const hasAnalytics = siteConfig.analytics.enabled;
+---
+{hasAnalytics ? (
+  <div class="cookie-banner" data-banner>
+    <p>
+      Ce site utilise des outils de mesure d'audience respectueux de la vie privée.
+      Activez-les uniquement si vous y consentez.
+    </p>
+    <div class="cookie-banner__actions">
+      <button type="button" class="btn btn--outline" data-reject>Refuser</button>
+      <button type="button" class="btn" data-accept>Accepter</button>
+    </div>
+  </div>
+) : null}
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 30rem);
+    background: var(--color-surface);
+    border-radius: 1rem;
+    box-shadow: 0 18px 40px rgba(45, 42, 38, 0.18);
+    padding: var(--spacing-md);
+    z-index: 30;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: var(--spacing-sm);
+  }
+</style>
+
+{hasAnalytics ? (
+  <script type="module" is:inline>
+    const banner = document.querySelector('[data-banner]');
+    const acceptBtn = document.querySelector('[data-accept]');
+    const rejectBtn = document.querySelector('[data-reject]');
+    const storageKey = 'main-e-merveille-consent';
+
+    if (banner) {
+      const stored = localStorage.getItem(storageKey);
+      if (stored === 'accepted') {
+        banner.remove();
+        document.dispatchEvent(new CustomEvent('analytics-consent', { detail: true }));
+      } else if (stored === 'rejected') {
+        banner.remove();
+      }
+
+      const handle = (consent) => {
+        localStorage.setItem(storageKey, consent ? 'accepted' : 'rejected');
+        banner.remove();
+        document.dispatchEvent(new CustomEvent('analytics-consent', { detail: consent }));
+      };
+
+      acceptBtn?.addEventListener('click', () => handle(true));
+      rejectBtn?.addEventListener('click', () => handle(false));
+    }
+  </script>
+) : null}

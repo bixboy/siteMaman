@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import ServiceHighlights from '@components/ServiceHighlights.astro';
+import AboutSection from '@components/AboutSection.astro';
+import Suppliers from '@components/Suppliers.astro';
+import Testimonials from '@components/Testimonials.astro';
+import ProcessSection from '@components/ProcessSection.astro';
+import CallToAction from '@components/CallToAction.astro';
+import { localBusinessSchema } from '@utils/schema';
+import { siteConfig } from '@data/site';
+import { projects } from '@data/projects';
+import ProjectCard from '@components/ProjectCard.astro';
+
+const featuredProjects = projects.slice(0, 3);
+const pageUrl = `${siteConfig.baseUrl}/`;
+---
+<BaseLayout
+  title="Main é merveille — Tapissière d'ameublement : réfection fauteuils, chaises & canapés"
+  description="Tapissière d'ameublement à votre service pour la restauration artisanale de fauteuils, chaises et canapés. Garnissage traditionnel, tissus d'éditeur et conseils personnalisés."
+  canonical={pageUrl}
+  structuredData={localBusinessSchema}
+>
+  <Hero
+    title="Main é merveille"
+    subtitle="Tapissière d'ameublement — réfection de fauteuils, chaises et canapés"
+    description="Atelier artisanal spécialisé dans la restauration de sièges avec garnissage traditionnel, finitions main et sélection de tissus d'éditeur."
+  />
+  <ServiceHighlights />
+  <section class="section">
+    <div class="container">
+      <h2 class="section__heading">Réalisations récentes</h2>
+      <p class="section__intro">
+        Avant/après de projets confiés par les clients : fauteuils bergères, canapés club et
+        chaises Louis XVI.
+      </p>
+      <div class="grid">
+        {featuredProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+      <p>
+        <a href="/realisations">Découvrir toutes les réalisations</a>
+      </p>
+    </div>
+  </section>
+  <AboutSection />
+  <Suppliers />
+  <ProcessSection />
+  <Testimonials />
+  <CallToAction />
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+</style>

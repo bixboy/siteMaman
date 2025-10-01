@@ -1,0 +1,143 @@
+---
+const { images, label } = Astro.props as {
+  images: { src: string; alt: string; caption: string }[];
+  label: string;
+};
+---
+<section class="lightbox" aria-label={label}>
+  <div class="lightbox__grid">
+    {images.map((image, index) => (
+      <figure>
+        <a href={image.src} data-lightbox-trigger data-index={index}>
+          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+        </a>
+        <figcaption>{image.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+<div class="lightbox__dialog" role="dialog" aria-modal="true" aria-hidden="true" data-dialog>
+  <button type="button" class="lightbox__close" data-close aria-label="Fermer la galerie">
+    ×
+  </button>
+  <img src="" alt="" data-dialog-image />
+  <p data-dialog-caption></p>
+</div>
+<style>
+  .lightbox__grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  figure {
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  figure img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  .lightbox__dialog {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 16, 15, 0.85);
+    display: grid;
+    place-items: center;
+    padding: var(--spacing-md);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .lightbox__dialog[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .lightbox__dialog img {
+    max-width: min(90vw, 48rem);
+    max-height: 70vh;
+    border-radius: 1rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 999px;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  [data-dialog-caption] {
+    color: #f8f5ef;
+    max-width: 48rem;
+    text-align: center;
+  }
+</style>
+<script type="module" is:inline>
+  const triggers = document.querySelectorAll('[data-lightbox-trigger]');
+  const dialog = document.querySelector('[data-dialog]');
+  const image = document.querySelector('[data-dialog-image]');
+  const caption = document.querySelector('[data-dialog-caption]');
+  const closeBtn = document.querySelector('[data-close]');
+  const focusable = [closeBtn];
+  let lastFocused;
+
+  const open = (src, alt, text) => {
+    if (!dialog || !image || !caption) return;
+    lastFocused = document.activeElement;
+    image.src = src;
+    image.alt = alt;
+    caption.textContent = text;
+    dialog.setAttribute('aria-hidden', 'false');
+    closeBtn?.focus();
+  };
+
+  const close = () => {
+    if (!dialog) return;
+    dialog.setAttribute('aria-hidden', 'true');
+    image?.setAttribute('src', '');
+    if (lastFocused instanceof HTMLElement) {
+      lastFocused.focus();
+    }
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      const figure = trigger.closest('figure');
+      const img = trigger.querySelector('img');
+      const figcaption = figure?.querySelector('figcaption');
+      if (!img) return;
+      open(trigger.getAttribute('href'), img.alt, figcaption?.textContent ?? '');
+    });
+  });
+
+  closeBtn?.addEventListener('click', close);
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) {
+      close();
+    }
+  });
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      close();
+    }
+    if (event.key === 'Tab' && dialog?.getAttribute('aria-hidden') === 'false') {
+      event.preventDefault();
+      const [first] = focusable;
+      first?.focus();
+    }
+  });
+</script>

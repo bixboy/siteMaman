@@ -1,0 +1,52 @@
+<section class="section section--about">
+  <div class="about__inner">
+    <div>
+      <h2 class="section__heading">L'atelier Main é merveille</h2>
+      <p class="section__intro">
+        Je suis tapissière d'ameublement, passionnée par la transmission des gestes
+        traditionnels. Après une première carrière dans la communication, j'ai choisi de me
+        reconvertir pour redonner vie aux assises qui racontent une histoire familiale.
+      </p>
+    </div>
+    <div class="about__content">
+      <p>
+        Chaque projet est abordé avec une écoute attentive de vos envies et une analyse
+        précise de la pièce. Qu'il s'agisse d'un fauteuil Voltaire, d'une bergère héritée ou
+        d'un canapé contemporain, je privilégie des matériaux nobles et des tissus d'éditeur
+        sélectionnés pour leur tenue et leur élégance.
+      </p>
+      <p>
+        Mon atelier marie garnissage traditionnel et techniques contemporaines afin de
+        garantir durabilité et confort. Les finitions sont cousues main pour un résultat
+        impeccable. Je vous accompagne également dans le choix des tissus et la projection
+        des couleurs dans votre intérieur.
+      </p>
+    </div>
+  </div>
+</section>
+<style>
+  .section--about {
+    background: var(--color-surface);
+  }
+
+  .about__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .about__content {
+    display: grid;
+    gap: var(--spacing-sm);
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 62rem) {
+    .about__inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+</style>

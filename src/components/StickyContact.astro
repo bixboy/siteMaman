@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '@data/site';
+
+const hasPhone = siteConfig.phone && siteConfig.phone !== 'À compléter';
+const hasWhatsApp = Boolean(siteConfig.whatsapp);
+---
+{hasPhone || hasWhatsApp ? (
+  <div class="sticky-contact" aria-label="Contact rapide">
+    {hasPhone ? (
+      <a class="btn" href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}>
+        Appeler l'atelier
+      </a>
+    ) : null}
+    {hasWhatsApp ? (
+      <a class="btn btn--outline" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">
+        Écrire sur WhatsApp
+      </a>
+    ) : null}
+  </div>
+) : null}
+<style>
+  .sticky-contact {
+    position: fixed;
+    inset: auto 1rem 1rem auto;
+    display: grid;
+    gap: 0.75rem;
+    z-index: 20;
+  }
+
+  .sticky-contact .btn {
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .sticky-contact {
+      display: none;
+    }
+  }
+</style>

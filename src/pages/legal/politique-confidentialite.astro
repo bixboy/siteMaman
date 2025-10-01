@@ -1,0 +1,95 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@data/site';
+
+const pageUrl = `${siteConfig.baseUrl}/legal/politique-confidentialite`;
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Politique de confidentialité', url: pageUrl }
+];
+---
+<BaseLayout
+  title="Politique de confidentialité — Main é merveille"
+  description="Politique de confidentialité et gestion des données personnelles de Main é merveille."
+  canonical={pageUrl}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Politique de confidentialité</h1>
+      <p class="section__intro">
+        Cette politique décrit la manière dont les données personnelles sont collectées et
+        utilisées par l'atelier Main é merveille.
+      </p>
+      <div class="legal">
+        <section>
+          <h2>Données collectées</h2>
+          <p>
+            Les informations suivantes peuvent être collectées via le formulaire de contact :
+            nom, adresse email, téléphone et description de votre projet de tapisserie.
+          </p>
+        </section>
+        <section>
+          <h2>Finalités</h2>
+          <p>
+            Les données sont utilisées uniquement pour répondre à vos demandes de devis, fixer
+            un rendez-vous et assurer le suivi des prestations de restauration de fauteuils,
+            chaises et canapés.
+          </p>
+        </section>
+        <section>
+          <h2>Base légale</h2>
+          <p>
+            Le traitement repose sur votre consentement explicite via la case d'acceptation
+            lors de l'envoi du formulaire.
+          </p>
+        </section>
+        <section>
+          <h2>Durée de conservation</h2>
+          <p>
+            Les données sont conservées pendant 3 ans à compter du dernier échange, sauf
+            obligation légale contraire.
+          </p>
+        </section>
+        <section>
+          <h2>Partage des données</h2>
+          <p>
+            Les données ne sont pas cédées à des tiers. Elles peuvent être stockées sur un
+            service d'email sécurisé choisi par l'atelier.
+          </p>
+        </section>
+        <section>
+          <h2>Vos droits</h2>
+          <p>
+            Vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition.
+            Adressez votre demande par email à
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          </p>
+        </section>
+        <section>
+          <h2>Cookies & mesure d'audience</h2>
+          <p>
+            Le site n'installe pas de cookies de suivi sans votre consentement. Une solution de
+            mesure d'audience respectueuse de la vie privée pourra être activée après accord.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .legal {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+</style>

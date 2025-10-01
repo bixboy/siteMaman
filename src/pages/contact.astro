@@ -1,0 +1,200 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { siteConfig } from '@data/site';
+
+const pageUrl = `${siteConfig.baseUrl}/contact`;
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Contact', url: pageUrl }
+];
+---
+<BaseLayout
+  title="Contact tapissière d'ameublement — Main é merveille"
+  description="Demandez un devis pour la restauration de fauteuils, chaises ou canapés. Atelier Main é merveille, tapissière d'ameublement artisanale."
+  canonical={pageUrl}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Contact & devis</h1>
+      <p class="section__intro">
+        Partagez votre projet de tapisserie d'ameublement : description de la pièce, photos
+        si possible, délais souhaités. Une réponse détaillée vous est envoyée sous 48 h.
+      </p>
+      <div class="contact">
+        <form class="contact__form" aria-label="Formulaire de contact" data-contact-form>
+          <div class="field">
+            <label for="nom">Nom *</label>
+            <input id="nom" name="nom" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="telephone">Téléphone</label>
+            <input id="telephone" name="telephone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <div class="field field--checkbox">
+            <input id="consentement" name="consentement" type="checkbox" required />
+            <label for="consentement">
+              J'accepte que mes informations soient utilisées pour être recontacté(e). Consultez
+              la <a href="/legal/politique-confidentialite">politique de confidentialité</a>.
+            </label>
+          </div>
+          <div aria-hidden="true" class="field honeypot">
+            <label for="website">Ne pas remplir</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <button class="btn" type="submit">Envoyer ma demande</button>
+          <p class="form__feedback" data-feedback role="status" aria-live="polite"></p>
+        </form>
+        <div class="contact__infos">
+          <div>
+            <h2>Coordonnées</h2>
+            <p>
+              <strong>Email :</strong>
+              <a href="mailto:mainemerveille@gmail.com">mainemerveille@gmail.com</a>
+            </p>
+            <p><strong>Téléphone :</strong> {siteConfig.phone}</p>
+            <p>
+              <strong>Adresse :</strong><br />
+              {siteConfig.address.streetAddress}<br />
+              {siteConfig.address.postalCode} {siteConfig.address.addressLocality}
+            </p>
+            <p><strong>Horaires :</strong> À préciser</p>
+            <p><strong>Zone d'intervention :</strong> {siteConfig.serviceArea}</p>
+          </div>
+          <div class="map" id="map" aria-label="Carte de localisation"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="module" is:inline>
+    import 'leaflet/dist/leaflet.css';
+    import L from 'leaflet';
+
+    const form = document.querySelector('[data-contact-form]');
+    const feedback = document.querySelector('[data-feedback]');
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      if (data.get('website')) {
+        feedback.textContent = 'Un problème est survenu.';
+        return;
+      }
+      const requiredFields = ['nom', 'email', 'message', 'consentement'];
+      const invalid = requiredFields.some((field) => {
+        const input = form.querySelector(`[name="${field}"]`);
+        return input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement
+          ? !input.checkValidity()
+          : false;
+      });
+      if (invalid) {
+        form.reportValidity();
+        feedback.textContent = 'Merci de vérifier les champs obligatoires.';
+        return;
+      }
+      feedback.textContent =
+        'Votre message est prêt à être envoyé. Connectez ce formulaire à votre solution d\'envoi.';
+      form.reset();
+    });
+
+    const map = L.map('map', { scrollWheelZoom: false });
+    const center = [48.8566, 2.3522];
+    map.setView(center, 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker(center).addTo(map).bindPopup('Atelier Main é merveille — Adresse à préciser');
+  </script>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .contact {
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .contact__form {
+    display: grid;
+    gap: var(--spacing-sm);
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: 1.5rem;
+    box-shadow: 0 18px 44px rgba(45, 42, 38, 0.1);
+  }
+
+  .field {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-weight: 600;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(45, 42, 38, 0.15);
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid var(--color-accent);
+  }
+
+  .field--checkbox {
+    align-items: start;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+  }
+
+  .field--checkbox input {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .honeypot {
+    display: none;
+  }
+
+  .form__feedback {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .contact__infos {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .map {
+    min-height: 18rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(45, 42, 38, 0.08);
+  }
+
+  @media (min-width: 64rem) {
+    .contact {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+  }
+</style>

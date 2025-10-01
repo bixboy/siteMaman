@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { products } from '@data/products';
+import { siteConfig } from '@data/site';
+import { productSchema } from '@utils/schema';
+
+const pageUrl = `${siteConfig.baseUrl}/vente-fauteuils`;
+const structuredData = products.map((product) => productSchema(product));
+const breadcrumbs = [
+  { name: 'Accueil', url: `${siteConfig.baseUrl}/` },
+  { name: 'Vente fauteuils', url: pageUrl }
+];
+---
+<BaseLayout
+  title="Vente de fauteuils restaurés — Main é merveille"
+  description="Sélection de fauteuils et assises restaurés : velours, tweed, laine bouclée. Pièces uniques prêtes à rejoindre votre intérieur."
+  canonical={pageUrl}
+  structuredData={structuredData}
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Fauteuils restaurés à la vente</h1>
+      <p class="section__intro">
+        Chaque pièce est restaurée dans l'atelier, avec une attention particulière portée au
+        confort et aux finitions. Livraison sur devis selon la zone d'intervention.
+      </p>
+      <div class="grid">
+        {products.map((product) => (
+          <article class="product-card">
+            <a href={`/vente-fauteuils/${product.slug}`}>
+              <img src={product.image.src} alt={product.image.alt} loading="lazy" decoding="async" />
+              <div class="product-card__body">
+                <h2>{product.name}</h2>
+                <p>{product.price}</p>
+                <p class="product-card__status">{product.status}</p>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
+  .product-card {
+    background: var(--color-surface);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 16px 38px rgba(45, 42, 38, 0.1);
+    border: 1px solid rgba(45, 42, 38, 0.05);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 14rem;
+    object-fit: cover;
+  }
+
+  .product-card__body {
+    padding: var(--spacing-md);
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.65rem;
+  }
+
+  .product-card__status {
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+</style>

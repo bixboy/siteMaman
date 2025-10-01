@@ -1,0 +1,56 @@
+---
+import { testimonials } from '@data/testimonials';
+---
+<section class="section section--testimonials" aria-labelledby="temoignages">
+  <div class="testimonials__inner">
+    <h2 id="temoignages" class="section__heading">Ils confient leurs pièces</h2>
+    <p class="section__intro">
+      Témoignages de clients ravis par la restauration de leurs fauteuils, chaises et
+      canapés.
+    </p>
+    <div class="testimonials__grid">
+      {testimonials.map((testimonial) => (
+        <article class="testimonial">
+          <blockquote>
+            <p>{testimonial.quote}</p>
+          </blockquote>
+          <p class="testimonial__author">
+            <strong>{testimonial.author}</strong> — {testimonial.context}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .section--testimonials {
+    background: var(--color-background);
+  }
+
+  .testimonials__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .testimonials__grid {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .testimonial {
+    display: grid;
+    gap: var(--spacing-xs);
+  }
+
+  .testimonial__author {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 62rem) {
+    .testimonials__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

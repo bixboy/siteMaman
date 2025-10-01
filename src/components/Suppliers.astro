@@ -1,0 +1,53 @@
+---
+import { suppliers } from '@data/suppliers';
+---
+<section class="section">
+  <div class="suppliers__inner">
+    <h2 class="section__heading">Partenaires & fournisseurs</h2>
+    <p class="section__intro">
+      Sélection de maisons textiles, de passementiers et de fournisseurs de mousses
+      reconnues pour la qualité de leurs matières.
+    </p>
+    <div class="suppliers__grid">
+      {suppliers.map((supplier) => (
+        <article class="supplier" aria-label={supplier.name}>
+          <span>{supplier.name}</span>
+          <p>{supplier.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  .suppliers__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+  }
+
+  .suppliers__grid {
+    display: grid;
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    align-items: stretch;
+  }
+
+  .supplier {
+    padding: var(--spacing-md);
+    border-radius: 1rem;
+    border: 1px dashed rgba(176, 92, 68, 0.3);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  .supplier span {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .supplier p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+</style>
