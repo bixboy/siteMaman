@@ -20,53 +20,12 @@
     width:100%;
     height:100%;
     background-size:cover;
+    background-position:center;
     pointer-events: none;
     -webkit-user-select: none;
     user-select: none;
   }
 
-  .slider__after.activ1 {
-    background-image:url('../../recources/Realisations/Siege1.4.webp');
-    background-position: center;
-  }
-  .slider__after.activ2 {
-    background-image:url('../../recources/Realisations/Siege2.1.webp');
-  }
-  .slider__after.activ3 {
-    background-image:url('../../recources/Realisations/Siege3.1.webp');
-  }
-  .slider__after.activ4 {
-    background-image:url('../../recources/Realisations/Siege4.1.webp');
-  }
-
-  .slider__after.activ5 {
-    background-image:url('../../recources/Realisations/Siege6.webp');
-  }
-
-  .slider__after.activ6 {
-    background-image:url('../../recources/Realisations/Siege7.webp');
-  }
-
-  .slider__after.activ7 {
-    background-image:url('../../recources/Realisations/Siege11.1.jpg');
-  }
-
-  .slider__after.activ8 {
-    background-image:url('../../recources/Realisations/Siege12.1.jpg');
-  }
-
-  .slider__after.activ9 {
-    background-image:url('../../recources/Realisations/siege13.webp');
-  }
-
-  .slider__after.activ10{
-    background-image:url('../../recources/Realisations/Siege14.1.webp');
-  }
-
-  .slider__after.activ11{
-    background-image:url('../../recources/Realisations/Siege15.1.webp');
-  }
-  
   .slider__before {
     position:absolute;
     top:0px;
@@ -75,53 +34,11 @@
     width:100%;
     height:100%;
     background-size:cover;
+    background-position:center;
     pointer-events: none;
     overflow:hidden;
     -webkit-user-select: none;
     user-select: none;
-  }
-
-  
-  .slider__before.activ1 {
-    background-image:url('../../recources/Realisations/Siege1.3.webp');
-
-  }
-  .slider__before.activ2 {
-    background-image:url('../../recources/Realisations/Siege2.webp');
-  }
-  .slider__before.activ3 {
-    background-image:url('../../recources/Realisations/Siege3.webp');
-  }
-  .slider__before.activ4 {
-    background-image:url('../../recources/Realisations/Siege4.webp');
-  }
-
-  .slider__before.activ5 {
-    background-image:url('../../recources/Realisations/Siege6.1.webp');
-  }
-
-  .slider__before.activ6 {
-    background-image:url('../../recources/Realisations/Siege7.1.webp');
-  }
-
-  .slider__before.activ7 {
-    background-image:url('../../recources/Realisations/Siege11.jpg');
-  }
-
-  .slider__before.activ8 {
-    background-image:url('../../recources/Realisations/Siege12.jpg');
-  }
-
-  .slider__before.activ9 {
-    background-image:url('../../recources/Realisations/Siege13.1.webp');
-  }
-
-  .slider__before.activ10{
-    background-image:url('../../recources/Realisations/Siege14.webp');
-  }
-
-  .slider__before.activ11{
-    background-image:url('../../recources/Realisations/Siege15.webp');
   }
   
   .slider__before:before {

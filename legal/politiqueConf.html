@@ -29,14 +29,14 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <nav class="box_navbar">
-        <a class="logo" href="../index.html"> <img src="../recources\favicon.ico" alt="Logo"></a>
+        <a class="logo" href="../index.html"> <img src="../../recources/favicon.ico" alt="Logo"></a>
     
         <ul class="linksOrdi">
           <li style="margin: 0px 15px;"><a href="../index.html">Home</a></li>
           <li style="margin: 0px 15px; cursor: pointer;"><a href="../index.html#prestations">Mes services</a></li>
           <li style="margin: 0px 15px;"><a href="../realisations.html">Réalisations</a></li>
           <li style="margin: 0px 15px;"><a href="../market.html">Vente Fauteuils</a></li>
-          <li style="margin: 0px 15px;"><a href="../contact\contact.html">Contact</a></li>
+          <li style="margin: 0px 15px;"><a href="../../contact/contact.html">Contact</a></li>
     
 
         </ul>
@@ -58,20 +58,20 @@
               <li><a href="../index.html#prestations">Mes services</a></li>
               <li><a href="../realisations.html">Réalisations</a></li>
               <li><a href="../market.html">Vente Fauteuils</a></li>
-              <li><a href="../contact\contact.html">Contact</a></li>
+              <li><a href="../../contact/contact.html">Contact</a></li>
           </ul>
     
           <ul class="infs">
             <h1 class="nameNav">Entreprise Main é merveille </h1>
     
-            <div class="tel"> <img src="../recources\tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-moi</a></div>
+            <div class="tel"> <img src="../../recources/tel.png" alt="tel-icon"> <a href="tel:+33768317608">Appelez-moi</a></div>
     
-            <div class="mail"> <img src="../recources\email.png" alt="mail-icon"> <a href="mailto:mainemerveille@gmail.com">mainemerveille@Gmail.com</a></div>
+            <div class="mail"> <img src="../../recources/email.png" alt="mail-icon"> <a href="mailto:mainemerveille@gmail.com">mainemerveille@Gmail.com</a></div>
 
             <div class="media">
               <div class="icon_media_menu">
-                <a href="" class="icon-box"><img src="../recources\instagramWhite.png" alt="instagram" style="height: 24px;"></a>
-                <a href="https://www.facebook.com/profile.php?id=61553945070512" class="icon-box"><img src="../recources\facebookWhite.png" alt="facebook" style="height: 24px;"></a>
+                <a href="" class="icon-box"><img src="../../recources/instagramWhite.png" alt="instagram" style="height: 24px;"></a>
+                <a href="https://www.facebook.com/profile.php?id=61553945070512" class="icon-box"><img src="../../recources/facebookWhite.png" alt="facebook" style="height: 24px;"></a>
               </div>
             </div>
     
@@ -143,96 +143,27 @@
 
               <li style="padding: 5px;"><a href="politiqueConf.html" class="txt_footer"> Politique de confidentialité</a> <div class="lines"></div></li>
               
-              <li style="padding: 5px;"><a href="..\contact/contact.html" class="txt_footer"> Me contacter</a> <div class="lines"></div></li>
+              <li style="padding: 5px;"><a href="../contact/contact.html" class="txt_footer"> Me contacter</a> <div class="lines"></div></li>
 
               <li style="padding: 5px;"><span class="txt_footer" style="font-size: 13px;text-decoration: unset;"> © 2023 Main é merveille</span><div class="lines"></div></li>
             </ul>
 
             <div class="media">
               <div class="icon_media">
-                <a href="" class="icon-box"><img src="../recources\instagram.png" alt="instagram" style="height: 29px;"></a>
-                <a href="https://www.facebook.com/profile.php?id=61553945070512" class="icon-box"><img src="../recources\facebook.png" alt="facebook" style="height: 29px;"></a>
+                <a href="" class="icon-box"><img src="../../recources/instagram.png" alt="instagram" style="height: 29px;"></a>
+                <a href="https://www.facebook.com/profile.php?id=61553945070512" class="icon-box"><img src="../../recources/facebook.png" alt="facebook" style="height: 29px;"></a>
               </div>
             </div>
 
           </div>
 
-          <div class="topReturn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-            <img src="../recources\arrow.png" alt="top">
+          <div class="topReturn" data-scroll-top>
+            <img src="../../recources/arrow.png" alt="top">
           </div>
 
         </div>
     </footer>
 
-    <script class="navbar">
-        // Script NavBar
-
-        document.addEventListener('DOMContentLoaded', function() {
-          var navbar = document.querySelector('.box_navbar');
-          var scrollDistance = 25;
-
-          if (window.pageYOffset > scrollDistance) {
-            navbar.classList.add('scrolled');
-          } else {
-            navbar.classList.remove('scrolled');
-          }
-
-          window.addEventListener('scroll', function() {
-            if (window.pageYOffset > scrollDistance) {
-              navbar.classList.add('scrolled');
-            } else {
-              navbar.classList.remove('scrolled');
-            }
-          });
-        });
-    </script>
-
-    <script class="Menu">
-        // Script Menu
-
-        const menuToggle = document.getElementById('menu');
-        const navLinks = document.querySelector(".nav-links");
-        const background = document.querySelector(".background-menu");
-        const body = document.body;
-
-        menuToggle.addEventListener('click', (event) => {
-          event.stopPropagation();
-          menuToggle.classList.toggle('activeM');
-          navLinks.classList.toggle('mobile-menu');
-
-          if (navLinks.classList.contains('mobile-menu')) {
-            disableScroll();
-          } else {
-            enableScroll();
-          }
-        });
-
-        body.addEventListener('click', (event) => {
-          if (!navLinks.contains(event.target)) {
-            menuToggle.classList.remove('activeM');
-            navLinks.classList.remove('mobile-menu');
-            enableScroll();
-          }
-        });
-
-        function disableScroll() {
-          document.body.classList.add('no-scroll');
-          background.classList.toggle('active')
-        }
-
-        function enableScroll() {
-          document.body.classList.remove('no-scroll');
-          background.classList.remove('active')
-        }
-    </script>
-
-    <script>
-        function scrollTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-        }
-  </script>
+    <script src="../js/site.js" defer></script>
 </body>
 </html>
