@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://main-e-merveille.fr/sitemap.xml
