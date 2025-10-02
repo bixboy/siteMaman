@@ -2,15 +2,26 @@ const siteNav = () => {
   const toggle = document.querySelector('[data-nav-toggle]');
   const navWrapper = document.getElementById('navigation');
   if (!toggle || !navWrapper) return;
+  const hiddenLabel = toggle.querySelector('.visually-hidden');
+  const navLinks = navWrapper.querySelectorAll('a');
+  const mediaQuery = window.matchMedia('(min-width: 901px)');
 
   const closeNav = () => {
     navWrapper.dataset.open = 'false';
     toggle.setAttribute('aria-expanded', 'false');
+    if (hiddenLabel) {
+      hiddenLabel.textContent = 'Ouvrir le menu';
+    }
+    delete document.body.dataset.navOpen;
   };
 
   const openNav = () => {
     navWrapper.dataset.open = 'true';
     toggle.setAttribute('aria-expanded', 'true');
+    if (hiddenLabel) {
+      hiddenLabel.textContent = 'Fermer le menu';
+    }
+    document.body.dataset.navOpen = 'true';
   };
 
   toggle.addEventListener('click', () => {
@@ -35,6 +46,24 @@ const siteNav = () => {
       toggle.focus();
     }
   });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      closeNav();
+    });
+  });
+
+  const handleMediaChange = (event) => {
+    if (event.matches) {
+      closeNav();
+    }
+  };
+
+  if (typeof mediaQuery.addEventListener === 'function') {
+    mediaQuery.addEventListener('change', handleMediaChange);
+  } else if (typeof mediaQuery.addListener === 'function') {
+    mediaQuery.addListener(handleMediaChange);
+  }
 };
 
 const beforeAfterSliders = () => {

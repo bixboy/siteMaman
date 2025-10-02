@@ -318,6 +318,10 @@ button {
   transform: translateY(0) rotate(-45deg);
 }
 
+body[data-nav-open="true"] {
+  overflow: hidden;
+}
+
 @media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
@@ -333,13 +337,19 @@ button {
     flex-direction: column;
     gap: 2rem;
     transform: translateY(-120%);
-    transition: transform var(--transition);
+    transition: transform var(--transition), opacity var(--transition);
     margin-inline-start: 0;
     justify-content: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .primary-nav-wrapper[data-open="true"] {
     transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
   }
 
   .primary-nav {
