@@ -2,6 +2,10 @@
   padding-block: clamp(5rem, 3vw, 9rem);
 }
 
+.hero--home .hero__image {
+  --hero-image-ratio: 4 / 3;
+}
+
 .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

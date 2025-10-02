@@ -47,6 +47,10 @@ svg {
   display: block;
 }
 
+img {
+  height: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -396,6 +400,7 @@ main {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  aspect-ratio: var(--hero-image-ratio, 4 / 5);
 }
 
 .hero__image img {
