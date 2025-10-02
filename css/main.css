@@ -330,6 +330,9 @@ body[data-nav-open="true"] {
   .primary-nav-wrapper {
     position: fixed;
     inset: 0;
+    width: 100vw;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: clamp(4rem, 12vw, 5rem) clamp(1.5rem, 10vw, 3rem);
     background: var(--color-surface);
     display: flex;
@@ -343,6 +346,8 @@ body[data-nav-open="true"] {
     pointer-events: none;
     visibility: hidden;
     box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+    z-index: 1000;
   }
 
   .primary-nav-wrapper[data-open="true"] {
