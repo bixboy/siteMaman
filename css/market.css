@@ -1,0 +1,25 @@
+.hero--market {
+  background: linear-gradient(160deg, rgba(196, 104, 59, 0.18), rgba(196, 104, 59, 0));
+}
+
+.product-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.product-card__status svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-accent);
+}
+
+.product-empty {
+  text-align: center;
+  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: var(--radius-lg);
+  background: rgba(196, 104, 59, 0.08);
+  border: 1px dashed rgba(196, 104, 59, 0.35);
+}

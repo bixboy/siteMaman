@@ -1,0 +1,63 @@
+.hero--realisations {
+  background: linear-gradient(180deg, rgba(33, 24, 19, 0.75), rgba(33, 24, 19, 0.35));
+  color: #fff;
+  text-align: center;
+}
+
+.hero--realisations .hero__content {
+  align-items: center;
+}
+
+.hero--realisations .tag {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.hero--realisations .btn--ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.hero--realisations .btn--ghost:hover,
+.hero--realisations .btn--ghost:focus {
+  border-color: #fff;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.project-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(227, 214, 204, 0.6);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.project-card picture {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.project-card figcaption {
+  color: var(--color-muted);
+}
+
+.project-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.lightbox__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
