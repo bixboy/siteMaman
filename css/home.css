@@ -1,5 +1,5 @@
 .hero--home {
-  padding-block: clamp(5rem, 12vw, 9rem);
+  padding-block: clamp(5rem, 3vw, 9rem);
 }
 
 .values-grid {
