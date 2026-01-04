@@ -130,7 +130,7 @@
 
     .coverImg {
         position: absolute;
-        top: 55%;
+        top: 50%;
         padding-left: 40px;
         display: flex;
         flex-direction: column;
