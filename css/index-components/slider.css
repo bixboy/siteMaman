@@ -24,51 +24,6 @@
   user-select: none;
 }
 
-.slider__after.activ1 {
-  background-image: url('../../resources/Realisations/Siege1.4.webp');
-  background-position: center;
-}
-
-.slider__after.activ2 {
-  background-image: url('../../resources/Realisations/Siege2.1.webp');
-}
-
-.slider__after.activ3 {
-  background-image: url('../../resources/Realisations/Siege3.1.webp');
-}
-
-.slider__after.activ4 {
-  background-image: url('../../resources/Realisations/Siege4.1.webp');
-}
-
-.slider__after.activ5 {
-  background-image: url('../../resources/Realisations/Siege6.webp');
-}
-
-.slider__after.activ6 {
-  background-image: url('../../resources/Realisations/Siege7.webp');
-}
-
-.slider__after.activ7 {
-  background-image: url('../../resources/Realisations/Siege11.1.jpg');
-}
-
-.slider__after.activ8 {
-  background-image: url('../../resources/Realisations/Siege12.1.jpg');
-}
-
-.slider__after.activ9 {
-  background-image: url('../../resources/Realisations/siege13.webp');
-}
-
-.slider__after.activ10 {
-  background-image: url('../../resources/Realisations/Siege14.1.webp');
-}
-
-.slider__after.activ11 {
-  background-image: url('../../resources/Realisations/Siege15.1.webp');
-}
-
 .slider__before {
   position: absolute;
   top: 0px;
@@ -84,50 +39,6 @@
 }
 
 
-.slider__before.activ1 {
-  background-image: url('../../resources/Realisations/Siege1.3.webp');
-
-}
-
-.slider__before.activ2 {
-  background-image: url('../../resources/Realisations/Siege2.webp');
-}
-
-.slider__before.activ3 {
-  background-image: url('../../resources/Realisations/Siege3.webp');
-}
-
-.slider__before.activ4 {
-  background-image: url('../../resources/Realisations/Siege4.webp');
-}
-
-.slider__before.activ5 {
-  background-image: url('../../resources/Realisations/Siege6.1.webp');
-}
-
-.slider__before.activ6 {
-  background-image: url('../../resources/Realisations/Siege7.1.webp');
-}
-
-.slider__before.activ7 {
-  background-image: url('../../resources/Realisations/Siege11.jpg');
-}
-
-.slider__before.activ8 {
-  background-image: url('../../resources/Realisations/Siege12.jpg');
-}
-
-.slider__before.activ9 {
-  background-image: url('../../resources/Realisations/Siege13.1.webp');
-}
-
-.slider__before.activ10 {
-  background-image: url('../../resources/Realisations/Siege14.webp');
-}
-
-.slider__before.activ11 {
-  background-image: url('../../resources/Realisations/Siege15.webp');
-}
 
 .slider__before:before {
   content: 'Avant';

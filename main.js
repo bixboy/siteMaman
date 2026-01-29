@@ -359,28 +359,24 @@ function initModalLogic() {
   if (modalTriggers.length > 0 && myModal) {
     modalTriggers.forEach(function (trigger) {
       trigger.addEventListener('click', function () {
-        // Reset classes
+        // Retrieve images from data attributes
+        const beforeImg = this.getAttribute('data-before');
+        const afterImg = this.getAttribute('data-after');
+
+        // Reset positions
+        if (sliderSeparator) sliderSeparator.style.left = '50%';
         if (container1) {
-          const classes1 = container1.classList;
-          for (let i = 0; i < classes1.length; i++) {
-            if (classes1[i].startsWith('activ')) container1.classList.remove(classes1[i]);
+          container1.style.width = '50%';
+          // Dynamically set background image
+          if (beforeImg) {
+            container1.style.backgroundImage = `url('${beforeImg}')`;
           }
         }
         if (container2) {
-          const classes2 = container2.classList;
-          for (let i = 0; i < classes2.length; i++) {
-            if (classes2[i].startsWith('activ')) container2.classList.remove(classes2[i]);
+          // Dynamically set background image
+          if (afterImg) {
+            container2.style.backgroundImage = `url('${afterImg}')`;
           }
-        }
-        if (sliderSeparator) sliderSeparator.style.left = '50%';
-        if (container1) container1.style.width = '50%';
-
-        const img = trigger.querySelector('img');
-        if (img) {
-          const alt = img.getAttribute('alt');
-          const newActivClass = 'activ' + alt;
-          if (container1) container1.classList.add(newActivClass);
-          if (container2) container2.classList.add(newActivClass);
         }
 
         myModal.style.display = "block";
