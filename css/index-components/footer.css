@@ -23,6 +23,10 @@
     align-items: center;
 }
 
+.list li {
+    padding: 5px;
+}
+
 .media {
     padding-top: 9px;
 }
@@ -48,6 +52,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .icon-box:hover {
     outline-offset: 4px;
     background-color: #684f36;
@@ -112,13 +117,13 @@
         padding: 21px;
         margin-top: 89px;
     }
-    
+
     .topReturn img {
         height: 24px;
     }
 }
 
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
     .list {
         display: flex;
         flex-direction: row;
@@ -151,7 +156,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-    
+
     }
 
     .line {

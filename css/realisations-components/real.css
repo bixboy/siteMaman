@@ -1,14 +1,30 @@
 .titletTop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#myImg, #myImg2 {
+.myImg,
+.myImg2 {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
   box-shadow: 4px 10px 9px 1px rgb(0 0 0 / 35%);
+}
+
+.gallery-img {
+  width: 85%;
+  max-width: 300px;
+}
+
+.gallery-img-full {
+  width: 100%;
+  max-width: 300px;
+}
+
+.gallery-img-cover {
+  height: 34vh;
+  object-fit: cover;
 }
 
 .container-center div {
@@ -24,7 +40,7 @@
   opacity: 0;
   width: 85%;
   height: 100%;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
   border-radius: 4px;
   display: flex;
@@ -34,17 +50,26 @@
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 15; /* Sit on top */
-  padding-top: 70px; /* Location of the box */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 15;
+  /* Sit on top */
+  padding-top: 70px;
+  /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
@@ -67,7 +92,10 @@
 }
 
 /* Add Animation */
-.container, #caption, #image, #caption2 {  
+.container,
+#caption,
+#image,
+#caption2 {
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
@@ -80,20 +108,32 @@
   align-items: center;
   justify-content: center;
   max-width: 131vh;
+  margin: 0 auto;
 }
 
 @-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)} 
-  to {-webkit-transform:scale(1)}
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
 }
 
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
 }
 
 /* The Close Button */
-.close, .close2 {
+.close,
+.close2 {
   position: absolute;
   top: 15px;
   right: 35px;
@@ -113,7 +153,7 @@
 }
 
 .container {
-    max-width: 37% !important;
+  max-width: 37% !important;
 }
 
 .boxTitleTop {
@@ -131,17 +171,20 @@
   padding-top: 5px;
 }
 
-.modal-trigger1 span, .modal-trigger2 span {
+.modal-trigger1 span,
+.modal-trigger2 span {
   font-size: 22px;
   font-weight: bold;
 }
 
-.modal-trigger1, .modal-trigger2 {
+.modal-trigger1,
+.modal-trigger2 {
   transition: 0.3s;
   cursor: pointer;
 }
 
-.modal-trigger1:hover, .modal-trigger2:hover {
+.modal-trigger1:hover,
+.modal-trigger2:hover {
   transform: scale(1.05);
   z-index: 10;
 }
@@ -149,15 +192,21 @@
 @media only screen and (min-width: 767px) {
   .container-center div span:hover {
     opacity: 1;
-    background-color: rgba(192, 192, 192, 0.342); /* Black w/ opacity */
+    background-color: rgba(192, 192, 192, 0.342);
+    /* Black w/ opacity */
   }
 
-  #myImg:hover {opacity: 0.7;}
-  #myImg2:hover {opacity: 0.7;}
+  .myImg:hover {
+    opacity: 0.7;
+  }
+
+  .myImg2:hover {
+    opacity: 0.7;
+  }
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 767px) {
   .modal-content {
     width: 90%;
     margin-top: 20%;
@@ -168,7 +217,7 @@
   }
 
   .container {
-    margin-top: 20%!important;
+    margin-top: 20% !important;
     height: 65% !important;
     max-width: 83% !important;
   }
@@ -181,6 +230,4 @@
 
 }
 
-@media screen and (max-width: 355px) {
-
-}
+@media screen and (max-width: 355px) {}

@@ -23,8 +23,10 @@
 
 /* Effet de survol */
 .product-image img:hover {
-  transform: scale(1.05); /* Agrandit légèrement l'image */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ajoute une ombre */
+    transform: scale(1.05);
+    /* Agrandit légèrement l'image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Ajoute une ombre */
 }
 
 .product-details {
@@ -67,6 +69,18 @@
     transition: all 0.3s ease-in-out;
 }
 
+.product-header {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.product-separator {
+    margin-left: 9px;
+    border-left: solid 2px #979797;
+    height: 75px;
+}
+
 .buy-button:hover {
     background-color: #ff983c;
 }
@@ -79,36 +93,43 @@
 /* Conteneur du slider */
 .slider-container {
     position: relative;
-    max-width: 600px; /* Vous pouvez ajuster la largeur selon vos besoins */
+    max-width: 600px;
+    /* Vous pouvez ajuster la largeur selon vos besoins */
     margin: 0 auto;
     overflow: hidden;
-    border-radius: 10px; /* Pour des coins arrondis */
+    border-radius: 10px;
+    /* Pour des coins arrondis */
 }
 
 /* Les images du slider */
 .sliderProduct img {
     width: 100%;
-    display: none; /* Masque toutes les images par défaut */
+    display: none;
+    /* Masque toutes les images par défaut */
 }
 
 .sliderProduct img.active {
-    display: block; /* Affiche uniquement l'image active */
+    display: block;
+    /* Affiche uniquement l'image active */
     opacity: 1;
 }
 
 /* Boutons de navigation (précédent et suivant) */
-.prev, .next {
+.prev,
+.next {
     cursor: pointer;
     position: absolute;
     top: 49%;
     width: 30px;
     height: 45px;
-    margin-top: -15px; /* Centrer verticalement */
+    margin-top: -15px;
+    /* Centrer verticalement */
     color: white;
     font-size: 24px;
     font-weight: bold;
     border-radius: 25%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond semi-transparent */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,13 +145,15 @@
     right: 10px;
 }
 
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.7); /* Change la couleur au survol */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Change la couleur au survol */
 }
 
 /* Les flèches sont masquées si une seule image */
-.sliderProduct img.only-image ~ .prev,
-.sliderProduct img.only-image ~ .next {
+.sliderProduct img.only-image~.prev,
+.sliderProduct img.only-image~.next {
     display: none;
 }
 
@@ -146,14 +169,14 @@
         flex-direction: column;
         height: 100%;
     }
-    
+
     .slider-container {
         max-width: 37vh;
         max-height: 40vh;
     }
 
     .Product {
-        padding: 0!important;
+        padding: 0 !important;
     }
 
     .product-details h1 {
