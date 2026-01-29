@@ -3,7 +3,12 @@
     flex-direction: column;
     align-items: center;
     background-color: #0a3e40;
-    height: clamp(166px,51vw,23vh);
+    height: auto;
+    /* Allow height to adapt */
+    min-height: clamp(166px, 51vw, 23vh);
+    /* Min height instead of fixed */
+    padding: 30px 0 50px 0;
+    /* Added padding bottom */
     justify-content: center;
     border-top: solid 5px #c3c3c3;
 }
@@ -16,7 +21,7 @@
 
 .contact div h1 {
     color: #f9f9f9;
-    font-size: clamp(32px,10vw,38px);
+    font-size: clamp(32px, 10vw, 38px);
     text-align: center;
     font-family: math;
 }
@@ -64,13 +69,13 @@
     }
 }
 
-@media  screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
     .trait {
         display: none;
     }
 
     .contact div h1 {
-        font-size: clamp(32px,10vw,50px);
+        font-size: clamp(32px, 10vw, 50px);
     }
 
     .contact div a {

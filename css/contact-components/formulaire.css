@@ -22,13 +22,13 @@
     font-size: 17px;
     font-family: math;
   }
-  
+
   @media screen and (max-width: 480px) {
     h1 {
       font-size: 26px;
     }
   }
-  
+
   @media screen and (max-width: 420px) {
     h1 {
       font-size: 18px;

@@ -1,20 +1,100 @@
+/* --- Variables Globales --- */
+:root {
+    /* Palette de Couleurs "Premium & Naturelle" */
+    --color-primary: #8b6238;
+    /* Marron chaud (cuir/bois) */
+    --color-secondary: #0b4446;
+    /* Vert Canard (profond) */
+    --color-accent: #e67e22;
+    /* Touche d'orange brûlé */
+    --color-bg-light: #f9f7f2;
+    /* Crème très clair (fond) */
+    --color-bg-dark: #2c2c2c;
+    /* Gris très sombre (footer) */
+    --color-text-main: #333333;
+    /* Texte principal */
+    --color-text-light: #fbfbfb;
+    /* Texte sur fond sombre */
+    --color-white: #ffffff;
+
+    /* Typographie */
+    --font-heading: 'Cinzel', serif;
+    /* Élégant pour les titres (à importer) */
+    --font-body: 'Lato', sans-serif;
+    /* Lisible pour le texte */
+
+    /* Espacements Standard */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+}
+
+/* Import des Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
 * {
     margin: 0;
-    padding: 0%;
+    padding: 0;
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    /* Rendu de police plus net */
 }
 
 body {
-    background-color: #eadcd796;
+    background-color: var(--color-bg-light);
+    font-family: var(--font-body);
+    color: var(--color-text-main);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
 body.no-scroll {
     overflow: hidden;
 }
 
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 10px;
+}
 
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
 
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+}
 
-  
+::-webkit-scrollbar-thumb:hover {
+    background: #684f36;
+}
+
+/* Animations Trigger JS */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

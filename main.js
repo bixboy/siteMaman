@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initProductClick();
   initProductPage();
   initModalLogic();
+  initAnimations(); // Trigger Scroll Animations
 });
 
 // --- Product Click Handling (Market Page) ---
@@ -433,6 +434,37 @@ function initModalLogic() {
         simpleModal.style.display = 'none';
         document.body.style.overflow = "";
       }
+    });
+  }
+
+  // --- Scroll Animations ---
+  function initAnimations() {
+    const observerOptions = {
+      threshold: 0.2, // Trigger when 20% of element is visible
+      rootMargin: "0px 0px -50px 0px" // Trigger slightly before element enters viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Animate only once
+        }
+      });
+    }, observerOptions);
+
+    // Target elements to animate
+    const fadeUpElements = document.querySelectorAll('.product-item, .boxList div, .modal-trigger1, .modal-trigger2, .txt p');
+    const fadeInElements = document.querySelectorAll('.titletTop, .category-filter, .presTop div h1');
+
+    fadeUpElements.forEach(el => {
+      el.classList.add('fade-up'); // Ensure class exists
+      observer.observe(el);
+    });
+
+    fadeInElements.forEach(el => {
+      el.classList.add('fade-in'); // Ensure class exists
+      observer.observe(el);
     });
   }
 }
