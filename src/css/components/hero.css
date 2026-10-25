@@ -95,7 +95,7 @@
     transform: rotate(180deg) translateY(-3px);
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 767px) {
     .fleche {
         margin-right: 10px;
     }
@@ -121,7 +121,7 @@
     }
 }
 
-@media screen and (max-width: 300px) {
+@media (max-width: 300px) {
     .coverImg button {
         height: 45px;
         width: 166px;

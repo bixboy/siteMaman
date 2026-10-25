@@ -161,7 +161,7 @@
     /* Change la couleur au survol */
 }
 
-@media only screen and (max-width: 767px) {
+@media (max-width: 767px) {
     .product-container {
         max-width: 41vh;
         flex-direction: column;

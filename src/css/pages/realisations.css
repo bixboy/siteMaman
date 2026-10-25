@@ -60,7 +60,7 @@
     margin-top: 14px;
 }
 
-@media screen and (max-width: 355px) {
+@media (max-width: 355px) {
     .contact div h1 {
         padding-bottom: 10px;
     }
@@ -73,7 +73,7 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
     .trait {
         display: none;
     }
@@ -199,7 +199,7 @@
   z-index: 10;
 }
 
-@media only screen and (min-width: 767px) {
+@media (min-width: 768px) {
   .container-center div span:hover {
     opacity: 1;
     background-color: rgba(192, 192, 192, 0.342);
@@ -214,7 +214,7 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media (max-width: 767px) {
   #containerImg {
     padding: 0 !important;
   }

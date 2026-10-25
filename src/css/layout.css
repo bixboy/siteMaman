@@ -43,7 +43,7 @@
   /* Mobile first */
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .linksOrdi {
     display: flex;
     gap: 30px;
@@ -99,7 +99,7 @@
   z-index: 1001;
 }
 
-@media screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .menu {
     display: none;
   }
@@ -342,7 +342,7 @@
 }
 
 /* Version Desktop */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
     .list {
         flex-direction: row;
         margin-bottom: 0;

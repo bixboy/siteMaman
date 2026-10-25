@@ -129,7 +129,7 @@
 }
 
 /** For mobile devices **/
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
     .custom-shape-divider-bottom-1697993228 svg {
         width: calc(190% + 1.3px);
         height: 153px;
@@ -284,7 +284,7 @@
     scroll-snap-type: x mandatory;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 767px) {
     .listFourni {
         overflow-x: scroll;
         justify-content: unset;
