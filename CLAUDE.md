@@ -9,8 +9,8 @@ Un seul script côté site : `main.js`
 (chaque `initX()` sort immédiatement si ses éléments ne sont pas dans la page).
 Analytics : Google Tag Manager `GTM-5QGTNVK7` dans le `<head>` de chaque page.
 Hébergement OVH, publié automatiquement depuis GitHub (`bixboy/siteMaman`), sans build :
-**un push sur la branche publiée = mise en ligne immédiate**. Branche publiée à confirmer
-(voir `docs/ROADMAP.md`) ; ne jamais pousser sur `main` sans accord explicite.
+**un push sur `main` = mise en ligne immédiate**. Travailler sur une branche,
+ne jamais pousser sur `main` sans accord explicite.
 Pas de PHP, pas de formulaire (contact = `mailto:` + téléphone), pas d'Instagram.
 Activité à domicile (Caen et Calvados) : pas d'adresse d'atelier, ne jamais en inventer une.
 

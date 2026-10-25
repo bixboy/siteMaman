@@ -7,9 +7,10 @@ Constat du 25/10/2026 : le site en ligne est **identique au commit `aa0821f`** (
 pas à `main`. `main` (oct. 2025, refactoring Codex : page `services/`, dossier `recources/`,
 formulaire) a divergé de `Work` depuis `5c0ce3b` et n'a jamais été fusionnée.
 La branche `BackUp` a été supprimée sur GitHub. La faille PHP reste donc en ligne.
-- [ ] Vérifier dans le manager OVH (Hébergement → Git) quelle branche est suivie.
-- [ ] Archiver l'ancien `main` (tag `archive/main-codex-2025-10`), puis faire de `main`
-      la branche de production à partir de `Work`, et faire suivre `main` par OVH.
+- [x] Ancien `main` archivé (tag `archive/main-codex-2025-10`) puis fusionné en stratégie `ours` :
+      `main` = `Work`, sans réécriture d'historique. `main` est la branche de production.
+- [ ] Dans le manager OVH (Hébergement → Git), faire suivre `main` et déployer ;
+      vérifier que `contact/traitement_formulaire.php` renvoie 404. Supprimer ensuite `Work` et `BackUp` en local.
 - [ ] Récupérer éventuellement des idées du refactoring Codex (page services, sitemap) en phase 3.
 
 ## Décisions
