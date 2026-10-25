@@ -54,8 +54,11 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [x] Aperçu de test sur GitHub Pages (branche `Work`), non indexé.
 - [ ] Vérifier que https://www.google.com/maps?cid=623214297286068827 ouvre bien la fiche de l'entreprise
       (identifiant repris de l'ancienne carte) ; la passer en « zone de service » (adresse masquée).
-- [ ] Après publication : vérifier les redirections du `.htaccess`, puis PageSpeed Insights (mobile)
-      et Google Search Console (envoyer `sitemap.xml`).
+- [x] Publiée le 25/10/2026 (FTP classique : OVH mutualisé refuse FTPS) : 18 pages en 200, redirections 301
+      vers `https://www.`, 404 personnalisée, fichiers internes en 403, aucun appel Google avant consentement.
+- [ ] Google Search Console + Bing Webmaster Tools (voir `docs/REFERENCEMENT.md`).
+- [ ] Supprimer par FTP les restes de l'ancien déploiement Git dans `www/` (`.git/`, `CLAUDE.md`, `docs/`,
+      `scripts/`, `package*.json`, anciens dossiers `css/*-components/`) : bloqués mais encore présents.
 - [x] Page `/services.html` (prestations, déroulé, lexique public ↔ métier, communes, FAQ + `FAQPage`),
       `<h1>` d'accueil « Tapissière d'ameublement à Caen », légendes visibles des réalisations,
       données structurées enrichies (communes, catalogue de services), IndexNow, sitemap complet (18 pages).
