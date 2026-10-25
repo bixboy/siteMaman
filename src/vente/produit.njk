@@ -7,10 +7,8 @@ pagination:
 permalink: "{{ produit | produitUrl }}"
 nav: vente
 styles:
-  - index-components/top.css
-  - contact-components/top.css
-  - market-components/product.css
-  - realisations-components/real.css
+  - pages/produit.css
+  - components/modal.css
 eleventyComputed:
   title: "{{ produit.nom }} - Main é merveille - Tapissier d'ameublement"
   description: "{{ produit.nom }} : {{ produit.description }}"
