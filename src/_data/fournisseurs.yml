@@ -2,23 +2,23 @@
 #   logo      chemin dans src/resources/
 #   contenu   true = logo affiché en entier (pas rogné)
 
-- nom: Casal tissus
+- nom: Casal
   logo: casal.webp
-- nom: Romo tissus
+- nom: Romo
   logo: logo-romo.webp
-- nom: Lelievre tissus
+- nom: Lelièvre
   logo: lelievre-logo.webp
-- nom: Passementrie ile-de-france
+- nom: Les Passementeries de l'Île-de-France
   logo: les-passementeries-de-lile-de-france-logo.webp
   contenu: true
-- nom: Houles Paris
+- nom: Houlès
   logo: houles-logo.webp
-- nom: Kobe tissus
+- nom: Kobe
   logo: kobe-logo.webp
-- nom: Samuel and sons
+- nom: Samuel & Sons
   logo: samuel-and-sons.webp
   contenu: true
-- nom: Pierre frey
+- nom: Pierre Frey
   logo: logo-pierre-frey.webp
-- nom: Jab anstoetz
+- nom: JAB Anstoetz
   logo: teaser-jab-anstoetz-fabrics.webp

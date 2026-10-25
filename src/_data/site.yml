@@ -10,6 +10,16 @@ facebook: https://www.facebook.com/profile.php?id=61553945070512
 googleMaps: https://www.google.com/maps?cid=623214297286068827
 gtm: GTM-5QGTNVK7
 
+# Mentions légales (Registre national des entreprises, données publiques).
+# Adresse du siège volontairement non affichée : « 14000 Caen » seulement (choix de la propriétaire).
+legal:
+  entrepreneur: Catherine Rosinski
+  forme: Entrepreneur individuel (EI)
+  siret: 979 063 310 00010
+  tva: FR66979063310
+  ape: 3299Z
+  immatriculation: Registre national des entreprises (RNE), depuis le 19 septembre 2023
+
 # Activité à domicile : pas d'adresse d'atelier
 ville: Caen
 codePostal: "14000"

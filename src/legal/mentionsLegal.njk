@@ -10,52 +10,47 @@ styles:
 
 {{ bandeau({ variante: "uni", surTitre: site.nom, titre: "Mentions légales" }) }}
 
+{#- Données : site.legal dans src/_data/site.yml #}
 <section class="section">
 <div class="conteneur prose">
 
-  <h2>1. Informations légales</h2>
-  <p>Nom de l'entreprise : Main é merveille</p>
-  <p>Forme juridique : Entrepreneur individuel</p>
-  <p>Adresse : 14000 Caen</p>
-  <p>Pays : France</p>
+  <h2>1. Éditeur du site</h2>
+  <p>{{ site.nom }} — {{ site.legal.entrepreneur }}, {{ site.legal.forme }}</p>
+  <p>Adresse : {{ site.codePostal }} {{ site.ville }}, France</p>
   <p>Téléphone : {{ site.telephoneAffiche }}</p>
   <p>Email : <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-  <p>Numéro SIRET : 979063310</p>
-  <p>Numéro TVA : FR66979063310</p>
+  <p>SIRET : {{ site.legal.siret }}</p>
+  <p>TVA intracommunautaire : {{ site.legal.tva }}</p>
+  <p>Code APE : {{ site.legal.ape }}</p>
+  <p>Immatriculation : {{ site.legal.immatriculation }}</p>
+  <p>Responsable de la publication : {{ site.legal.entrepreneur }}</p>
 
   <h2>2. Hébergement</h2>
-  <p>Nom de l'hébergeur : OVH</p>
-  <p>Adresse : 2 rue Kellermann 59100 Roubaix</p>
-  <p>Site web : https://www.ovhcloud.com/fr/</p>
+  <p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France</p>
+  <p>Site web : <a href="https://www.ovhcloud.com/fr/">www.ovhcloud.com</a></p>
 
   <h2>3. Propriété intellectuelle</h2>
-  <p>Tous droits réservés. Le contenu de ce site web, y compris les textes, images, graphiques, logos, icônes, clips
-    audio, téléchargements numériques et logiciels, est la propriété de Main é merveille ou de ses fournisseurs de
-    contenu et est protégé par les lois françaises et internationales sur le droit d'auteur. La reproduction, la
-    modification, la distribution, ou la re-publication du contenu, en tout ou en partie, est strictement interdite
-    sans l'autorisation écrite de Main é merveille.</p>
+  <p>Tous droits réservés. Le contenu de ce site (textes, photographies, logos, éléments graphiques) est la propriété
+    de {{ site.nom }} ou de ses fournisseurs, et est protégé par les lois françaises et internationales sur le droit
+    d'auteur. Toute reproduction, modification ou republication, totale ou partielle, est interdite sans
+    l'autorisation écrite de {{ site.nom }}. Les logos des fournisseurs appartiennent à leurs propriétaires
+    respectifs.</p>
 
   <h2>4. Liens externes</h2>
-  <p>Le site web peut contenir des liens vers des sites web tiers. Main é merveille n'a aucun contrôle sur le
-    contenu et les pratiques de confidentialité de ces sites, et décline toute responsabilité concernant leur
-    contenu ou leurs pratiques. Nous vous recommandons de consulter les politiques de confidentialité et les termes
-    d'utilisation de ces sites avant de les utiliser.</p>
+  <p>Ce site contient des liens vers des sites tiers (Facebook, Google Maps). {{ site.nom }} n'a aucun contrôle sur
+    leur contenu ni sur leurs pratiques de confidentialité, et décline toute responsabilité à leur sujet.</p>
 
-  <h2>5. Politique de confidentialité</h2>
-  <p>Pour plus d'informations sur notre politique de confidentialité, veuillez consulter notre <a
-      href="/legal/politiqueConf.html">politique de confidentialité</a>.</p>
+  <h2>5. Données personnelles et cookies</h2>
+  <p>Pour savoir quelles données sont traitées et comment gérer les cookies, consultez la
+    <a href="/legal/politiqueConf.html">politique de confidentialité</a>.</p>
 
   <h2>6. Contact</h2>
-  <p>Pour toute question concernant ces mentions légales, veuillez nous contacter à l'adresse suivante :
+  <p>Pour toute question concernant ces mentions légales :
     <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
 
-  <h2>7. Clause de non-responsabilité</h2>
-  <p>Le contenu de ce site web est fourni à titre informatif uniquement. Bien que nous nous efforcions de maintenir
-    les informations à jour et correctes, nous ne faisons aucune déclaration ni garantie, expresse ou implicite,
-    quant à l'exhaustivité, l'exactitude, la fiabilité, la pertinence ou la disponibilité du site web ou des
-    informations, produits, services ou graphiques connexes. En aucun cas, nous ne serons responsables des pertes ou
-    dommages, y compris, mais sans s'y limiter, les pertes ou dommages indirects ou consécutifs, ou les pertes ou
-    dommages causés par la perte de données ou de bénéfices découlant de, ou en relation avec, l'utilisation de ce
-    site web.</p>
+  <h2>7. Responsabilité</h2>
+  <p>Les informations de ce site sont fournies à titre indicatif. {{ site.nom }} s'efforce de les tenir exactes et
+    à jour, sans pouvoir garantir l'absence d'erreur ou d'omission. Les fauteuils présentés à la vente le sont sous
+    réserve de disponibilité.</p>
 </div>
 </section>

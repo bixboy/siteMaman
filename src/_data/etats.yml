@@ -5,8 +5,8 @@
 restaure:
   filtre: Fauteuils restaurés
   etiquette: Prêt à l'emploi
-  description: Fauteuil restauré, prêt à l'emploi.
+  description: Restauré, prêt à l'emploi.
 a-renover:
   filtre: Fauteuils à rénover
   etiquette: À personnaliser
-  description: "Fauteuil à rénover : vous choisissez le tissu et les finitions."
+  description: "À rénover : vous choisissez le tissu et les finitions."

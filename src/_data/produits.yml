@@ -11,8 +11,8 @@
   nom: Chaises Louis XVI
   etat: restaure
   description: |-
-    Paire de chaises Louis-XVI
-    Tissu velour et bois légèrment vielli.
+    Paire de chaises Louis XVI.
+    Tissu velours et bois légèrement vieilli.
   photos:
     - Produits/fauteuil1.webp
     - Produits/fauteuil1.2.webp
@@ -21,21 +21,21 @@
 - id: 2
   nom: Pouf et coussins
   etat: restaure
-  description: Pouf et coussins tissu en velour.
+  description: Pouf et coussins en tissu velours.
   photos:
     - Produits/fauteuil2.webp
 
 - id: 3
   nom: Chaise de nourrice
   etat: restaure
-  description: Chaise de nourrice assise basse tissu art déco.
+  description: Chaise de nourrice à assise basse, tissu Art déco.
   photos:
     - Produits/fauteuil3.webp
 
 - id: 4
   nom: Duo cabriolet et chaise
   etat: a-renover
-  description: Pour ce duo prevoir réfection peinture.
+  description: Pour ce duo, prévoir une réfection de la peinture.
   photos:
     - Produits/siege1.webp
 
@@ -47,9 +47,9 @@
     - Produits/siege2.webp
 
 - id: 7
-  nom: Fauteuil Chauffeuse
+  nom: Fauteuil chauffeuse
   etat: a-renover
-  description: fauteuil Chauffeuse déja mis à blanc.
+  description: Fauteuil chauffeuse déjà mis à blanc.
   photos:
     - Produits/siege3.webp
     - Produits/siege3.2.webp
@@ -57,7 +57,7 @@
 - id: 8
   nom: Fauteuil studio
   etat: a-renover
-  description: fauteuil studio des années 50.
+  description: Fauteuil studio des années 50.
   photos:
     - Produits/siege4.webp
 
@@ -71,19 +71,19 @@
 - id: 10
   nom: Bergère
   etat: a-renover
-  description: Grosse bergère bois impecable déja cérusé.
+  description: Grosse bergère en bois impeccable, déjà cérusé.
   photos:
     - Produits/siege6.webp
 
 - id: 11
-  nom: Fauteuil Bergère
+  nom: Fauteuil bergère
   etat: a-renover
   description: Fauteuil style bergère à personnaliser selon vos goûts.
   photos:
     - Produits/fauteuilbergere.webp
 
 - id: 12
-  nom: Fauteuil Bergère
+  nom: Fauteuil bergère
   etat: a-renover
   description: Fauteuil style bergère à rénover.
   photos:

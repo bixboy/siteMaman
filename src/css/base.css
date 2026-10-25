@@ -286,7 +286,7 @@ p + p {
   text-align: center;
 }
 
-/* Lien discret avec flèche (« Voir le fauteuil → ») */
+/* Lien discret avec flèche (« Voir la fiche → ») */
 .lien-fleche {
   font-family: var(--police-capitales);
   font-size: 0.8rem;
