@@ -1,3 +1,5 @@
+/* Bandeau titre des pages légales (.box-top > .title-top) */
+
 .box-top {
     height: 155px;
     display: flex;

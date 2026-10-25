@@ -80,12 +80,6 @@
     align-items: center;
 }
 
-.linePresta {
-    border-bottom: solid 2px;
-    width: 39vh;
-    padding-top: 5px;
-}
-
 .listePresta h1 {
     font-size: 45px;
     text-align: center;
@@ -168,10 +162,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .linePresta {
-        width: 100%;
     }
 
     .listePresta img {

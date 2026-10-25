@@ -1,3 +1,5 @@
+/* Page produit (/vente/*.html) : photos, flèches, détails */
+
 .Product {
     display: flex;
     justify-content: center;
@@ -157,18 +159,6 @@
 .next:hover {
     background-color: rgba(0, 0, 0, 0.7);
     /* Change la couleur au survol */
-}
-
-/* Les flèches sont masquées si une seule image */
-.sliderProduct img.only-image~.prev,
-.sliderProduct img.only-image~.next {
-    display: none;
-}
-
-/* Animation de transition */
-.sliderProduct img.fade {
-    opacity: 0;
-    transition: opacity 0.5s ease;
 }
 
 @media only screen and (max-width: 767px) {
