@@ -12,6 +12,8 @@ Deux branches seulement : `Work` (développement, branche de travail par défaut
 Fusionner `Work` dans `main` puis pousser → GitHub Action (`.github/workflows/deploy.yml`) :
 `npm test`, build, envoi de `_site/` sur OVH par FTP. **Push sur `main` = mise en ligne** :
 jamais sans accord explicite. Ne jamais committer directement sur `main`.
+Push sur `Work` → aperçu de test (`.github/workflows/apercu.yml`) : https://bixboy.github.io/siteMaman/,
+construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aperçu de test »).
 
 ## Commandes
 - `npm run dev` — serveur local avec rechargement (http://localhost:8080)
@@ -32,8 +34,11 @@ jamais sans accord explicite. Ne jamais committer directement sur `main`.
 - `src/css/` — `base.css` (système de design : variables, typo, boutons, cadres…) et `layout.css` (en-tête, pied)
   sur toutes les pages ; `components/` (bandeau, appel, modale, avant-apres) et `pages/` (un fichier par page),
   déclarés dans `styles`.
-- `src/resources/` — images sources (WebP ≤ 1600 px) ; vignettes générées dans `/img/`
-- `eleventy.config.js` — filtres `produitUrl`, `nl2br` ; shortcode `image`
+- `src/resources/` — images sources (WebP ≤ 1600 px) ; vignettes générées dans `/img/` (`lib/images.js`,
+  photo du bandeau : `src/_data/imageBandeau.js`)
+- `src/css/polices.css` — polices auto-hébergées (`@fontsource`, copiées dans `/fonts/`) : aucun appel à Google Fonts
+- `src/.htaccess` — Apache OVH : redirection vers `https://www.`, cache, 404 ; `src/404.njk`, `src/robots.njk`, `src/sitemap.njk`
+- `eleventy.config.js` — filtres `produitUrl`, `nl2br`, `uneLigne` ; shortcode `image` ; plugin de préfixe (aperçu)
 - `tests/e2e.mjs` — tests d'interaction ; `tests/visual.mjs` — non-régression visuelle ; `tests/helpers.mjs` — serveur + Chrome
 - `scripts/optimize-images.mjs` — `npm run images`
 - `docs/CONTENU.md` — ajouter un contenu ; `docs/ROADMAP.md` — plan, points à confirmer, historique
@@ -48,7 +53,11 @@ jamais sans accord explicite. Ne jamais committer directement sur `main`.
   `ornement`, `bouton`, `cadre`, `panneau`, `etiquette`, `frise`) et ses variables ; aucune couleur en dur.
 - Classes CSS = style ; le JS s'accroche uniquement aux attributs `data-*` (ex. `data-photo`, `data-filter`).
   Jamais de `style=""` ni de `onclick`. Un seul `<h1>` par page (celui du bandeau).
-- Chemins absolus partout (`/resources/…`, `/market.html`). Ne pas changer les URLs existantes (référencement).
+- Chemins absolus partout (`/resources/…`, `/market.html`) : préfixés automatiquement pour l'aperçu dans
+  `href`/`src`/`srcset`. Dans un attribut `data-*`, passer par le filtre : `{{ ("/resources/" ~ x) | url }}` ;
+  dans le CSS, chemins relatifs. Ne pas changer les URLs existantes (référencement).
+- SEO : chaque page a `title` (< 65 caractères, avec « Caen ») et `description` (< 160) dans son en-tête ;
+  chaque photo a un `alt` qui décrit ce qu'on voit (siège, tissu, couleur).
 - Seuil mobile : `@media (max-width: 767px)` / ordinateur : `@media (min-width: 768px)` ; menu complet dès 992 px.
 - Fichiers en CRLF : préférer l'outil Edit à `sed -i` (qui convertit en LF).
 

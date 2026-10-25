@@ -14,8 +14,11 @@ export function initBeforeAfterModal() {
 
   triggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
+      const description = trigger.querySelector('img')?.alt ?? '';
       before.src = trigger.dataset.avant;
+      before.alt = `Avant : ${description}`;
       after.src = trigger.dataset.apres;
+      after.alt = `Après : ${description}`;
       setPosition(comparator, 50);
       modal.open();
     });

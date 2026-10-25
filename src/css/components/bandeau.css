@@ -99,6 +99,14 @@
   padding-block: var(--espace-l);
 }
 
+.bandeau--uni .bandeau__texte {
+  margin-inline: auto;
+}
+
+.bandeau--uni .bandeau__actions {
+  justify-content: center;
+}
+
 @media (max-width: 767px) {
   .bandeau--accueil {
     min-height: 78vh;

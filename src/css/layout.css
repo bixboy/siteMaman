@@ -15,6 +15,22 @@
   top: var(--espace-s);
 }
 
+/* Aperçu GitHub Pages uniquement (variable APERCU=1 au build) */
+.badge-apercu {
+  position: fixed;
+  left: var(--espace-s);
+  bottom: var(--espace-s);
+  z-index: 2000;
+  padding: 0.3em 0.9em;
+  background-color: #8b1e1e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
 /* --- En-tête --- */
 
 .entete {

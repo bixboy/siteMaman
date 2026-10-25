@@ -1,5 +1,7 @@
 ---
-title: "Réalisations - Main é merveille - Tapissier d'ameublement"
+title: "Réalisations avant / après | Tapissière à Caen | Main é Merveille"
+image: "/resources/Realisations/siege7.webp"
+description: "Fauteuils, chaises et canapés restaurés par Main é Merveille, tapissière d'ameublement à Caen : découvrez mes réalisations en avant / après."
 permalink: realisations.html
 nav: realisations
 styles:
@@ -26,13 +28,13 @@ styles:
       {%- set alt = realisation.alt or "Réalisation " + loop.index %}
       <li class="galerie__element" data-reveal>
         {%- if realisation.photo %}
-        <button class="cadre galerie__bouton" type="button" data-photo="/resources/{{ realisation.photo }}">
+        <button class="cadre galerie__bouton" type="button" data-photo="{{ ("/resources/" ~ realisation.photo) | url }}">
           {% image realisation.photo, alt, "(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 360px" %}
           <span class="galerie__survol">{{ icone("agrandir") }}<span class="visuellement-cache">Agrandir la photo</span></span>
         </button>
         {%- else %}
         <button class="cadre galerie__bouton" type="button"
-          data-avant="/resources/{{ realisation.avant }}" data-apres="/resources/{{ realisation.apres }}">
+          data-avant="{{ ("/resources/" ~ realisation.avant) | url }}" data-apres="{{ ("/resources/" ~ realisation.apres) | url }}">
           {% image realisation.vignette or realisation.apres, alt, "(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 360px" %}
           <span class="etiquette galerie__etiquette">Avant / après</span>
           <span class="galerie__survol">{{ icone("agrandir") }}<span class="visuellement-cache">Comparer avant et après</span></span>

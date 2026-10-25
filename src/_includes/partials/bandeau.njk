@@ -3,12 +3,14 @@
     {% call bandeau({ titre: "…", surTitre: "…", texte: "…", variante: "accueil" | "photo" | "uni" }) %}
       boutons facultatifs
     {% endcall %}
-    Variantes : accueil (grande photo), photo (photo, hauteur réduite), uni (sans photo). -#}
+    Variantes : accueil (grande photo), photo (photo, hauteur réduite), uni (sans photo).
+    Photo : src/_data/imageBandeau.js. -#}
 {% macro bandeau(options) -%}
 {%- set variante = options.variante or "photo" -%}
 <section class="bandeau bandeau--{{ variante }}">
   {%- if variante != "uni" %}
-  <img class="bandeau__image" src="{{ options.image or site.image }}" alt="" fetchpriority="high">
+  <img class="bandeau__image" src="{{ imageBandeau.src }}" srcset="{{ imageBandeau.srcset }}" sizes="100vw"
+    width="{{ imageBandeau.width }}" height="{{ imageBandeau.height }}" alt="" fetchpriority="high">
   {%- endif %}
   <div class="conteneur bandeau__contenu">
     {%- if options.surTitre %}

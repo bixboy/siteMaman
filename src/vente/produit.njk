@@ -11,8 +11,8 @@ styles:
   - components/appel.css
   - pages/produit.css
 eleventyComputed:
-  title: "{{ produit.nom }} - Main é merveille - Tapissier d'ameublement"
-  description: "{{ produit.nom }} : {{ produit.description }}"
+  title: "{{ produit.nom }} à vendre | Main é Merveille, tapissière à Caen"
+  description: "{{ produit.nom }} ({{ etats[produit.etat].etiquette | lower }}) : {{ produit.description | uneLigne }} À voir chez Main é Merveille, tapissière d'ameublement à Caen."
   image: "/resources/{{ produit.photos[0] }}"
 ---
 {%- from "partials/icones.njk" import icone -%}
@@ -25,7 +25,7 @@ eleventyComputed:
     <div class="produit__grille">
       <div class="produit__galerie" data-galerie-produit>
         <div class="cadre produit__principale">
-          <button class="produit__zoom" type="button" data-photo="/resources/{{ produit.photos[0] }}" aria-label="Agrandir la photo">
+          <button class="produit__zoom" type="button" data-photo="{{ ("/resources/" ~ produit.photos[0]) | url }}" aria-label="Agrandir la photo">
             <img data-photo-principale src="/resources/{{ produit.photos[0] }}" alt="{{ produit.nom }} – photo 1" fetchpriority="high">
           </button>
           {%- if plusieursPhotos %}
@@ -39,7 +39,7 @@ eleventyComputed:
           {%- for photo in produit.photos %}
           <li>
             <button class="produit__vignette" type="button" data-vignette
-              data-src="/resources/{{ photo }}" data-alt="{{ produit.nom }} – photo {{ loop.index }}"
+              data-src="{{ ("/resources/" ~ photo) | url }}" data-alt="{{ produit.nom }} – photo {{ loop.index }}"
               aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="Voir la photo {{ loop.index }}">
               {% image photo, "", "90px" %}
             </button>
@@ -66,3 +66,15 @@ eleventyComputed:
 
 {% include "partials/appel.njk" %}
 {% include "partials/modale-photo.njk" %}
+
+{#- Fil d'Ariane pour Google : Accueil › Fauteuils à vendre › produit #}
+{%- set filAriane = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Fauteuils à vendre", "item": site.url + "/market.html" },
+    { "@type": "ListItem", "position": 3, "name": produit.nom }
+  ]
+} %}
+<script type="application/ld+json">{{ filAriane | dump | safe }}</script>

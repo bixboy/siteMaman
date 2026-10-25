@@ -1,0 +1,59 @@
+# Aperçu de test : à chaque push sur `Work`, publie le site sur GitHub Pages
+# (https://bixboy.github.io/siteMaman/), non indexé par Google (noindex + robots.txt).
+# Réglages à faire une fois dans le dépôt GitHub :
+#   Settings → Pages → Source : « GitHub Actions »
+#   Settings → Environments → github-pages → autoriser la branche `Work`
+name: Aperçu (GitHub Pages)
+
+on:
+  push:
+    branches: [Work]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: apercu
+  cancel-in-progress: true
+
+jobs:
+  apercu:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # En cas d'échec, la fin du journal est remontée en annotation (visible dans le résumé du run)
+      - name: Tests
+        run: |
+          set +e
+          npm test 2>&1 | tee test.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            echo "::error title=npm test::$(tail -n 40 test.log | sed 's/%/%25/g; s/\r/%0D/g' | awk '{printf "%s%%0A", $0}')"
+          fi
+          exit "$status"
+
+      - name: Build de l'aperçu (préfixe /siteMaman/, non indexé)
+        run: npx eleventy --pathprefix=/siteMaman/
+        env:
+          APERCU: '1'
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploiement
+        uses: actions/deploy-pages@v4

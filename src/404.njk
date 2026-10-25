@@ -1,0 +1,20 @@
+---
+title: "Page introuvable | Main é Merveille"
+description: "Cette page n'existe pas ou a été déplacée."
+permalink: 404.html
+robots: noindex
+eleventyExcludeFromCollections: true
+styles:
+  - components/bandeau.css
+---
+{%- from "partials/bandeau.njk" import bandeau with context -%}
+
+{% call bandeau({
+  variante: "uni",
+  surTitre: "Erreur 404",
+  titre: "Page introuvable",
+  texte: "Cette page n'existe pas ou a été déplacée."
+}) %}
+  <a class="bouton" href="/">Retour à l'accueil</a>
+  <a class="bouton bouton--contour" href="/realisations.html">Voir les réalisations</a>
+{% endcall %}

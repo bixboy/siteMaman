@@ -1,0 +1,29 @@
+# Configuration Apache de l'hébergement OVH, publiée à la racine du site (copiée par eleventy.config.js).
+
+RewriteEngine On
+
+# Une seule adresse : https://www.main-e-merveille.fr (sinon Google voit 4 copies du site)
+# Syntaxe recommandée par OVH (le test %{HTTPS} n'est pas fiable sur ses serveurs).
+RewriteCond %{SERVER_PORT} 80 [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.main-e-merveille.fr/$1 [R=301,L]
+
+# Fichiers internes laissés sur le serveur par l'ancien déploiement Git : jamais servis
+RedirectMatch 404 ^/\.git
+<FilesMatch "\.(md|json|mjs|yml|lock)$">
+  Require all denied
+</FilesMatch>
+
+# Page d'erreur aux couleurs du site
+ErrorDocument 404 /404.html
+
+# Cache navigateur : images et polices 30 jours ; HTML, CSS et JS revalidés à chaque visite
+# (requête légère, réponse 304 si rien n'a changé) pour que les mises à jour soient vues aussitôt.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|ico|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(html|css|js|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

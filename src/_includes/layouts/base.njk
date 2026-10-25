@@ -13,25 +13,35 @@
     })(window, document, 'script', 'dataLayer', '{{ site.gtm }}');</script>
   <!-- End Google Tag Manager -->
 
-  {%- set metaDescription = description or site.description %}
+  {%- set metaDescription = (description or site.description) | uneLigne %}
   {%- set canonical = site.url + page.url %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
   <meta name="description" content="{{ metaDescription }}">
   <link rel="canonical" href="{{ canonical }}">
+  {%- if apercu %}
+  <meta name="robots" content="noindex, nofollow">
+  {%- elif robots %}
+  <meta name="robots" content="{{ robots }}">
+  {%- endif %}
+  <meta name="theme-color" content="#f8f4ec">
 
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ site.nom }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ metaDescription }}">
   <meta property="og:image" content="{{ site.url }}{{ image or site.image }}">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&display=swap">
+  {#- Polices des titres et du texte, visibles dès le premier affichage #}
+  <link rel="preload" href="/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
+  <link rel="stylesheet" href="/css/polices.css">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/layout.css">
   {%- for feuille in styles %}
@@ -48,6 +58,9 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+  {%- if apercu %}
+  <p class="badge-apercu">Aperçu de test — non publié</p>
+  {%- endif %}
 
   {% include "partials/entete.njk" %}
 

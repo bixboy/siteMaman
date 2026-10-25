@@ -14,8 +14,10 @@
     "postalCode": site.codePostal,
     "addressCountry": "FR"
   },
+  "description": site.description | uneLigne,
   "areaServed": site.zoneIntervention,
-  "sameAs": [site.facebook],
+  "hasMap": site.googleMaps,
+  "sameAs": [site.facebook, site.googleMaps],
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": site.horaires.jours,

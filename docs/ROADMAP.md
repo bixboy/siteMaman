@@ -42,17 +42,26 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [ ] Validation par la propriétaire (textes du bandeau d'accueil et de « À propos » légèrement reformulés).
 
 ## Phase 3 — SEO local & contenu
-- [ ] Mesurer avec PageSpeed Insights (mobile) et noter les scores ici.
 - [x] Un seul `<h1>` par page (celui du bandeau).
-- [ ] `alt` des réalisations (champ `alt` de `realisations.yml`, aujourd'hui « Réalisation N »).
-- [ ] `description` propre à chaque page (en-tête des `.njk` ; seule l'accueil en a une).
-- [ ] Fiche Google Business en « zone de service » ; ajouter son URL à `sameAs` (partial `jsonld.njk`).
-- [ ] Page « Services » détaillée (réfection traditionnelle / mousse, tissus, délais, devis).
-      Idées dans le tag `archive/main-codex-2025-10` (dossier `services/`).
-- [ ] Avis clients / FAQ (données structurées `FAQPage`).
+- [x] `alt` descriptifs des 14 réalisations (`realisations.yml`) ; repris dans le comparateur avant/après.
+- [x] `title` et `description` propres à chaque page (fiches produit générées), Open Graph complet
+      (image par page, `og:locale`, `twitter:card`).
+- [x] JSON-LD : `hasMap` + `sameAs` (Facebook, fiche Google) ; fil d'Ariane sur les fiches produit.
+- [x] `.htaccess` : une seule adresse `https://www.` (301), cache 30 j images/polices, 404 aux couleurs
+      du site, fichiers internes de l'ancien déploiement Git bloqués.
+- [x] Performance : image du bandeau en 640/1024/1600 px ; polices auto-hébergées (plus d'appel à
+      Google Fonts : plus rapide et plus conforme au RGPD).
+- [x] Aperçu de test sur GitHub Pages (branche `Work`), non indexé.
+- [ ] Vérifier que https://www.google.com/maps?cid=623214297286068827 ouvre bien la fiche de l'entreprise
+      (identifiant repris de l'ancienne carte) ; la passer en « zone de service » (adresse masquée).
+- [ ] Après publication : vérifier les redirections du `.htaccess`, puis PageSpeed Insights (mobile)
+      et Google Search Console (envoyer `sitemap.xml`).
+- [ ] Page « Services » détaillée : contenu à fournir par la propriétaire (techniques, tissus, délais,
+      fourchettes de prix ?). Idées dans le tag `archive/main-codex-2025-10` (dossier `services/`).
+- [ ] FAQ (données structurées `FAQPage`) et avis clients : questions/réponses et avis réels à fournir.
 
 ## Phase 4 — Accessibilité, RGPD, qualité
-- [ ] RGPD : GTM sans bandeau de consentement → bandeau (ex. tarteaucitron) ou mesure sans cookie.
+- [ ] RGPD : GTM (Google Tag Manager) sans bandeau de consentement → bandeau (ex. tarteaucitron) ou mesure sans cookie.
 - [ ] Politique de confidentialité générique (newsletter, formulaire, achats inexistants ; rien sur les cookies).
 - [ ] Focus piégé dans les modales (le reste de l'accessibilité clavier est fait).
 

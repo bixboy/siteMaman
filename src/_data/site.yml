@@ -5,6 +5,8 @@ telephone: "+33768317608"
 telephoneAffiche: 07 68 31 76 08
 email: mainemerveille@gmail.com
 facebook: https://www.facebook.com/profile.php?id=61553945070512
+# Fiche Google Business (identifiant repris de l'ancienne carte de la page contact)
+googleMaps: https://www.google.com/maps?cid=623214297286068827
 gtm: GTM-5QGTNVK7
 
 # Activité à domicile : pas d'adresse d'atelier
@@ -22,9 +24,6 @@ horaires:
 
 # Description par défaut (pages sans `description` dans leur en-tête)
 description: >-
-  Main é Merveille a Caen, votre tapissier d'ameublement expérimenté, offre des services de
-  restauration, rénovation et création de sièges sur mesure. Experts en tapisserie, nous redonnons
-  vie à vos meubles anciens ou modernes, en utilisant des tissus de qualité et des techniques
-  artisanales. Découvrez un savoir-faire traditionnel pour sublimer vos assises avec des créations
-  uniques et personnalisées.
+  Main é Merveille, tapissière d'ameublement à Caen : restauration de fauteuils, chaises et canapés,
+  à domicile dans tout le Calvados. Devis gratuit.
 image: /resources/Realisations/background1.webp
