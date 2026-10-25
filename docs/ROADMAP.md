@@ -71,6 +71,9 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [ ] Confirmer le contenu du conteneur GTM (Google Analytics seul ? autre balise ?) : la politique
       de confidentialité mentionne Google Analytics.
 - [ ] Mentions légales : nom du responsable de la publication (obligatoire) et SIRET complet.
+- Lighthouse mobile sur l'aperçu (25/10/2026), accueil / réalisations / vente : performance 97,
+  accessibilité 100, bonnes pratiques 100 ; SEO 66 uniquement à cause du `noindex` de l'aperçu.
+  LCP 2,0–2,1 s, CLS 0, TBT ≤ 20 ms.
 
 ## Phase 5 — Outillage IA
 - [ ] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`.
