@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test)",
+      "Bash(npm run images)",
+      "Bash(npm run build)",
+      "Bash(npm run test:visual)",
+      "Bash(npm run test:visual -- --rapide)",
+      "Bash(npx eleventy --quiet)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git mv:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Read(./node_modules/**)",
+      "Read(./.cache/**)",
+      "Read(./package-lock.json)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+---
+# Résumé du site pour les assistants IA de recherche (format llmstxt.org), généré depuis src/_data/.
+# Fichier texte : `| safe` évite l'échappement HTML (apostrophes).
+permalink: llms.txt
+layout: false
+eleventyExcludeFromCollections: true
+---
+# {{ site.nom }}
+
+> {{ site.description | uneLigne | safe }}
+
+{{ site.nom }} est une tapissière d'ameublement installée à {{ site.ville }} ({{ site.codePostal }}). Elle restaure
+les sièges à domicile, à {{ site.ville }} et dans tout le Calvados : il n'y a pas d'atelier recevant du public.
+
+- Téléphone : {{ site.telephoneAffiche }}
+- Email : {{ site.email }}
+- Horaires : {{ site.horaires.texte | safe }}
+- Zone d'intervention : {{ site.zoneIntervention | join(", ") }}
+- Facebook : {{ site.facebook }}
+
+## Pages
+
+- [Accueil]({{ site.url }}/) : présentation, services, fournisseurs
+- [Réalisations]({{ site.url }}/realisations.html) : photos de sièges restaurés, avant / après
+- [Fauteuils à vendre]({{ site.url }}/market.html) : sièges restaurés ou à rénover
+- [Contact]({{ site.url }}/contact/contact.html) : téléphone, email, zone d'intervention, devis gratuit
+
+## Services
+{% for service in services %}
+- {{ service.titre | safe }}
+{%- endfor %}
+
+## Fauteuils à vendre
+{% for produit in produits %}
+- [{{ produit.nom | safe }}]({{ site.url }}{{ produit | produitUrl }}) ({{ etats[produit.etat].etiquette | lower | safe }}) : {{ produit.description | uneLigne | safe }}
+{%- endfor %}
+
+## Fournisseurs de tissus et passementeries
+{% for fournisseur in fournisseurs %}
+- {{ fournisseur.nom | safe }}
+{%- endfor %}

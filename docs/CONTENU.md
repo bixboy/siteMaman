@@ -2,6 +2,10 @@
 
 Tout le contenu est dans `src/_data/` (fichiers YAML commentés). Le HTML est généré.
 
+**Avec Claude Code**, inutile de suivre ces étapes à la main : taper par exemple
+`/ajout-realisation` avec les photos (« voici avant.jpg et apres.jpg, bergère en velours vert »),
+`/ajout-produit`, `/produit-vendu Fauteuil studio` ou `/publier`. Le détail ci-dessous sert de référence.
+
 ## 1. Photos
 Déposer les photos (JPEG du téléphone, PNG…) dans `src/resources/Realisations/` ou
 `src/resources/Produits/`, puis lancer `npm run images`. Le script convertit en WebP (≤ 1600 px),

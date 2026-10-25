@@ -76,11 +76,15 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
   LCP 2,0–2,1 s, CLS 0, TBT ≤ 20 ms.
 
 ## Phase 5 — Outillage IA
-- [ ] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`.
-- [ ] `llms.txt` à la racine du site : résumé de l'activité pour les assistants IA de recherche.
+- [x] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`, `publier`.
+- [x] `.claude/settings.json` : commandes sûres autorisées (tests, images, git local), lecture de
+      `node_modules` / `.cache` interdite, `push --force` interdit.
+- [x] `llms.txt` (généré depuis les données) : activité, contacts, pages, produits à vendre, fournisseurs.
 
 ## Historique
 - Phase 0 (25/10/2026) : faille PHP supprimée (injection d'en-têtes), polices et animations
   réparées, CSS manquants, `lang="fr"`, liens Instagram vides, `.vs/` hors dépôt.
 - Phase 1 (25/10/2026) : `npm run images` ; images 124 Mo → 8,9 Mo ; poids par page divisé par 10 à 18.
 - Branches : ancien `main` (refactoring Codex jamais publié) archivé sous `archive/main-codex-2025-10`.
+- Phases 2 à 5 (25/10/2026, branche `Work`, pas encore publiées) : Eleventy + données YAML, refonte
+  « Versailles / Louis XVI », SEO, accessibilité AA, consentement RGPD, aperçu GitHub Pages, skills IA.

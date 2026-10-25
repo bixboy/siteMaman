@@ -21,6 +21,12 @@ construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aper�
 - `npm run test:visual [-- --rapide]` — compare le rendu (7 pages × 10 largeurs) avec `HEAD` ; ~40 s (~15 s en rapide)
 - `npm run images` — convertit/renomme les nouvelles images de `src/resources/` et met à jour les chemins
 
+## Tâches courantes (skills `.claude/skills/`, procédures complètes)
+- `/ajout-realisation` — photos d'un siège restauré → galerie (avant/après ou photo simple)
+- `/ajout-produit` — mettre un fauteuil en vente (+ fiche produit)
+- `/produit-vendu` — retirer un produit vendu
+- `/publier` — mise en ligne de `Work` sur le site (confirmation obligatoire)
+
 ## Carte
 - `src/_data/` — **le contenu** : `site.yml` (coordonnées, horaires, SEO), `produits.yml`, `realisations.yml`,
   `services.yml`, `fournisseurs.yml`, `etats.yml` (libellés des états produit)
@@ -37,11 +43,13 @@ construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aper�
 - `src/resources/` — images sources (WebP ≤ 1600 px) ; vignettes générées dans `/img/` (`lib/images.js`,
   photo du bandeau : `src/_data/imageBandeau.js`)
 - `src/css/polices.css` — polices auto-hébergées (`@fontsource`, copiées dans `/fonts/`) : aucun appel à Google Fonts
-- `src/.htaccess` — Apache OVH : redirection vers `https://www.`, cache, 404 ; `src/404.njk`, `src/robots.njk`, `src/sitemap.njk`
+- `src/.htaccess` — Apache OVH : redirection vers `https://www.`, cache, 404 ; `src/404.njk`, `src/robots.njk`, `src/sitemap.njk`,
+  `src/llms.njk` (résumé pour les assistants IA, généré depuis les données)
 - `eleventy.config.js` — filtres `produitUrl`, `nl2br`, `uneLigne` ; shortcode `image` ; plugin de préfixe (aperçu)
 - `tests/e2e.mjs` — tests d'interaction ; `tests/visual.mjs` — non-régression visuelle ; `tests/helpers.mjs` — serveur + Chrome
 - `scripts/optimize-images.mjs` — `npm run images`
 - `docs/CONTENU.md` — ajouter un contenu ; `docs/ROADMAP.md` — plan, points à confirmer, historique
+- `.claude/settings.json` — commandes autorisées sans confirmation ; lecture de `node_modules`, `.cache` interdite
 
 ## Règles
 - Contenu (texte, produit, réalisation, coordonnées) : modifier les YAML de `src/_data/`, pas les gabarits.
