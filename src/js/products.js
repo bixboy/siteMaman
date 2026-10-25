@@ -1,51 +1,41 @@
-// --- Page Vente : filtre par état (data-filter / data-etat) ---
+// --- Page Vente : filtres par état ([data-filter] → produits [data-etat]) ---
 export function initProductFilters() {
-  const buttons = document.querySelectorAll('.category-filter button');
-  const products = document.querySelectorAll('.product-item');
-  const loader = document.getElementById('loader');
+  const buttons = document.querySelectorAll('[data-filter]');
+  const products = document.querySelectorAll('[data-etat]');
   if (buttons.length === 0) return;
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
-      if (loader) loader.style.display = 'flex';
-
-      setTimeout(() => {
-        products.forEach((product) => {
-          product.style.display = filter === 'all' || product.dataset.etat === filter ? 'flex' : 'none';
-        });
-        if (loader) loader.style.display = 'none';
-      }, 500);
+      buttons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+      products.forEach((product) => {
+        product.hidden = filter !== 'all' && product.dataset.etat !== filter;
+      });
     });
   });
 }
 
-// --- Page produit : défilement des photos ---
+// --- Page produit : photo principale, flèches et vignettes ([data-galerie-produit]) ---
 export function initProductGallery() {
-  const images = document.querySelectorAll('.ImgSlider');
-  const prevButton = document.querySelector('.prev');
-  const nextButton = document.querySelector('.next');
-  if (images.length === 0) return;
+  const gallery = document.querySelector('[data-galerie-produit]');
+  if (!gallery) return;
 
-  let currentIndex = 0;
-  const showImage = (index) => {
-    images.forEach((img, i) => img.classList.toggle('active', i === index));
+  const mainImage = gallery.querySelector('[data-photo-principale]');
+  const zoomButton = gallery.querySelector('[data-photo]');
+  const thumbnails = [...gallery.querySelectorAll('[data-vignette]')];
+  if (thumbnails.length < 2) return;
+
+  let index = 0;
+  const show = (newIndex) => {
+    index = (newIndex + thumbnails.length) % thumbnails.length;
+    const { src, alt } = thumbnails[index].dataset;
+    mainImage.src = src;
+    mainImage.alt = alt;
+    zoomButton.dataset.photo = src;
+    thumbnails.forEach((thumbnail, i) => thumbnail.setAttribute('aria-current', String(i === index)));
   };
 
-  if (prevButton && nextButton) {
-    const display = images.length > 1 ? 'flex' : 'none';
-    prevButton.style.display = display;
-    nextButton.style.display = display;
-
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    });
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      showImage(currentIndex);
-    });
-  }
-
-  showImage(0);
+  thumbnails.forEach((thumbnail, i) => thumbnail.addEventListener('click', () => show(i)));
+  gallery.querySelector('[data-precedent]')?.addEventListener('click', () => show(index - 1));
+  gallery.querySelector('[data-suivant]')?.addEventListener('click', () => show(index + 1));
 }

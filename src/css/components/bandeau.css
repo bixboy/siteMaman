@@ -1,0 +1,116 @@
+/* Bandeau d'en-tête de page (partials/bandeau.njk) : photo voilée et encadrée d'un filet doré,
+   ou fond uni pour les pages de texte. */
+
+.bandeau {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bandeau--accueil {
+  min-height: min(84vh, 760px);
+}
+
+.bandeau--photo {
+  min-height: clamp(320px, 46vh, 460px);
+}
+
+.bandeau__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Voile pour la lisibilité du texte, plus dense à gauche */
+.bandeau--accueil::before,
+.bandeau--photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgb(28 22 16 / 80%) 0%, rgb(28 22 16 / 50%) 55%, rgb(28 22 16 / 15%) 100%);
+}
+
+/* Encadrement doré façon boiserie */
+.bandeau--accueil::after,
+.bandeau--photo::after {
+  content: "";
+  position: absolute;
+  inset: clamp(10px, 2vw, 22px);
+  z-index: 1;
+  border: 1px solid rgb(220 200 156 / 55%);
+  pointer-events: none;
+}
+
+.bandeau__contenu {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--espace-xl);
+}
+
+.bandeau--accueil .bandeau__contenu,
+.bandeau--photo .bandeau__contenu {
+  color: var(--ivoire);
+}
+
+.bandeau--accueil h1,
+.bandeau--photo h1 {
+  max-width: 14ch;
+  color: var(--ivoire);
+}
+
+.bandeau--accueil .sur-titre,
+.bandeau--photo .sur-titre {
+  color: var(--or-clair);
+}
+
+.bandeau--accueil .ornement,
+.bandeau--photo .ornement {
+  justify-content: flex-start;
+}
+
+.bandeau--accueil .ornement::before,
+.bandeau--photo .ornement::before {
+  display: none;
+}
+
+.bandeau__texte {
+  max-width: 46ch;
+  margin-top: var(--espace-m);
+  font-size: 1.15rem;
+}
+
+.bandeau__actions {
+  margin-top: var(--espace-l);
+}
+
+/* Variante sans photo (pages légales) */
+.bandeau--uni {
+  justify-content: center;
+  background-color: var(--ivoire-fonce);
+  border-bottom: 1px solid var(--filet);
+  text-align: center;
+}
+
+.bandeau--uni .bandeau__contenu {
+  padding-block: var(--espace-l);
+}
+
+@media (max-width: 767px) {
+  .bandeau--accueil {
+    min-height: 78vh;
+  }
+
+  .bandeau--accueil::before,
+  .bandeau--photo::before {
+    background: linear-gradient(0deg, rgb(28 22 16 / 85%) 0%, rgb(28 22 16 / 45%) 100%);
+  }
+
+  .bandeau--accueil .bandeau__contenu,
+  .bandeau--photo .bandeau__contenu {
+    padding-inline: var(--espace-s);
+  }
+}

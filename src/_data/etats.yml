@@ -1,11 +1,12 @@
 # États possibles d'un produit (champ `etat` de produits.yml)
+#   filtre       bouton de filtre de la page Vente
+#   etiquette    étiquette sur la carte et la fiche produit
+#   description  phrase affichée sur la fiche produit
 restaure:
-  filtre: Fauteuils Restaurés
-  statut: |-
-    Fauteuil Prêt
-     à l'Emploi
+  filtre: Fauteuils restaurés
+  etiquette: Prêt à l'emploi
+  description: Fauteuil restauré, prêt à l'emploi.
 a-renover:
-  filtre: Fauteuils à Rénover
-  statut: |-
-    Fauteuil
-     à Personnaliser
+  filtre: Fauteuils à rénover
+  etiquette: À personnaliser
+  description: "Fauteuil à rénover : vous choisissez le tissu et les finitions."

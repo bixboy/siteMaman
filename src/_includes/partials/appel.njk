@@ -1,0 +1,14 @@
+{%- from "partials/icones.njk" import icone -%}
+{#- Encart « Un fauteuil à restaurer ? » en bas des pages -#}
+<section class="appel">
+  <div class="conteneur appel__contenu">
+    <span class="sur-titre">Devis gratuit</span>
+    <h2>Un fauteuil à restaurer ?</h2>
+    <div class="ornement" aria-hidden="true"><span></span></div>
+    <p>Je me déplace à domicile à {{ site.ville }} et dans tout le Calvados.</p>
+    <div class="groupe-boutons appel__actions">
+      <a class="bouton" href="tel:{{ site.telephone }}">{{ icone("telephone") }} {{ site.telephoneAffiche }}</a>
+      <a class="bouton bouton--contour" href="mailto:{{ site.email }}">{{ icone("email") }} M'écrire</a>
+    </div>
+  </div>
+</section>

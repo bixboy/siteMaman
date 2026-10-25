@@ -1,24 +1,20 @@
-// --- Apparition des éléments au scroll (classes .fade-up / .fade-in définies dans body.css) ---
+// --- Apparition au défilement des éléments [data-reveal] (classes .reveal / .is-visible dans base.css).
+// Les classes sont posées par le JS : sans JS, tout reste visible.
 export function initAnimations() {
+  const elements = document.querySelectorAll('[data-reveal]');
+  if (elements.length === 0) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add('is-visible');
         observer.unobserve(entry.target); // Une seule fois
       }
     });
-  }, {
-    threshold: 0.2, // Visible à 20 %
-    rootMargin: '0px 0px -50px 0px',
+  }, { rootMargin: '0px 0px -60px 0px' });
+
+  elements.forEach((element) => {
+    element.classList.add('reveal');
+    observer.observe(element);
   });
-
-  const animate = (selector, className) => {
-    document.querySelectorAll(selector).forEach((element) => {
-      element.classList.add(className);
-      observer.observe(element);
-    });
-  };
-
-  animate('.product-item, .boxList div, .modal-trigger1, .modal-trigger2, .txt p', 'fade-up');
-  animate('.titletTop, .category-filter, .presTop div h1', 'fade-in');
 }

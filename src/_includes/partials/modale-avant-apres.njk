@@ -1,0 +1,16 @@
+{%- from "partials/icones.njk" import icone -%}
+{#- Comparateur avant/après, ouvert par tout élément [data-avant][data-apres] (js/gallery.js, js/before-after.js) ;
+    CSS : components/modale.css + components/avant-apres.css -#}
+<div class="modale" id="modale-avant-apres" role="dialog" aria-modal="true" aria-label="Comparaison avant / après" hidden>
+  <button class="modale__fermer" type="button" data-modale-fermer aria-label="Fermer">{{ icone("fermer") }}</button>
+  <div class="modale__contenu">
+    <div class="avant-apres" data-avant-apres>
+      <img class="avant-apres__image" data-image-apres alt="Après la restauration">
+      <img class="avant-apres__image avant-apres__image--avant" data-image-avant alt="Avant la restauration">
+      <span class="avant-apres__poignee" aria-hidden="true"></span>
+      <span class="etiquette avant-apres__libelle avant-apres__libelle--avant">Avant</span>
+      <span class="etiquette avant-apres__libelle avant-apres__libelle--apres">Après</span>
+      <input class="avant-apres__curseur" type="range" min="0" max="100" value="50" aria-label="Glisser pour comparer avant et après">
+    </div>
+  </div>
+</div>

@@ -3,48 +3,43 @@ title: "Vente - Main é merveille - Tapissier d'ameublement"
 permalink: market.html
 nav: vente
 styles:
-  - components/hero.css
+  - components/bandeau.css
+  - components/appel.css
   - pages/vente.css
 ---
-<div class="pcTop">
-  <div class="boxImgTop">
-    <img src="/resources/Realisations/background1.webp" alt="prestations" fetchpriority="high">
-    <div class="coverImg">
-      <h1>Vente et Refection</h1>
-      <span>Vous avez envie d'un fauteuil <br> mais vous n'en possedez pas : deux solutions <br> un fauteuil déjà
-        fait ou un fauteuil à refaire. </span>
-      <button data-scroll-to="listProduct">Voir les Produits <span class="fleche"> ^
-        </span></button>
+{%- from "partials/bandeau.njk" import bandeau with context -%}
+
+{{ bandeau({
+  surTitre: "Fauteuils à vendre",
+  titre: "Vente et réfection",
+  texte: "Vous avez envie d'un fauteuil mais vous n'en possédez pas ? Deux solutions : un fauteuil déjà restauré, prêt à l'emploi, ou un fauteuil à refaire selon vos goûts."
+}) }}
+
+<section class="section">
+  <div class="conteneur">
+    <div class="filtres" role="group" aria-label="Filtrer les fauteuils">
+      <button type="button" data-filter="all" aria-pressed="true">Tous</button>
+      {%- for cle, etat in etats %}
+      <button type="button" data-filter="{{ cle }}" aria-pressed="false">{{ etat.filtre }}</button>
+      {%- endfor %}
     </div>
-  </div>
-</div>
 
-<div class="Container" id="marketContainer">
-
-  <div class="category-filter">
-    <button class="filter-btn0" data-filter="all">Tous</button>
-    <button class="filter-btn1" data-filter="restaure">{{ etats.restaure.filtre }}</button>
-    <button class="filter-btn2" data-filter="a-renover">{{ etats["a-renover"].filtre }}</button>
+    {#- Contenu : src/_data/produits.yml ; une page par produit : src/vente/produit.njk #}
+    <ul class="produits">
+      {%- for produit in produits %}
+      <li class="carte-produit" data-etat="{{ produit.etat }}" data-reveal>
+        <a class="carte-produit__lien" href="{{ produit | produitUrl }}">
+          <div class="cadre carte-produit__image">
+            {% image produit.photos[0], produit.nom, "(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 340px" %}
+          </div>
+          <span class="etiquette">{{ etats[produit.etat].etiquette }}</span>
+          <h2 class="carte-produit__nom">{{ produit.nom }}</h2>
+          <span class="lien-fleche">Voir le fauteuil</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
   </div>
+</section>
 
-  {#- Contenu : src/_data/produits.yml ; une page par produit : src/vente/produit.njk #}
-  <div class="product-list" id="listProduct">
-    {%- for produit in produits %}
-    {%- set url = produit | produitUrl %}
-    <div class="product-item" data-etat="{{ produit.etat }}">
-      <a class="image-container" href="{{ url }}">
-        {% image produit.photos[0], produit.nom, "(max-width: 767px) 90vw, 300px" %}
-        <div class="overlay">{{ produit.nom }}</div>
-      </a>
-      <h2 class="product-name-mobile">{{ produit.nom }}</h2>
-      <a href="{{ url }}" class="view-details">Voir les détails</a>
-    </div>
-    {%- endfor %}
-  </div>
-
-  <div class="loader-container" id="loader">
-    <div class="loader-box">
-      <div class="loader"></div>
-    </div>
-  </div>
-</div>
+{% include "partials/appel.njk" %}

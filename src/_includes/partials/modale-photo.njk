@@ -1,0 +1,8 @@
+{%- from "partials/icones.njk" import icone -%}
+{#- Photo agrandie, ouverte par tout élément [data-photo] (js/gallery.js) ; CSS : components/modale.css -#}
+<div class="modale" id="modale-photo" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
+  <button class="modale__fermer" type="button" data-modale-fermer aria-label="Fermer">{{ icone("fermer") }}</button>
+  <div class="modale__contenu">
+    <img class="modale__image" data-modale-image alt="">
+  </div>
+</div>

@@ -1,0 +1,44 @@
+{%- from "partials/icones.njk" import icone -%}
+<footer class="pied">
+  <div class="frise" aria-hidden="true"></div>
+
+  <div class="conteneur pied__grille">
+    <div class="pied__marque">
+      <img src="/resources/favicon.ico" alt="" width="56" height="56">
+      <p class="pied__nom">{{ site.nom }}</p>
+      <p>Tapissière d'ameublement à {{ site.ville }}.<br>
+        Restauration de fauteuils, chaises et canapés, à domicile dans le Calvados.</p>
+    </div>
+
+    <nav aria-label="Liens du pied de page">
+      <h2 class="pied__titre">L'atelier</h2>
+      <ul class="pied__liste">
+        <li><a href="/#prestations">Mes services</a></li>
+        <li><a href="/realisations.html">Réalisations</a></li>
+        <li><a href="/market.html">Fauteuils à vendre</a></li>
+        <li><a href="/contact/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="pied__titre">Contact</h2>
+      <ul class="pied__liste">
+        <li><a href="tel:{{ site.telephone }}">{{ icone("telephone") }} {{ site.telephoneAffiche }}</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ icone("email") }} {{ site.email }}</a></li>
+        <li><a href="{{ site.facebook }}">{{ icone("facebook") }} Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="conteneur pied__bas">
+    <p>© {{ annee }} {{ site.nom }}</p>
+    <ul>
+      <li><a href="/legal/mentionsLegal.html">Mentions légales</a></li>
+      <li><a href="/legal/politiqueConf.html">Politique de confidentialité</a></li>
+    </ul>
+  </div>
+
+  <button class="retour-haut" type="button" data-scroll-top aria-label="Retour en haut de la page">
+    {{ icone("fleche-haut") }}
+  </button>
+</footer>

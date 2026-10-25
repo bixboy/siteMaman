@@ -1,0 +1,35 @@
+{%- from "partials/icones.njk" import icone -%}
+{#- `nav` (en-tête de la page) = clé du lien actif -#}
+{%- set liens = [
+  { cle: "accueil", texte: "Accueil", url: "/" },
+  { cle: "services", texte: "Mes services", url: "/#prestations" },
+  { cle: "realisations", texte: "Réalisations", url: "/realisations.html" },
+  { cle: "vente", texte: "Fauteuils à vendre", url: "/market.html" },
+  { cle: "contact", texte: "Contact", url: "/contact/contact.html" }
+] -%}
+<header class="entete" data-entete>
+  <div class="conteneur entete__barre">
+    <a class="entete__marque" href="/">
+      <img src="/resources/favicon.ico" alt="" width="48" height="48">
+      <span class="entete__nom">{{ site.nom }}<small>Tapissière d'ameublement</small></span>
+    </a>
+
+    <button class="entete__burger" type="button" aria-expanded="false" aria-controls="navigation" data-menu-bouton>
+      <span class="visuellement-cache">Menu</span>
+      <span class="entete__burger-barres" aria-hidden="true"></span>
+    </button>
+
+    <nav class="navigation" id="navigation" aria-label="Navigation principale" data-menu>
+      <ul class="navigation__liens">
+        {%- for lien in liens %}
+        <li><a href="{{ lien.url }}"{% if lien.cle == nav %} aria-current="page"{% endif %}>{{ lien.texte }}</a></li>
+        {%- endfor %}
+      </ul>
+      <div class="navigation__contact">
+        <a href="tel:{{ site.telephone }}">{{ icone("telephone") }} {{ site.telephoneAffiche }}</a>
+        <a href="mailto:{{ site.email }}">{{ icone("email") }} {{ site.email }}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="voile-menu" data-menu-voile></div>

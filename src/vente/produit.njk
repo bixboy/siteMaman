@@ -7,44 +7,62 @@ pagination:
 permalink: "{{ produit | produitUrl }}"
 nav: vente
 styles:
+  - components/modale.css
+  - components/appel.css
   - pages/produit.css
-  - components/modal.css
 eleventyComputed:
   title: "{{ produit.nom }} - Main é merveille - Tapissier d'ameublement"
   description: "{{ produit.nom }} : {{ produit.description }}"
   image: "/resources/{{ produit.photos[0] }}"
 ---
-<div class="Product">
-  <div class="product-container">
+{%- from "partials/icones.njk" import icone -%}
+{%- set plusieursPhotos = produit.photos.length > 1 -%}
 
-    <div class="product-image">
-      <div class="slider-container">
-        <div class="sliderProduct">
-          {%- for photo in produit.photos %}
-          <img class="ImgSlider product-modal-trigger" src="/resources/{{ photo }}"
-            alt="{{ produit.nom }} - Image {{ loop.index }}"{% if not loop.first %} loading="lazy"{% endif %}>
-          {%- endfor %}
+<section class="section produit">
+  <div class="conteneur">
+    <a class="lien-retour" href="/market.html">← Tous les fauteuils</a>
+
+    <div class="produit__grille">
+      <div class="produit__galerie" data-galerie-produit>
+        <div class="cadre produit__principale">
+          <button class="produit__zoom" type="button" data-photo="/resources/{{ produit.photos[0] }}" aria-label="Agrandir la photo">
+            <img data-photo-principale src="/resources/{{ produit.photos[0] }}" alt="{{ produit.nom }} – photo 1" fetchpriority="high">
+          </button>
+          {%- if plusieursPhotos %}
+          <button class="produit__fleche produit__fleche--precedent" type="button" data-precedent aria-label="Photo précédente">{{ icone("precedent") }}</button>
+          <button class="produit__fleche produit__fleche--suivant" type="button" data-suivant aria-label="Photo suivante">{{ icone("suivant") }}</button>
+          {%- endif %}
         </div>
-        <div class="prev">&#10094;</div>
-        <div class="next">&#10095;</div>
-      </div>
-    </div>
 
-    <div class="product-details">
-      <div class="product-header">
-        <h1>{{ produit.nom }}</h1>
-        <div class="lines product-separator"></div>
-        <p class="price">{{ etats[produit.etat].statut | nl2br | safe }}</p>
+        {%- if plusieursPhotos %}
+        <ul class="produit__vignettes">
+          {%- for photo in produit.photos %}
+          <li>
+            <button class="produit__vignette" type="button" data-vignette
+              data-src="/resources/{{ photo }}" data-alt="{{ produit.nom }} – photo {{ loop.index }}"
+              aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="Voir la photo {{ loop.index }}">
+              {% image photo, "", "90px" %}
+            </button>
+          </li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
       </div>
-      <p class="description">{{ produit.description | nl2br | safe }}</p>
-      <a class="buy-button" href="tel:{{ site.telephone }}"> Contacter <img src="/resources/tel.webp"
-          alt="" loading="lazy"></a>
+
+      <div class="produit__infos">
+        <span class="etiquette">{{ etats[produit.etat].etiquette }}</span>
+        <h1>{{ produit.nom }}</h1>
+        <div class="ornement ornement--gauche" aria-hidden="true"><span></span></div>
+        <p class="produit__description">{{ produit.description | nl2br | safe }}</p>
+        <p class="produit__etat">{{ etats[produit.etat].description }}</p>
+        <div class="groupe-boutons produit__actions">
+          <a class="bouton" href="tel:{{ site.telephone }}">{{ icone("telephone") }} Appeler</a>
+          <a class="bouton bouton--contour" href="mailto:{{ site.email }}?subject={{ ('Fauteuil : ' + produit.nom) | urlencode }}">{{ icone("email") }} Écrire</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div id="myModalIMG" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="image" alt="">
-  <div id="caption"></div>
-</div>
+{% include "partials/appel.njk" %}
+{% include "partials/modale-photo.njk" %}

@@ -1,102 +1,397 @@
-/* --- Variables Globales --- */
+/* Système de design « Versailles / Louis XVI » : ivoire, or, vert canard ; ornements néoclassiques
+   (filets dorés, losanges, frises de perles, cadres à moulure).
+   Toute couleur, police ou espacement du site vient de ces variables. */
+
 :root {
-    /* Palette de Couleurs "Premium & Naturelle" */
-    --color-primary: #8b6238;
-    /* Marron chaud (cuir/bois) */
-    --color-secondary: #0b4446;
-    /* Vert Canard (profond) */
-    --color-accent: #e67e22;
-    /* Touche d'orange brûlé */
-    --color-bg-light: #f9f7f2;
-    /* Crème très clair (fond) */
-    --color-bg-dark: #2c2c2c;
-    /* Gris très sombre (footer) */
-    --color-text-main: #333333;
-    /* Texte principal */
-    --color-text-light: #fbfbfb;
-    /* Texte sur fond sombre */
-    --color-white: #ffffff;
+  /* Couleurs */
+  --ivoire: #f8f4ec;          /* fond général */
+  --ivoire-fonce: #efe8da;    /* sections alternées, façon boiseries */
+  --papier: #fdfaf4;          /* cartes, cadres */
+  --encre: #2f2a24;           /* texte */
+  --encre-douce: #6b6154;     /* texte secondaire */
+  --vert: #1f4e4a;            /* vert canard (le velours de l'atelier) : actions, pied de page */
+  --vert-fonce: #163936;
+  --or: #b08d4c;              /* or vieilli : filets, ornements */
+  --or-fonce: #8a6a32;
+  --or-clair: #dcc89c;
+  --filet: rgb(176 141 76 / 50%);
+  --ombre: 0 12px 32px -14px rgb(47 42 36 / 40%);
 
-    /* Typographie */
-    --font-heading: 'Cinzel', serif;
-    /* Élégant pour les titres (à importer) */
-    --font-body: 'Lato', sans-serif;
-    /* Lisible pour le texte */
+  /* Typographie */
+  --police-titre: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+  --police-capitales: 'Cinzel', 'Trajan Pro', serif;   /* petites capitales gravées */
+  --police-texte: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --taille-texte: 1.0625rem;
+  --taille-h1: clamp(2.4rem, 5vw + 1rem, 4.25rem);
+  --taille-h2: clamp(1.9rem, 3vw + 1rem, 2.9rem);
+  --taille-h3: 1.6rem;
 
-    /* Espacements Standard */
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 32px;
+  /* Espacements et mise en page */
+  --espace-xs: 0.5rem;
+  --espace-s: 1rem;
+  --espace-m: 1.5rem;
+  --espace-l: 3rem;
+  --espace-xl: clamp(4rem, 8vw, 6.5rem);
+  --largeur-max: 1180px;
+  --largeur-texte: 68ch;
+  --hauteur-entete: 76px;
+  --rayon: 2px;
+  --transition: 0.3s ease;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    /* Rendu de police plus net */
+/* --- Reset --- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Les images avec width/height gardent leurs proportions ; spécificité nulle : toute règle de hauteur l'emporte */
-:where(img[width][height]) {
-    height: auto;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--hauteur-entete);
 }
 
 body {
-    background-color: var(--color-bg-light);
-    font-family: var(--font-body);
-    color: var(--color-text-main);
-    line-height: 1.6;
+  background-color: var(--ivoire);
+  color: var(--encre);
+  font-family: var(--police-texte);
+  font-size: var(--taille-texte);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* [hidden] l'emporte toujours, même sur un élément stylé en flex ou grid */
+[hidden] {
+  display: none !important;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Images avec width/height : proportions conservées ; spécificité nulle, toute règle l'emporte */
+:where(img[width][height]) {
+  height: auto;
+}
+
+a {
+  color: var(--vert);
+  text-decoration-color: var(--filet);
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--or);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--or);
+  outline-offset: 3px;
+}
+
+/* --- Typographie --- */
 
 h1,
 h2,
 h3 {
-    font-family: var(--font-heading);
-    font-weight: 700;
+  font-family: var(--police-titre);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--encre);
 }
 
-body.no-scroll {
-    overflow: hidden;
+h1 {
+  font-size: var(--taille-h1);
 }
 
-/* Scrollbar personnalisée */
-::-webkit-scrollbar {
-    width: 10px;
+h2 {
+  font-size: var(--taille-h2);
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+h3 {
+  font-size: var(--taille-h3);
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--color-primary);
-    border-radius: 5px;
+p + p {
+  margin-top: var(--espace-s);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #684f36;
+.sur-titre {
+  display: block;
+  margin-bottom: var(--espace-xs);
+  font-family: var(--police-capitales);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or-fonce);
 }
 
-/* Animations Trigger JS */
-.fade-in {
-    opacity: 0;
-    transition: opacity 1s ease-out;
+/* --- Mise en page --- */
+
+.conteneur {
+  width: min(100% - 2 * var(--espace-m), var(--largeur-max));
+  margin-inline: auto;
 }
 
-.fade-in.visible {
+.section {
+  padding-block: var(--espace-xl);
+}
+
+.section--alt {
+  background-color: var(--ivoire-fonce);
+}
+
+/* Titre de section centré, avec fleuron et filets dorés */
+.titre-section {
+  margin-bottom: var(--espace-l);
+  text-align: center;
+}
+
+.titre-section p {
+  max-width: 52ch;
+  margin: var(--espace-s) auto 0;
+  color: var(--encre-douce);
+}
+
+/* Ornement néoclassique : filet doré – losange – filet doré
+   <div class="ornement" aria-hidden="true"><span></span></div> */
+.ornement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: var(--espace-s);
+}
+
+.ornement::before,
+.ornement::after {
+  content: "";
+  width: 64px;
+  height: 1px;
+  background-color: var(--or);
+}
+
+.ornement span {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--or);
+  transform: rotate(45deg);
+}
+
+/* Ornement aligné à gauche (losange puis filet) */
+.ornement--gauche {
+  justify-content: flex-start;
+}
+
+.ornement--gauche::before {
+  display: none;
+}
+
+/* Frise de perles dorées (séparateur Louis XVI) */
+.frise {
+  height: 8px;
+  background: radial-gradient(circle, var(--or) 1.6px, transparent 2px) center / 12px 8px repeat-x;
+  opacity: 0.8;
+}
+
+/* --- Boutons --- */
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0.75em 1.7em;
+  border: 1px solid var(--vert);
+  border-radius: var(--rayon);
+  background-color: var(--vert);
+  color: var(--ivoire);
+  font-family: var(--police-capitales);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.bouton:hover {
+  background-color: var(--vert-fonce);
+  border-color: var(--vert-fonce);
+  color: var(--ivoire);
+}
+
+.bouton--contour {
+  background-color: transparent;
+  border-color: var(--or);
+  color: var(--encre);
+}
+
+.bouton--contour:hover {
+  background-color: var(--or);
+  border-color: var(--or);
+  color: var(--papier);
+}
+
+/* Variante sur fond sombre (bandeaux photo, pied de page) */
+.bouton--clair {
+  background-color: transparent;
+  border-color: var(--or-clair);
+  color: var(--ivoire);
+}
+
+.bouton--clair:hover {
+  background-color: var(--ivoire);
+  border-color: var(--ivoire);
+  color: var(--encre);
+}
+
+.bouton svg {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.groupe-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-s);
+}
+
+/* Paragraphe centré sous une grille (bouton ou lien de suite) */
+.centre {
+  margin-top: var(--espace-l);
+  text-align: center;
+}
+
+/* Lien discret avec flèche (« Voir le fauteuil → ») */
+.lien-fleche {
+  font-family: var(--police-capitales);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.lien-fleche::after {
+  content: " →";
+}
+
+/* --- Cadre photo doré à moulure, façon tableau --- */
+
+.cadre {
+  position: relative;
+  padding: 10px;
+  background:
+    linear-gradient(var(--papier), var(--papier)) padding-box,
+    linear-gradient(135deg, var(--or-clair), var(--or) 45%, var(--or-clair) 70%, var(--or-fonce)) border-box;
+  border: 3px solid transparent;
+  box-shadow: var(--ombre);
+}
+
+/* Filet intérieur de la moulure */
+.cadre::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--filet);
+  pointer-events: none;
+}
+
+.cadre img {
+  width: 100%;
+}
+
+/* --- Panneau façon boiserie : fond clair et double filet doré en retrait --- */
+
+.panneau {
+  position: relative;
+  padding: var(--espace-l) var(--espace-m);
+  background-color: var(--papier);
+  border: 1px solid var(--or-clair);
+}
+
+.panneau::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--filet);
+  pointer-events: none;
+}
+
+/* Étiquette (état d'un produit, « Avant / Après ») */
+.etiquette {
+  display: inline-block;
+  padding: 0.3em 0.9em;
+  border: 1px solid var(--or);
+  background-color: var(--papier);
+  color: var(--encre);
+  font-family: var(--police-capitales);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.icone {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* --- Apparition au défilement (classes ajoutées par js/animations.js) --- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
     opacity: 1;
-}
-
-.fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    transition: none;
+  }
 }

@@ -15,10 +15,10 @@ Ajouter un bloc (l'ordre du fichier = l'ordre d'affichage) :
 - avant: Realisations/bergere-louis-xv-avant.webp
   apres: Realisations/bergere-louis-xv-apres.webp
   alt: Bergère Louis XV refaite en velours vert
-  format: portrait        # si la photo est en hauteur ; sinon supprimer la ligne
 ```
 
 Photo simple (agrandie au clic) : `- photo: Realisations/coussins3.webp` (+ `alt`).
+Les 4 premières réalisations du fichier apparaissent aussi sur la page d'accueil.
 
 ## 3. Produit à vendre — `src/_data/produits.yml`
 
@@ -38,9 +38,10 @@ La page `/vente/13-fauteuil-cabriolet.html` est créée automatiquement.
 **Produit vendu** : supprimer son bloc (et ses photos si elles ne servent plus).
 
 ## 4. Autres
-- Téléphone, email, Facebook, zone d'intervention : `src/_data/site.yml`.
+- Téléphone, email, Facebook, horaires, zone d'intervention : `src/_data/site.yml`.
+- Cartes « Mes services » : `src/_data/services.yml`. Libellés des états produit : `src/_data/etats.yml`.
 - Logos fournisseurs : `src/_data/fournisseurs.yml` (+ logo dans `src/resources/`).
-- Textes des pages (à propos, services…) : directement dans `src/index.njk`, `src/contact/contact.njk`…
+- Textes des pages (à propos, bandeaux…) : directement dans `src/index.njk`, `src/contact/contact.njk`…
 
 ## 5. Vérifier et publier
 1. `npm run dev` puis ouvrir http://localhost:8080 pour voir le résultat.

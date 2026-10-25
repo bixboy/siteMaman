@@ -2,17 +2,15 @@
 title: "Mentions légales - Main é merveille - Tapissier d'ameublement"
 permalink: legal/mentionsLegal.html
 styles:
-  - components/legal-hero.css
-  - pages/mentions-legales.css
+  - components/bandeau.css
+  - pages/legal.css
 ---
-<div class="box-top">
-  <div class="title-top">
-    <h1>Mentions Légales</h1>
-    <p>De Main é merveille</p>
-  </div>
-</div>
+{%- from "partials/bandeau.njk" import bandeau with context -%}
 
-<div class="txtMention">
+{{ bandeau({ variante: "uni", surTitre: site.nom, titre: "Mentions légales" }) }}
+
+<section class="section">
+<div class="conteneur prose">
 
   <h2>1. Informations légales</h2>
   <p>Nom de l'entreprise : Main é merveille</p>
@@ -59,3 +57,4 @@ styles:
     dommages causés par la perte de données ou de bénéfices découlant de, ou en relation avec, l'utilisation de ce
     site web.</p>
 </div>
+</section>

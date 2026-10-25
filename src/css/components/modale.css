@@ -1,0 +1,56 @@
+/* Modale plein écran (photo agrandie, comparateur avant/après) — logique dans js/modal.js.
+   Masquée par l'attribut [hidden]. */
+
+.modale {
+  position: fixed;
+  inset: 0;
+  /* Au-dessus de l'en-tête (1000) */
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espace-l) var(--espace-s);
+  background-color: rgb(24 20 16 / 92%);
+}
+
+.modale__contenu {
+  animation: modale-apparition 0.35s ease-out;
+}
+
+.modale__image {
+  max-width: min(92vw, 1100px);
+  max-height: 86vh;
+  border: 1px solid var(--or-clair);
+  background-color: var(--papier);
+  padding: 6px;
+}
+
+.modale__fermer {
+  position: absolute;
+  top: var(--espace-s);
+  right: var(--espace-s);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--or-clair);
+  color: var(--ivoire);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.modale__fermer:hover {
+  background-color: var(--or-clair);
+  color: var(--encre);
+}
+
+.modale__fermer .icone {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes modale-apparition {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}

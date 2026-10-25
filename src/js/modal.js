@@ -1,11 +1,17 @@
-// Modale plein écran (.modal) : fermeture par la croix, un clic sur le fond ou la touche Échap
+// Modale plein écran (.modale, masquée par [hidden]) : fermeture par la croix, un clic sur le fond
+// ou la touche Échap ; le focus revient ensuite sur l'élément qui l'a ouverte.
 export function setupModal(modal) {
+  const closeButton = modal.querySelector('[data-modale-fermer]');
+  let opener = null;
+
   const close = () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
+    if (modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove('no-scroll');
+    opener?.focus();
   };
 
-  modal.querySelector('.close, .close2')?.addEventListener('click', close);
+  closeButton?.addEventListener('click', close);
   modal.addEventListener('click', (event) => {
     if (event.target === modal) close();
   });
@@ -15,8 +21,10 @@ export function setupModal(modal) {
 
   return {
     open() {
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      opener = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('no-scroll');
+      closeButton?.focus();
     },
     close,
   };

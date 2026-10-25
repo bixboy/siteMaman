@@ -1,0 +1,87 @@
+/* Comparateur avant/après (js/before-after.js) : la photo « après » donne la taille, la photo « avant »
+   est superposée et découpée selon --pos (nombre de 0 à 100). Le curseur range sert au clavier. */
+
+.avant-apres {
+  --pos: 50;
+  position: relative;
+  display: inline-block;
+  border: 1px solid var(--or-clair);
+  background-color: var(--papier);
+  padding: 6px;
+  touch-action: none;
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.avant-apres__image {
+  max-width: min(92vw, 1100px);
+  max-height: 82vh;
+  pointer-events: none;
+}
+
+.avant-apres__image--avant {
+  position: absolute;
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  object-fit: cover;
+  clip-path: inset(0 calc((100 - var(--pos)) * 1%) 0 0);
+}
+
+/* Poignée : filet vertical doré avec pastille centrale */
+.avant-apres__poignee {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: calc(6px + (100% - 12px) * var(--pos) / 100);
+  width: 2px;
+  background-color: var(--or-clair);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.avant-apres__poignee::after {
+  content: "‹ ›";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--or-clair);
+  border-radius: 50%;
+  background-color: rgb(24 20 16 / 70%);
+  color: var(--ivoire);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  transform: translate(-50%, -50%);
+}
+
+.avant-apres__libelle {
+  position: absolute;
+  top: calc(6px + var(--espace-s));
+  pointer-events: none;
+}
+
+.avant-apres__libelle--avant {
+  left: calc(6px + var(--espace-s));
+}
+
+.avant-apres__libelle--apres {
+  right: calc(6px + var(--espace-s));
+}
+
+.avant-apres__curseur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.avant-apres:focus-within {
+  outline: 2px solid var(--or);
+  outline-offset: 3px;
+}

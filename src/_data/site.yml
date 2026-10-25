@@ -14,9 +14,11 @@ zoneIntervention:
   - Caen
   - Calvados
 horaires:
+  # jours/ouverture/fermeture : données Google (JSON-LD) ; texte : affiché sur la page contact
   jours: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
   ouverture: "09:00"
   fermeture: "18:00"
+  texte: Du lundi au samedi, de 9 h à 18 h
 
 # Description par défaut (pages sans `description` dans leur en-tête)
 description: >-

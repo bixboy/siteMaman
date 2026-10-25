@@ -1,0 +1,12 @@
+# Cartes « Mes services » de la page d'accueil, dans l'ordre d'affichage.
+#   image   chemin dans src/resources/
+
+- titre: Restauration de chaises
+  image: chaise-icone.webp
+  alt: Illustration d'une chaise ancienne restaurée
+- titre: Restauration de canapés
+  image: canape-icone.webp
+  alt: Illustration d'un canapé de style
+- titre: Restauration de fauteuils
+  image: siege-bergere.webp
+  alt: Gravure d'un fauteuil bergère

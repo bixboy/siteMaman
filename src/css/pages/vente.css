@@ -1,234 +1,72 @@
-/* Page Vente : filtres et grille de produits */
-/* --- Variables Globales (Rappel pour référence) ---
-   --color-primary (#8b6238), --color-secondary (#0b4446), --color-accent (#e67e22)
-   --bg-light (#f9f7f2), --text-main (#333), --font-heading (Cinzel), --font-body (Lato)
-*/
+/* Page Vente : filtres par état et cartes produit (filtrage : js/products.js) */
 
-button {
-    transition: all 0.4s ease;
-    font-family: var(--font-body);
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espace-xs);
+  margin-bottom: var(--espace-l);
 }
 
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1400px;
-    margin: 60px auto;
-    gap: 40px;
-    padding: 0 20px;
+.filtres button {
+  min-height: 44px;
+  padding: 0.5em 1.3em;
+  border: 1px solid var(--or-clair);
+  background-color: var(--papier);
+  font-family: var(--police-capitales);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
 }
 
-.product-item {
-    background-color: var(--color-white);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    /* Ombre plus douce */
-    width: 300px;
-    /* Taille fixe pour alignement propre */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.filtres button:hover {
+  border-color: var(--or);
 }
 
-.product-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+.filtres button[aria-pressed="true"] {
+  background-color: var(--vert);
+  border-color: var(--vert);
+  color: var(--ivoire);
 }
 
-.product-item h2 {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    margin: 15px 0;
-    color: var(--color-secondary);
+.produits {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--espace-l) var(--espace-m);
 }
 
-.image-container {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    /* Hauteur fixe pour l'image */
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.carte-produit__lien {
+  display: block;
+  color: var(--encre);
+  text-align: center;
+  text-decoration: none;
 }
 
-.product-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-    border-radius: 10px;
+.carte-produit__image {
+  margin-bottom: var(--espace-m);
+  transition: transform var(--transition);
 }
 
-.image-container:hover img {
-    transform: scale(1.1);
+.carte-produit__image img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 
-/* Overlay au survol */
-.product-item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(11, 68, 70, 0.85);
-    /* Vert Canard transparent */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    /* Caché par défaut */
-    transition: opacity 0.4s ease;
-    border-radius: 10px;
+.carte-produit__lien:hover .carte-produit__image {
+  transform: translateY(-4px);
 }
 
-.image-container:hover .overlay {
-    opacity: 1;
-    /* Apparition en fondu simple (plus élégant que le slide) */
+.carte-produit__nom {
+  margin: var(--espace-xs) 0;
+  font-size: 1.6rem;
 }
 
-.view-details {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 25px;
-    background-color: transparent;
-    border: 2px solid var(--color-secondary);
-    /* Couleur visible par défaut */
-    color: var(--color-secondary);
-    /* Texte visible par défaut */
-    text-decoration: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+.carte-produit__lien .lien-fleche {
+  color: var(--vert);
 }
 
-.view-details:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-}
-
-#product-name-mobile {
-    visibility: collapse;
-    display: none;
-}
-
-.category-filter {
-    margin: 40px auto;
-    text-align: center;
-}
-
-.category-filter button {
-    background-color: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    padding: 10px 25px;
-    font-size: 16px;
-    font-family: var(--font-body);
-    font-weight: bold;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 50px;
-    transition: all 0.3s;
-}
-
-.category-filter button:hover {
-    background-color: var(--color-primary);
-    color: white;
-    transform: translateY(-3px);
-}
-
-.loader-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Fond semi-transparent */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    display: none;
-    /* Masqué par défaut */
-}
-
-/* Fond carré derrière le loader */
-.loader-box {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    /* Couleur du carré */
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Spinner à l'intérieur du fond carré */
-.loader {
-    border: 8px solid #f3f3f3;
-    /* Couleur de l'anneau de fond */
-    border-top: 8px solid #e67e22;
-    /* Couleur de l'anneau actif */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-}
-
-.titletTop p {
-    border-bottom: solid 2px;
-    width: 39vh;
-    padding-top: 5px;
-}
-
-/* Animation de rotation */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@media (max-width: 767px) {
-    .Container {
-        padding: 0 !important;
-    }
-
-    .titletTop {
-        margin-top: 10px;
-    }
-
-    .view-details {
-        margin-top: 0;
-        width: 100%;
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-
-    #product-name-mobile {
-        visibility: visible;
-        display: block;
-    }
-
-    .category-filter .filter-btn2 {
-        margin-top: 13px;
-    }
-
-    .product-item {
-        align-items: center;
-    }
+.carte-produit__lien:hover .lien-fleche {
+  color: var(--or);
 }

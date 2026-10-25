@@ -1,0 +1,27 @@
+{#- Bandeau d'en-tête de page (contient le <h1>).
+    {% from "partials/bandeau.njk" import bandeau %}
+    {% call bandeau({ titre: "…", surTitre: "…", texte: "…", variante: "accueil" | "photo" | "uni" }) %}
+      boutons facultatifs
+    {% endcall %}
+    Variantes : accueil (grande photo), photo (photo, hauteur réduite), uni (sans photo). -#}
+{% macro bandeau(options) -%}
+{%- set variante = options.variante or "photo" -%}
+<section class="bandeau bandeau--{{ variante }}">
+  {%- if variante != "uni" %}
+  <img class="bandeau__image" src="{{ options.image or site.image }}" alt="" fetchpriority="high">
+  {%- endif %}
+  <div class="conteneur bandeau__contenu">
+    {%- if options.surTitre %}
+    <span class="sur-titre">{{ options.surTitre }}</span>
+    {%- endif %}
+    <h1>{{ options.titre }}</h1>
+    <div class="ornement" aria-hidden="true"><span></span></div>
+    {%- if options.texte %}
+    <p class="bandeau__texte">{{ options.texte }}</p>
+    {%- endif %}
+    {%- if caller %}
+    <div class="groupe-boutons bandeau__actions">{{ caller() }}</div>
+    {%- endif %}
+  </div>
+</section>
+{%- endmacro %}

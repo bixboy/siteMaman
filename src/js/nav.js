@@ -1,73 +1,44 @@
-// --- Navbar : fond au scroll, menu mobile, liens de défilement ---
+// --- En-tête : ombre au défilement, menu mobile (panneau latéral), retour en haut ---
 
-let closeMobileMenu = () => {};
+let closeMenu = () => {};
 
-export function initNavbar() {
-  const navbar = document.querySelector('.box_navbar');
-  if (!navbar) return;
+export function initHeader() {
+  const header = document.querySelector('[data-entete]');
+  const backToTop = document.querySelector('[data-scroll-top]');
 
-  const scrollDistance = 25;
-  const handleScroll = () => navbar.classList.toggle('scrolled', window.scrollY > scrollDistance);
+  const update = () => {
+    header?.classList.toggle('is-scrolled', window.scrollY > 10);
+    backToTop?.classList.toggle('is-visible', window.scrollY > 600);
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
 
-  handleScroll();
-  window.addEventListener('scroll', handleScroll);
+  backToTop?.addEventListener('click', () => window.scrollTo({ top: 0 }));
 }
 
 export function initMobileMenu() {
-  const menuToggle = document.getElementById('menu');
-  const navLinks = document.querySelector('.nav-links');
-  const background = document.querySelector('.background-menu');
-  if (!menuToggle || !navLinks) return;
+  const button = document.querySelector('[data-menu-bouton]');
+  const menu = document.querySelector('[data-menu]');
+  const veil = document.querySelector('[data-menu-voile]');
+  if (!button || !menu) return;
 
   const setOpen = (open) => {
-    menuToggle.classList.toggle('activeM', open);
-    navLinks.classList.toggle('mobile-menu', open);
+    button.setAttribute('aria-expanded', String(open));
+    menu.classList.toggle('is-open', open);
+    veil?.classList.toggle('is-visible', open);
     document.body.classList.toggle('no-scroll', open);
-    background?.classList.toggle('active', open);
   };
-  closeMobileMenu = () => setOpen(false);
+  closeMenu = () => setOpen(false);
 
-  menuToggle.addEventListener('click', (event) => {
-    event.stopPropagation();
-    setOpen(!navLinks.classList.contains('mobile-menu'));
+  button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  veil?.addEventListener('click', closeMenu);
+  // Un lien du menu (ex. /#prestations sur l'accueil) ferme le panneau avant de défiler
+  menu.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
   });
-
-  // Fermer le menu en cliquant en dehors
-  document.body.addEventListener('click', (event) => {
-    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) closeMobileMenu();
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
   });
-}
-
-function scrollToCenter(section) {
-  closeMobileMenu();
-  section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-const samePage = (link) =>
-  link.pathname.replace(/index\.html$/, '') === window.location.pathname.replace(/index\.html$/, '');
-
-// data-scroll-to="id" : défile jusqu'à la section ; data-scroll-top : remonte en haut ;
-// lien vers une ancre de la page courante (ex. /#prestations depuis l'accueil) : défilement doux centré
-export function initScrollLinks() {
-  document.addEventListener('click', (event) => {
-    const scrollTo = event.target.closest('[data-scroll-to]');
-    if (scrollTo) {
-      const section = document.getElementById(scrollTo.dataset.scrollTo);
-      if (section) scrollToCenter(section);
-      return;
-    }
-
-    if (event.target.closest('[data-scroll-top]')) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    const link = event.target.closest('a[href*="#"]');
-    if (link && link.hash && samePage(link)) {
-      const section = document.getElementById(link.hash.slice(1));
-      if (!section) return;
-      event.preventDefault();
-      scrollToCenter(section);
-    }
-  });
+  // Passage en affichage ordinateur : le panneau ne doit pas rester ouvert
+  window.matchMedia('(min-width: 992px)').addEventListener('change', closeMenu);
 }

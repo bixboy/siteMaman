@@ -1,32 +1,29 @@
-// --- Curseur de comparaison avant/après (.slider avec .slider__range) ---
+// --- Comparateur avant/après ([data-avant-apres]) : glisser à la souris ou au doigt, flèches au clavier ---
+
+export function setPosition(comparator, value) {
+  const position = Math.min(100, Math.max(0, value));
+  comparator.style.setProperty('--pos', position);
+  const range = comparator.querySelector('input[type="range"]');
+  if (range) range.value = position;
+}
+
 export function initBeforeAfterSliders() {
-  document.querySelectorAll('.slider').forEach((slider) => {
-    const range = slider.querySelector('.slider__range');
-    const before = slider.querySelector('.slider__before');
-    const separator = slider.querySelector('.slider__separator');
-    if (!range || !before || !separator) return;
+  document.querySelectorAll('[data-avant-apres]').forEach((comparator) => {
+    const range = comparator.querySelector('input[type="range"]');
+    range?.addEventListener('input', () => setPosition(comparator, Number(range.value)));
 
-    const update = () => {
-      before.style.width = `${range.value}%`;
-      separator.style.left = `${range.value}%`;
+    const followPointer = (event) => {
+      const rect = comparator.getBoundingClientRect();
+      setPosition(comparator, ((event.clientX - rect.left) / rect.width) * 100);
     };
-    range.addEventListener('input', update);
-
-    let isDragging = false;
-    const startDrag = () => { isDragging = true; };
-    const stopDrag = () => { isDragging = false; };
-    const move = (x) => {
-      if (!isDragging) return;
-      const rect = slider.getBoundingClientRect();
-      range.value = ((x - rect.left) / rect.width) * 100;
-      update();
-    };
-
-    separator.addEventListener('mousedown', startDrag);
-    separator.addEventListener('touchstart', startDrag);
-    document.addEventListener('mouseup', stopDrag);
-    document.addEventListener('touchend', stopDrag);
-    document.addEventListener('mousemove', (event) => move(event.clientX));
-    document.addEventListener('touchmove', (event) => move(event.touches[0].clientX));
+    comparator.addEventListener('pointerdown', (event) => {
+      event.preventDefault(); // sinon le navigateur retire le focus donné au curseur juste après
+      comparator.setPointerCapture(event.pointerId);
+      followPointer(event);
+      range?.focus({ preventScroll: true });
+    });
+    comparator.addEventListener('pointermove', (event) => {
+      if (comparator.hasPointerCapture(event.pointerId)) followPointer(event);
+    });
   });
 }

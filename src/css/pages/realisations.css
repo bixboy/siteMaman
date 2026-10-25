@@ -1,233 +1,51 @@
-/* Page Réalisations : bandeau « Contactez-moi », galerie */
+/* Page Réalisations : mosaïque de photos encadrées (ouverture en modale : js/gallery.js) */
 
-/* --- Bandeau « Contactez-moi » --- */
-
-.contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #0a3e40;
-    height: auto;
-    /* Allow height to adapt */
-    min-height: clamp(166px, 51vw, 23vh);
-    /* Min height instead of fixed */
-    padding: 30px 0 50px 0;
-    /* Added padding bottom */
-    justify-content: center;
-    border-top: solid 5px #c3c3c3;
+.galerie {
+  columns: 3 260px;
+  column-gap: var(--espace-m);
 }
 
-.contact div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.galerie__element {
+  break-inside: avoid;
+  margin-bottom: var(--espace-m);
 }
 
-.contact div h1 {
-    color: #f9f9f9;
-    font-size: clamp(32px, 10vw, 38px);
-    text-align: center;
-    font-family: math;
-}
-
-.contact div a {
-    font-size: 29px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #c2a37c;
-    color: black;
-    height: 60px;
-    width: 155px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 12px 2px rgb(181 133 20 / 89%);
-}
-
-.contact div a:hover {
-    background-color: #ddb88c;
-    box-shadow: 0px 0px 12px 2px rgba(208, 152, 24, 0.89);
-}
-
-.contact div a img {
-    height: 35px;
-    margin: 0px 16px;
-}
-
-.trait {
-    width: 228px;
-    height: 23px;
-    border-top: solid 2px #d8d8d8;
-    margin-top: 14px;
-}
-
-@media (max-width: 355px) {
-    .contact div h1 {
-        padding-bottom: 10px;
-    }
-
-    .trait {
-        width: 190px;
-        height: 13px;
-        border-top: solid 2px #d8d8d8;
-        margin-top: 2px;
-    }
-}
-
-@media (min-width: 768px) {
-    .trait {
-        display: none;
-    }
-
-    .contact div h1 {
-        font-size: clamp(32px, 10vw, 50px);
-    }
-
-    .contact div a {
-        margin-top: 15px;
-        height: 63px;
-        width: 180px;
-        font-size: 35px;
-    }
-
-    .contact div a img {
-        height: 45px;
-    }
-
-    .contact {
-        height: 21vh;
-    }
-}
-
-/* --- Galerie --- */
-
-.titletTop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.myImg,
-.myImg2 {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 4px 10px 9px 1px rgb(0 0 0 / 35%);
-}
-
-.gallery-img {
-  width: 85%;
-  max-width: 300px;
-}
-
-.gallery-img-full {
+.galerie__bouton {
+  display: block;
   width: 100%;
-  max-width: 300px;
+  cursor: zoom-in;
+  transition: transform var(--transition);
 }
 
-.gallery-img-cover {
-  height: 34vh;
-  object-fit: cover;
+.galerie__bouton:hover {
+  transform: translateY(-4px);
 }
 
-.container-center div {
-  position: relative;
-  margin: 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-center div span {
+.galerie__etiquette {
   position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+/* Voile et icône au survol */
+.galerie__survol {
+  position: absolute;
+  inset: 10px;
+  display: grid;
+  place-items: center;
+  background-color: rgb(24 20 16 / 35%);
+  color: var(--ivoire);
   opacity: 0;
-  width: 85%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
-  transition: 0.3s;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: opacity var(--transition);
 }
 
-.container-center {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  max-width: 131vh;
-  margin: 0 auto;
+.galerie__survol .icone {
+  width: 36px;
+  height: 36px;
 }
 
-/* Comparateur avant/après dans la modale (#myModal) */
-.container {
-  max-width: 37% !important;
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
-.boxTitleTop {
-  padding-top: 35px;
-  padding-bottom: 15px;
-}
-
-.titletTop h1 {
-  font-size: 40px;
-}
-
-.titletTop p {
-  border-bottom: solid 2px;
-  width: 39vh;
-  padding-top: 5px;
-}
-
-.modal-trigger1 span,
-.modal-trigger2 span {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.modal-trigger1,
-.modal-trigger2 {
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.modal-trigger1:hover,
-.modal-trigger2:hover {
-  transform: scale(1.05);
-  z-index: 10;
-}
-
-@media (min-width: 768px) {
-  .container-center div span:hover {
-    opacity: 1;
-    background-color: rgba(192, 192, 192, 0.342);
-  }
-
-  .myImg:hover {
-    opacity: 0.7;
-  }
-
-  .myImg2:hover {
-    opacity: 0.7;
-  }
-}
-
-@media (max-width: 767px) {
-  #containerImg {
-    padding: 0 !important;
-  }
-
-  .container {
-    margin-top: 20% !important;
-    height: 65% !important;
-    max-width: 83% !important;
-  }
-
-  .container-center div span {
-    opacity: 1;
-    height: 17%;
-    background-color: rgb(192 192 192 / 48%);
-  }
+.galerie__bouton:hover .galerie__survol,
+.galerie__bouton:focus-visible .galerie__survol {
+  opacity: 1;
 }

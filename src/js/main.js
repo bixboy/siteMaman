@@ -3,12 +3,11 @@
 import { initAnimations } from './animations.js';
 import { initBeforeAfterSliders } from './before-after.js';
 import { initBeforeAfterModal, initPhotoModal } from './gallery.js';
-import { initMobileMenu, initNavbar, initScrollLinks } from './nav.js';
+import { initHeader, initMobileMenu } from './nav.js';
 import { initProductFilters, initProductGallery } from './products.js';
 
-initNavbar();
+initHeader();
 initMobileMenu();
-initScrollLinks();
 initBeforeAfterSliders();
 initBeforeAfterModal();
 initPhotoModal();

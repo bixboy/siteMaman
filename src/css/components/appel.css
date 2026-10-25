@@ -1,0 +1,33 @@
+/* Encart « Un fauteuil à restaurer ? » (partials/appel.njk) */
+
+.appel {
+  padding-block: var(--espace-xl);
+}
+
+.appel__contenu {
+  position: relative;
+  max-width: 760px;
+  padding: var(--espace-l) var(--espace-m);
+  background-color: var(--papier);
+  border: 1px solid var(--or-clair);
+  text-align: center;
+}
+
+.appel__contenu::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--filet);
+  pointer-events: none;
+}
+
+.appel__contenu p {
+  margin-top: var(--espace-s);
+  color: var(--encre-douce);
+}
+
+.appel__actions {
+  position: relative;
+  justify-content: center;
+  margin-top: var(--espace-m);
+}

@@ -4,94 +4,107 @@ description: "Artisan tapissier à Caen. Restauration de fauteuils anciens et mo
 permalink: index.html
 nav: accueil
 styles:
+  - components/bandeau.css
+  - components/appel.css
   - pages/accueil.css
-  - components/before-after.css
 ---
-<div class="top_container">
-  <div>
-    <img src="/resources/Realisations/background1.webp" alt="main e merveille" fetchpriority="high">
-  </div>
-</div>
+{%- from "partials/bandeau.njk" import bandeau with context -%}
 
-<div class="presTop">
-  <div class="avAp">
-    <div class="container">
-      <div class="slider slider--tokyo" id="presImg">
-        <a href="/realisations.html">
-          {%- image "Realisations/siege7.webp", "Siege realisation", "(max-width: 600px) 100vw, 558px", { class: "slider__before" } -%}
-        </a>
-      </div>
-    </div>
-  </div>
+{% call bandeau({
+  variante: "accueil",
+  surTitre: "Tapissière d'ameublement à " + site.ville,
+  titre: site.nom,
+  texte: "Restauration de fauteuils, chaises et canapés : je redonne vie à votre mobilier avec savoir-faire."
+}) %}
+  <a class="bouton bouton--clair" href="/realisations.html">Voir mes réalisations</a>
+  <a class="bouton" href="/contact/contact.html">Demander un devis</a>
+{% endcall %}
 
-  <div class="txt">
-    <h1>A propos</h1>
-    <p>Les trésors que peuvent produire nos mains,</p>
-    <p>associés à un savoir faire, m'ont toujours émerveillée c'est naturellement que le nom "Main é Merveille" a vu
-      le jour.</p>
-    <p>Rendre beau avec les mains m'a toujours animée tout autant que la déco et l'ameublement.</p>
-    <p>c'est pourquoi j'ai fait une reconversion professionnelle pour être tapissière d'ameublement, pour vous
-      proposer d'embélir vos fauteuils et les rendre uniques.</p>
-  </div>
-</div>
-
-<div class="ContainerPresta">
-
-  <div class="custom-shape-divider-bottom-1697993228">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path
-        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-        opacity=".25" class="shape-fill"></path>
-      <path
-        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-        opacity=".5" class="shape-fill"></path>
-      <path
-        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-        class="shape-fill"></path>
-    </svg>
-  </div>
-
-  <div class="listePresta" id="prestations">
-    <div id="boxPresta">
-      <div>
-        <h1>Mes services</h1>
-      </div>
+<section class="section">
+  <div class="conteneur apropos">
+    <div class="cadre apropos__photo" data-reveal>
+      {% image "Realisations/siege7.webp", "Fauteuil Louis XV restauré, tissu à motifs floraux", "(max-width: 767px) 90vw, 480px" %}
     </div>
 
-    <div class="boxList">
-
-      <div>
-        <h2>Restauration de Chaises </h2>
-        <img src="/resources/chaise-icone.webp" alt="Restauration de chaises par Main e Merveille" loading="lazy">
-      </div>
-
-      <div>
-        <h2>Restauration de canapés </h2>
-        <img src="/resources/canape-icone.webp" alt="Restauration de canapés par Main e Merveille" loading="lazy">
-      </div>
-
-      <div>
-        <h2>Restauration de fauteuils </h2>
-        <img src="/resources/siege-bergere.webp" alt="Restauration de fauteuils par Main e Merveille" loading="lazy">
-      </div>
-
+    <div class="apropos__texte" data-reveal>
+      <span class="sur-titre">À propos</span>
+      <h2>L'histoire d'un nom</h2>
+      <div class="ornement ornement--gauche" aria-hidden="true"><span></span></div>
+      <p class="apropos__accroche">Les trésors que peuvent produire nos mains, associés à un savoir-faire,
+        m'ont toujours émerveillée : c'est naturellement que le nom « Main é Merveille » a vu le jour.</p>
+      <p>Rendre beau avec les mains m'a toujours animée, tout autant que la décoration et l'ameublement.
+        C'est pourquoi j'ai fait une reconversion professionnelle pour devenir tapissière d'ameublement,
+        et vous proposer d'embellir vos fauteuils pour les rendre uniques.</p>
+      <a class="lien-fleche apropos__lien" href="/realisations.html">Découvrir mes réalisations</a>
     </div>
   </div>
-</div>
+</section>
 
-<div class="containerFourni">
+<section class="section section--alt" id="prestations">
+  <div class="conteneur">
+    <div class="titre-section">
+      <span class="sur-titre">Savoir-faire</span>
+      <h2>Mes services</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+    </div>
 
-  <h1>Mes fournisseurs</h1>
-
-  <div class="listFourni">
-    <div class="scroll-content">
-      {%- for fournisseur in fournisseurs %}
-      <div class="boxFourni">
-        <div class="fourni1"> <img src="/resources/{{ fournisseur.logo }}" alt="{{ fournisseur.nom }}" loading="lazy"
-            {%- if fournisseur.contenu %} class="logo-contenu"{% endif %}> </div>
-      </div>
+    {#- Contenu : src/_data/services.yml #}
+    <ul class="services">
+      {%- for service in services %}
+      <li class="panneau service" data-reveal>
+        <div class="cadre service__image">
+          {% image service.image, service.alt, "(max-width: 767px) 80vw, 300px" %}
+        </div>
+        <h3>{{ service.titre }}</h3>
+      </li>
       {%- endfor %}
-    </div>
+    </ul>
   </div>
+</section>
 
-</div>
+<section class="section">
+  <div class="conteneur">
+    <div class="titre-section">
+      <span class="sur-titre">Avant / après</span>
+      <h2>Dernières réalisations</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+      <p>Quelques sièges passés entre mes mains.</p>
+    </div>
+
+    <ul class="apercu-realisations">
+      {%- for realisation in realisations.slice(0, 4) %}
+      <li data-reveal>
+        <a class="cadre apercu" href="/realisations.html">
+          {% image realisation.vignette or realisation.apres or realisation.photo, realisation.alt or "Réalisation " + loop.index, "(max-width: 767px) 45vw, 260px" %}
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+
+    <p class="centre">
+      <a class="bouton bouton--contour" href="/realisations.html">Toutes les réalisations</a>
+    </p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="conteneur">
+    <div class="titre-section">
+      <span class="sur-titre">Tissus & passementeries</span>
+      <h2>Mes fournisseurs</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+      <p>Je travaille avec les tissus et passementeries de grandes maisons.</p>
+    </div>
+
+    {#- Contenu : src/_data/fournisseurs.yml #}
+    <ul class="fournisseurs">
+      {%- for fournisseur in fournisseurs %}
+      <li class="fournisseur" data-reveal>
+        <img src="/resources/{{ fournisseur.logo }}" alt="{{ fournisseur.nom }}" loading="lazy">
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{% include "partials/appel.njk" %}

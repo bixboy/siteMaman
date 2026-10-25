@@ -2,19 +2,17 @@
 title: "Politique de confidentialité - Main é merveille - Tapissier d'ameublement"
 permalink: legal/politiqueConf.html
 styles:
-  - components/legal-hero.css
-  - pages/confidentialite.css
+  - components/bandeau.css
+  - pages/legal.css
 ---
-<div class="box-top">
-  <div class="title-top">
-    <h1>Politique de confidentialité</h1>
-    <p>De Main é merveille</p>
-  </div>
-</div>
+{%- from "partials/bandeau.njk" import bandeau with context -%}
 
-<div class="txtConf">
+{{ bandeau({ variante: "uni", surTitre: site.nom, titre: "Politique de confidentialité" }) }}
 
-  <h1 class="titleConf">Protection des données à caractère personnel - RGPD</h1>
+<section class="section">
+<div class="conteneur prose">
+
+  <h2>Protection des données à caractère personnel - RGPD</h2>
   <p>Dernière mise à jour : 23/07/2023</p>
 
   <p>Nous accordons une grande importance à la protection de vos données personnelles. Cette politique de
@@ -73,3 +71,4 @@ styles:
   <p>Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à
     <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
 </div>
+</section>

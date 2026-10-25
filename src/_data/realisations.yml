@@ -7,11 +7,9 @@
 #   photo          chemin dans src/resources/
 # Commun :
 #   alt            description de la photo (recommandé pour le référencement)
-#   format         portrait (photo en hauteur) | recadre (vignette rognée) ; absent = standard
 
 - avant: Realisations/siege1.3.webp
   apres: Realisations/siege1.4.webp
-  format: recadre
 
 - avant: Realisations/siege2.webp
   apres: Realisations/siege2.1.webp
@@ -31,7 +29,6 @@
 - avant: Realisations/siege11.webp
   apres: Realisations/siege11.1.webp
   vignette: Realisations/siege11.webp
-  format: portrait
 
 - photo: Realisations/siege5.webp
 
@@ -42,14 +39,11 @@
 
 - avant: Realisations/siege13.1.webp
   apres: Realisations/siege13.webp
-  format: portrait
 
 - avant: Realisations/siege14.webp
   apres: Realisations/siege14.1.webp
-  format: portrait
 
 - photo: Realisations/coussins2.webp
 
 - avant: Realisations/siege15.webp
   apres: Realisations/siege15.1.webp
-  format: portrait

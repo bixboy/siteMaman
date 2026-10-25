@@ -31,13 +31,22 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [x] CSS : `base` / `layout` / `components` / `pages` (17 → 12 fichiers), code mort supprimé,
       seuil unique 767/768 px (avant : 768 px mi-mobile mi-ordinateur). Rendu vérifié par `npm run test:visual`.
 
+## Refonte visuelle « Versailles / Louis XVI »
+- [x] Système de design dans `base.css` (ivoire, or vieilli, vert canard ; Cormorant Garamond, Cinzel,
+      Source Sans 3 ; cadres dorés, panneaux, ornements, frise de perles).
+- [x] Toutes les pages refaites ; accueil enrichi (bandeau avec titre, services, aperçu des réalisations,
+      encart devis) ; galerie en mosaïque ; fiches produit avec vignettes ; pages légales en colonne de lecture.
+- [x] Menu mobile en panneau latéral (`<button>`, `aria-expanded`, Échap) ; modales accessibles
+      (`role="dialog"`, focus) ; comparateur avant/après souris, tactile et clavier ; icônes SVG.
+- [x] Faux chargement de 500 ms des filtres supprimé ; carte Google Maps remplacée par la zone d'intervention.
+- [ ] Validation par la propriétaire (textes du bandeau d'accueil et de « À propos » légèrement reformulés).
+
 ## Phase 3 — SEO local & contenu
 - [ ] Mesurer avec PageSpeed Insights (mobile) et noter les scores ici.
-- [ ] Un seul `<h1>` par page (l'accueil en a 4, dont `.nameNav` dans la nav mobile).
+- [x] Un seul `<h1>` par page (celui du bandeau).
 - [ ] `alt` des réalisations (champ `alt` de `realisations.yml`, aujourd'hui « Réalisation N »).
 - [ ] `description` propre à chaque page (en-tête des `.njk` ; seule l'accueil en a une).
 - [ ] Fiche Google Business en « zone de service » ; ajouter son URL à `sameAs` (partial `jsonld.njk`).
-      Remplacer la carte Google Maps de la page contact par la liste des communes desservies.
 - [ ] Page « Services » détaillée (réfection traditionnelle / mousse, tissus, délais, devis).
       Idées dans le tag `archive/main-codex-2025-10` (dossier `services/`).
 - [ ] Avis clients / FAQ (données structurées `FAQPage`).
@@ -45,10 +54,7 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 ## Phase 4 — Accessibilité, RGPD, qualité
 - [ ] RGPD : GTM sans bandeau de consentement → bandeau (ex. tarteaucitron) ou mesure sans cookie.
 - [ ] Politique de confidentialité générique (newsletter, formulaire, achats inexistants ; rien sur les cookies).
-- [ ] Menu mobile au clavier (`<button>` au lieu de `<label for>` orphelin, `aria-expanded`), focus piégé dans les modales.
-- [ ] Iframe Google Maps : `title`, chargement au clic.
-- [ ] Icônes PNG/WebP (tel, mail, réseaux) → SVG inline.
-- [ ] Filtres de la boutique : supprimer le faux chargement de 500 ms.
+- [ ] Focus piégé dans les modales (le reste de l'accessibilité clavier est fait).
 
 ## Phase 5 — Outillage IA
 - [ ] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`.

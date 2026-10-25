@@ -1,311 +1,125 @@
-/* Page d'accueil : bandeau photo, à propos, services, fournisseurs */
+/* Page d'accueil : à propos, services, aperçu des réalisations, fournisseurs */
 
-.top_container div img {
-    height: 62vh;
-    width: 100%;
-    object-fit: cover;
+/* --- À propos --- */
+
+.apropos {
+  display: grid;
+  gap: var(--espace-l);
+  align-items: center;
 }
 
-.top_container div {
-    position: relative;
-    height: 62vh;
+.apropos__photo img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 
-.top_container div::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0 0 0 / 38%);
-    z-index: 1;
+.apropos__accroche {
+  margin-top: var(--espace-m);
+  font-family: var(--police-titre);
+  font-size: 1.55rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--encre);
 }
 
-.top_container {
-    box-shadow: 0px 4px 11px 0px rgb(0 0 0 / 88%);
+.apropos__texte > p:not(.apropos__accroche) {
+  color: var(--encre-douce);
 }
 
-.presTop {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    min-width: 100%;
-    padding: 3em;
+.apropos__lien {
+  display: inline-block;
+  margin-top: var(--espace-m);
 }
 
-.presTop div h1 {
-    font-size: 55px;
+@media (min-width: 768px) {
+  .apropos {
+    grid-template-columns: 5fr 6fr;
+    gap: clamp(3rem, 6vw, 5.5rem);
+  }
 }
 
-.presTop div p {
-    font-size: 26px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 24px 0px;
+/* --- Services --- */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--espace-m);
 }
 
-.txt {
-    width: 100%;
-    padding: 35px;
+.service {
+  text-align: center;
 }
 
-#presImg:hover {
-    opacity: 0.7;
-    transform: scale(1.05);
-    z-index: 10;
+.service__image {
+  max-width: 260px;
+  margin: 0 auto var(--espace-m);
 }
 
-#presImg {
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.slider a {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-.ContainerPresta {
-    position: relative;
-}
-
-.listePresta {
-    padding: 69px 55px;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(181 159 137);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.listePresta h1 {
-    font-size: 45px;
-    text-align: center;
-}
-
-.boxList {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.boxList div {
-    padding: 20px;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-}
-
-.listePresta img {
-    height: 100%;
-    width: 25vh;
-    border-radius: 10px;
-    box-shadow: 4px 12px 15px 0px rgb(0 0 0 / 49%);
-    margin-left: 10px;
-}
-
-.custom-shape-divider-bottom-1697993228 {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1697993228 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 177px;
-    transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom-1697993228 .shape-fill {
-    fill: rgb(181 159 137);
-}
-
-/** For mobile devices **/
-@media (max-width: 767px) {
-    .custom-shape-divider-bottom-1697993228 svg {
-        width: calc(190% + 1.3px);
-        height: 153px;
-    }
-
-    .presTop {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        min-width: 100%;
-        padding: 1em;
-    }
-
-    .presTop div p {
-        font-size: 20px;
-    }
-
-    .listePresta h2 {
-        font-size: 28px;
-        text-align: center;
-        padding-right: 0;
-    }
-
-    .listePresta h1 {
-        text-align: center;
-        padding-left: unset;
-    }
-
-    .boxList {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .listePresta img {
-        height: 21vh;
-        width: 21vh;
-        margin: 0;
-    }
-
-    #boxPresta {
-        align-items: center !important;
-    }
-
-    .boxList div {
-        flex-direction: column;
-    }
-}
-
-
-
-
-
-.avAp {
-    position: relative;
-    width: 93%;
-}
-
-.avAp .container {
-    max-width: 59vh;
-    height: 100%;
-    width: 100%;
-}
-
-#presImg {
-    border-radius: 15px;
-}
-
-#presImg img {
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-#boxPresta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-bottom: 15px;
-}
-
-.txt p:first-of-type {
-    margin-bottom: 0px;
-}
-
-.txt p:nth-of-type(2) {
-    margin-top: 4px;
-}
-
-.containerFourni {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(181 159 137);
-    padding-bottom: 15px;
-}
-
-.containerFourni h1 {
-    font-size: 45px;
-    padding-bottom: 5px;
-    text-decoration: underline 3px;
-}
-
-.boxFourni {
-    width: 40vh;
-    height: 20vh;
-    padding: 13px;
-}
-
-.fourni1 {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.fourni1 img{
-    height: 100%;
-    width: 27vh;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0px 2px 12px 4px rgb(0 0 0 / 49%);
-}
-
-.fourni1 img.logo-contenu {
-    object-fit: contain;
-}
-
-.boxList div h2 {
-    font-family: "Lucida Handwriting", cursive;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 12px;
-}
-
-.listFourni {
-    padding: 7px 20px;
-    justify-content: unset;
-    width: 76%;
-
-    overflow-x: hidden;
-    position: relative;
-}
-
-.scroll-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    overflow-x: scroll;
-    white-space: nowrap;
-    scroll-snap-type: x mandatory;
+.service__image img {
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 @media (max-width: 767px) {
-    .listFourni {
-        overflow-x: scroll;
-        justify-content: unset;
-        width: 100%;
-    }
+  .service {
+    padding: var(--espace-m);
+  }
 
-    .fourni1 img {
-        width: 23vh;
-        height: 23vh;
-    }
+  .service__image {
+    max-width: 190px;
+  }
+}
 
-    .containerFourni h1 {
-        font-size: 35px;
-    }
+/* --- Aperçu des réalisations --- */
 
-    .boxFourni {
-        height: 27vh;
-    }
+.apercu-realisations {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espace-m);
+}
 
-    .boxList div h2 {
+.apercu {
+  display: block;
+  transition: transform var(--transition);
+}
 
-        margin-top: 0;
-    }
+.apercu:hover {
+  transform: translateY(-4px);
+}
+
+.apercu img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .apercu-realisations {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Fournisseurs --- */
+
+/* Rangées centrées : pas de logo orphelin calé à gauche */
+.fournisseurs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espace-s);
+}
+
+.fournisseur {
+  display: grid;
+  place-items: center;
+  /* Deux par ligne sur mobile */
+  width: min(170px, calc(50% - var(--espace-s) / 2));
+  height: 120px;
+  padding: var(--espace-s);
+  background-color: #fff;
+  border: 1px solid var(--or-clair);
+}
+
+.fournisseur img {
+  max-height: 88px;
+  object-fit: contain;
 }

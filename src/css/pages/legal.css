@@ -1,0 +1,37 @@
+/* Pages légales (mentions légales, confidentialité) : colonne de lecture */
+
+.prose {
+  max-width: var(--largeur-texte);
+}
+
+.prose h2 {
+  margin: var(--espace-l) 0 var(--espace-s);
+  padding-bottom: var(--espace-xs);
+  border-bottom: 1px solid var(--filet);
+  font-size: 1.9rem;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose p,
+.prose li {
+  color: var(--encre-douce);
+}
+
+.prose p + p {
+  margin-top: var(--espace-xs);
+}
+
+.prose ul {
+  display: grid;
+  gap: var(--espace-xs);
+  margin-top: var(--espace-s);
+  padding-left: var(--espace-m);
+  list-style: disc;
+}
+
+.prose li::marker {
+  color: var(--or);
+}
