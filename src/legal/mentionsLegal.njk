@@ -19,8 +19,8 @@ styles:
   <p>Forme juridique : Entrepreneur individuel</p>
   <p>Adresse : 14000 Caen</p>
   <p>Pays : France</p>
-  <p>Téléphone : 07 68 31 76 08</p>
-  <p>Email : mainemerveille@outlook.fr</p>
+  <p>Téléphone : {{ site.telephoneAffiche }}</p>
+  <p>Email : <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
   <p>Numéro SIRET : 979063310</p>
   <p>Numéro TVA : FR66979063310</p>
 
@@ -48,7 +48,7 @@ styles:
 
   <h2>6. Contact</h2>
   <p>Pour toute question concernant ces mentions légales, veuillez nous contacter à l'adresse suivante :
-    mainemerveille@Gmail.com .</p>
+    <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
 
   <h2>7. Clause de non-responsabilité</h2>
   <p>Le contenu de ce site web est fourni à titre informatif uniquement. Bien que nous nous efforcions de maintenir

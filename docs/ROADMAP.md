@@ -11,7 +11,7 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - URLs historiques conservées : `/`, `/realisations.html`, `/market.html`, `/contact/contact.html`, `/legal/*.html`.
 
 ## À confirmer par la propriétaire
-- [ ] Email : `mainemerveille@gmail.com` (site) ou `mainemerveille@outlook.fr` (mentions légales) ?
+- [x] Email : `mainemerveille@gmail.com` partout (mentions légales corrigées, tirées de `site.yml`).
 - [ ] « Numéro SIRET : 979063310 » n'a que 9 chiffres (= SIREN). SIRET complet (14 chiffres) ?
 - [ ] Fautes dans `produits.yml` à corriger ? (« velour », « légèrment vielli », « impecable »…)
 
