@@ -1,6 +1,7 @@
 # Main é Merveille — site vitrine
 
-Tapissière d'ameublement à Caen (14), intervention à domicile : pas d'adresse d'atelier, ne jamais en inventer.
+Tapissière d'ameublement à Caen (14). Devis gratuit **à domicile** (Caen et Calvados) ; la restauration n'a pas lieu chez le client.
+Adresse non affichée (choix de la propriétaire) : ne jamais en inventer.
 Prod : https://www.main-e-merveille.fr — contenu, commentaires et commits en français.
 
 ## Stack

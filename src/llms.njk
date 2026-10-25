@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
 > {{ site.description | uneLigne | safe }}
 
 {{ site.nom }} est une tapissière d'ameublement installée à {{ site.ville }} ({{ site.codePostal }}). Elle restaure
-les sièges à domicile, à {{ site.ville }} et dans tout le Calvados : il n'y a pas d'atelier recevant du public.
+les sièges et se déplace à domicile pour les devis (gratuits), à {{ site.ville }} et dans le Calvados.
 
 - Téléphone : {{ site.telephoneAffiche }}
 - Email : {{ site.email }}
@@ -41,9 +41,9 @@ les sièges à domicile, à {{ site.ville }} et dans tout le Calvados : il n'y a
 - {{ fournisseur.nom | safe }}
 {%- endfor %}
 
-## Communes desservies (à domicile)
+## Communes desservies (devis à domicile)
 
-{{ site.communes | join(", ") }}, et tout le Calvados.
+{{ site.communes | join(", ") }}, dans le Calvados.
 
 ## Questions fréquentes
 {% for item in faq %}

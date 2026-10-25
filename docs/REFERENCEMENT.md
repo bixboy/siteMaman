@@ -23,7 +23,7 @@ que le site lui-même. À faire dans l'ordre.
 - [ ] **Zone desservie** (adresse masquée) : Caen + communes du Calvados ; horaires ; site web ; téléphone.
 - [ ] Services : Restauration de fauteuils, de chaises, de canapés, Réfection de sièges, Coussins.
 - [ ] Description reprenant les mots des clients : « refaire / retapisser / recouvrir un fauteuil »,
-      « changer le tissu », « restauration de sièges anciens », « à domicile dans le Calvados ».
+      « changer le tissu », « restauration de sièges anciens », « devis à domicile dans le Calvados ».
 - [ ] **Photos** : ajouter les avant/après (une ou deux par mois : Google favorise les fiches actives).
 - [ ] **Avis** : demander à **chaque** client un avis Google (lien « Demander des avis » de la fiche,
       par SMS après la livraison). Objectif : 10 avis, puis régulier. Répondre à chaque avis.

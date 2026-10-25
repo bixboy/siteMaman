@@ -22,16 +22,16 @@ legal:
   ape: 3299Z
   immatriculation: Registre national des entreprises (RNE), depuis le 19 septembre 2023
 
-# Activité à domicile : pas d'adresse d'atelier
+# Devis à domicile ; adresse non affichée
 ville: Caen
 codePostal: "14000"
 zoneIntervention:
   - Caen
   - Calvados
-# Principales communes desservies (tout le Calvados), affichées sur les pages services et contact
+# Principales communes desservies (devis à domicile), affichées sur les pages services et contact
 communes: [Caen, Hérouville-Saint-Clair, Mondeville, Ifs, Colombelles, Bretteville-sur-Odon, Carpiquet,
   Fleury-sur-Orne, Ouistreham, Douvres-la-Délivrande, Courseulles-sur-Mer, Bayeux, Cabourg, Dives-sur-Mer,
-  Deauville, Trouville-sur-Mer, Honfleur, Lisieux, Falaise, Vire Normandie]
+  Honfleur, Falaise, Vire Normandie]
 horaires:
   # jours/ouverture/fermeture : données Google (JSON-LD) ; texte : affiché sur la page contact
   jours: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
@@ -42,5 +42,5 @@ horaires:
 # Description par défaut (pages sans `description` dans leur en-tête)
 description: >-
   Main é Merveille, tapissière d'ameublement à Caen : restauration de fauteuils, chaises et canapés,
-  à domicile dans tout le Calvados. Devis gratuit.
+  devis gratuit à domicile dans le Calvados.
 image: /resources/Realisations/background1.webp

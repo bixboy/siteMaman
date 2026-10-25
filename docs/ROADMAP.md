@@ -7,7 +7,7 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
   déclenche GitHub Actions : tests, build, envoi de `_site/` par FTP (le déploiement Git d'OVH
   est désactivé, car il ne sait pas construire le site).
 - Pas de formulaire (contact = `mailto:` + téléphone), pas d'Instagram (Facebook seul).
-- Pas d'atelier : intervention à domicile (Caen, Calvados) → SEO de « zone de service ».
+- Devis gratuit à domicile (Caen, Calvados), adresse non affichée → SEO de « zone de service ».
 - URLs historiques conservées : `/`, `/realisations.html`, `/market.html`, `/contact/contact.html`, `/legal/*.html`.
 
 ## À confirmer par la propriétaire
