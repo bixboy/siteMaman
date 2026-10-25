@@ -3,8 +3,9 @@
 Cocher `[x]` au fur et à mesure. Une phase = une branche.
 
 ## Décisions
-- Hébergement OVH, déployé depuis GitHub `bixboy/siteMaman`. OVH ne lance pas de build :
-  GitHub Actions construit le site et publie `_site/` sur la branche `deploy`, suivie par OVH.
+- Hébergement OVH. Deux branches : `Work` (dev) et `main` (publication). Un push sur `main`
+  déclenche GitHub Actions : tests, build, envoi de `_site/` par FTP (le déploiement Git d'OVH
+  est désactivé, car il ne sait pas construire le site).
 - Pas de formulaire (contact = `mailto:` + téléphone), pas d'Instagram (Facebook seul).
 - Pas d'atelier : intervention à domicile (Caen, Calvados) → SEO de « zone de service ».
 - URLs historiques conservées : `/`, `/realisations.html`, `/market.html`, `/contact/contact.html`, `/legal/*.html`.
@@ -14,7 +15,7 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [ ] « Numéro SIRET : 979063310 » n'a que 9 chiffres (= SIREN). SIRET complet (14 chiffres) ?
 - [ ] Fautes dans `produits.yml` à corriger ? (« velour », « légèrment vielli », « impecable »…)
 
-## Phase 2 — Eleventy (branche `eleventy`)
+## Phase 2 — Eleventy
 - [x] Structure `src/` : layout + partials (nav, footer, JSON-LD), pages `.njk`, données YAML
       (`site`, `produits`, `realisations`, `fournisseurs`, `etats`).
 - [x] Une page par produit (`/vente/<id>-<slug>.html`) ; `product.html` redirige vers `market.html`.
@@ -24,8 +25,9 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [x] Bug corrigé : la navbar (z-index 1000) masquait la croix des modales (15).
 - [x] `npm test` : build + 23 tests navigateur (puppeteer-core) ; lancé par la CI avant chaque déploiement.
 - [x] Rendu comparé au site en ligne (desktop + mobile) : identique, hors rééchantillonnage des vignettes.
-- [ ] Bascule : workflow sur `eleventy` → branche `deploy` créée ; OVH : suivre `deploy` ;
-      puis fusion dans `main` et retrait de `eleventy` des déclencheurs de `.github/workflows/deploy.yml`.
+- [ ] Bascule : secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` dans GitHub ; déploiement Git
+      désactivé dans OVH ; fusion de `Work` dans `main` ; vérification en ligne ; suppression des
+      fichiers laissés par l'ancien déploiement Git dans `www/` (`.git/`, `docs/`, `scripts/`, `CLAUDE.md`, `package*.json`).
 - [ ] CSS : regrouper en `base` / `components` / `pages`, supprimer le code mort,
       unifier les breakpoints (767, 768, 480, 420, 355, 300 px).
 

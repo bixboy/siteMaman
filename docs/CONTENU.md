@@ -45,5 +45,5 @@ La page `/vente/13-fauteuil-cabriolet.html` est créée automatiquement.
 ## 5. Vérifier et publier
 1. `npm run dev` puis ouvrir http://localhost:8080 pour voir le résultat.
 2. `npm test` : doit finir par « tests OK ».
-3. Commit puis push sur `main` : le site est en ligne ~2 minutes plus tard si les tests passent
-   (onglet « Actions » du dépôt GitHub pour suivre).
+3. Commit sur `Work`, puis pour publier : fusionner `Work` dans `main` et pousser `main`.
+   Le site est en ligne ~2 minutes plus tard si les tests passent (onglet « Actions » du dépôt GitHub).

@@ -1,22 +1,20 @@
-# Construit le site (Eleventy), lance les tests, puis publie _site/ sur la branche `deploy`.
-# OVH suit la branche `deploy` : un push sur `main` met donc le site en ligne si les tests passent.
-name: Build et déploiement
+# Publication : à chaque push sur `main` (fusion de `Work`), construit le site (Eleventy),
+# lance les tests, puis envoie _site/ sur l'hébergement OVH par FTP.
+# Secrets du dépôt : FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+# Variable facultative : FTP_DIR (dossier du site sur le FTP, par défaut /www/).
+name: Publication
 
 on:
   push:
-    # `eleventy` : temporaire, le temps de basculer OVH sur `deploy` ; à retirer après fusion dans main
-    branches: [main, eleventy]
+    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
-  group: deploy
-  cancel-in-progress: true
+  group: publication
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -39,12 +37,13 @@ jobs:
           fi
           exit "$status"
 
-      - name: Publier sur la branche deploy
-        uses: peaceiris/actions-gh-pages@v4
+      # N'envoie que les fichiers modifiés (état mémorisé sur le serveur dans .ftp-deploy-sync-state.json)
+      - name: Envoi FTP vers OVH
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-          publish_branch: deploy
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          commit_message: "Déploiement ${{ github.sha }}"
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./_site/
+          server-dir: ${{ vars.FTP_DIR || '/www/' }}

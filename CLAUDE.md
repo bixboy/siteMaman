@@ -7,10 +7,11 @@ Prod : https://www.main-e-merveille.fr — contenu, commentaires et commits en f
 Eleventy 3 (gabarits Nunjucks + données YAML) → HTML statique dans `_site/`.
 JS natif en modules ES, CSS sans préprocesseur. Analytics : GTM (id dans `site.yml`).
 
-## Mise en ligne
-Push sur `main` → GitHub Action (`.github/workflows/deploy.yml`) : `npm test`, puis publication
-de `_site/` sur la branche `deploy`, suivie par OVH. **Push sur `main` = mise en ligne** :
-jamais sans accord explicite. Ne jamais modifier `deploy` à la main.
+## Branches et mise en ligne
+Deux branches seulement : `Work` (développement, branche de travail par défaut) et `main` (publication).
+Fusionner `Work` dans `main` puis pousser → GitHub Action (`.github/workflows/deploy.yml`) :
+`npm test`, build, envoi de `_site/` sur OVH par FTP. **Push sur `main` = mise en ligne** :
+jamais sans accord explicite. Ne jamais committer directement sur `main`.
 
 ## Commandes
 - `npm run dev` — serveur local avec rechargement (http://localhost:8080)
