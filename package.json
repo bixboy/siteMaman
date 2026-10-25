@@ -1,0 +1,12 @@
+{
+  "name": "main-e-merveille",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/optimize-images.mjs",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

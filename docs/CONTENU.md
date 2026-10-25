@@ -1,7 +1,10 @@
 # Ajouter du contenu
 
-Avant tout : optimiser les photos (WebP, ≤ 2000 px de large, < 400 Ko) et les nommer
-en minuscules sans espaces ni accents.
+Avant tout : déposer les photos (JPEG du téléphone, PNG…) dans le bon dossier puis lancer
+`npm run images`. Le script les convertit en WebP (≤ 1600 px), normalise le nom
+(`Fauteuil Bergère.JPG` → `fauteuil-bergere.webp`) et affiche le nom final à utiliser dans le HTML.
+Pour un nouvel avant/après, nommer les photos `<nom>-avant` et `<nom>-apres`
+(les anciennes `siegeN` / `siegeN.1` n'ont pas d'ordre fiable : se fier à `data-before`).
 
 ## Réalisation (`realisations.html`)
 

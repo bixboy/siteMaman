@@ -416,7 +416,7 @@ function initModalLogic() {
 
         const imageElement = this.querySelector('img');
         if (imageElement) {
-          const imageUrl = imageElement.srcset || imageElement.src;
+          const imageUrl = imageElement.src;
           if (simpleModalImg) simpleModalImg.src = imageUrl;
         }
       });

@@ -2,9 +2,19 @@
 
 Audit du 25/10/2026. Cocher `[x]` au fur et à mesure. Une phase = une branche / une PR.
 
+## ⚠ Branches et mise en ligne (à régler en premier)
+Constat du 25/10/2026 : le site en ligne est **identique au commit `aa0821f`** (ex-`BackUp`),
+pas à `main`. `main` (oct. 2025, refactoring Codex : page `services/`, dossier `recources/`,
+formulaire) a divergé de `Work` depuis `5c0ce3b` et n'a jamais été fusionnée.
+La branche `BackUp` a été supprimée sur GitHub. La faille PHP reste donc en ligne.
+- [ ] Vérifier dans le manager OVH (Hébergement → Git) quelle branche est suivie.
+- [ ] Archiver l'ancien `main` (tag `archive/main-codex-2025-10`), puis faire de `main`
+      la branche de production à partir de `Work`, et faire suivre `main` par OVH.
+- [ ] Récupérer éventuellement des idées du refactoring Codex (page services, sitemap) en phase 3.
+
 ## Décisions
-- Hébergement OVH, publié automatiquement depuis la branche `main` du dépôt GitHub
-  `bixboy/siteMaman` (OVH copie les fichiers tels quels, **sans étape de build**).
+- Hébergement OVH, publié automatiquement depuis le dépôt GitHub `bixboy/siteMaman`
+  (OVH copie les fichiers tels quels, **sans étape de build**).
 - Pas de formulaire de contact : email (`mailto:`) et téléphone uniquement.
 - Pas d'Instagram ; Facebook seul.
 - Pas d'atelier : intervention à domicile (Caen et Calvados) → SEO de « zone de service ».
@@ -18,18 +28,20 @@ Audit du 25/10/2026. Cocher `[x]` au fur et à mesure. Une phase = une branche /
 - [x] `lang="fr"` sur `contact/` et `legal/`.
 - [x] Liens Instagram vides et icônes associées supprimés.
 - [x] `.gitignore` + retrait de `.vs/` du dépôt.
-- [ ] Vérifier visuellement toutes les pages (nouvelles polices + animations) avant de publier.
+- [x] Vérification visuelle desktop (Chrome headless) : mise en page identique au site en ligne,
+      seule la police des titres change. Reste à contrôler sur un vrai téléphone.
 
 ## Phase 1 — Performance (gain le plus visible)
-`resources/` pèse 124 Mo ; les photos font 2 à 8 Mo. L'accueil charge ~8 Mo d'images
-(`Background1.webp` 2,1 Mo + `Siege7.webp` 5,5 Mo), énorme sur mobile.
-- [ ] Script `scripts/optimize-images.mjs` (sharp) : max 2000 px, WebP q≈75, cible < 300 Ko.
-      Gain attendu : 124 Mo → ~5 Mo.
-- [ ] Renommer en minuscules sans espaces (`Siege bergere.PNG`, `FauteauilBergere2.jpg`…).
-- [ ] Galerie : `srcset="x.webp"` sans descripteur est utilisé comme `src` → corriger.
-- [ ] `width`/`height` sur toutes les `<img>` (évite les sauts de mise en page),
-      `loading="lazy"` partout sauf l'image du haut, `fetchpriority="high"` sur celle-ci.
-- [ ] Mesurer avant/après avec PageSpeed Insights (mobile) et noter les scores ici.
+- [x] `npm run images` (`scripts/optimize-images.mjs`, sharp) : WebP q75, plus grand côté ≤ 1600 px,
+      noms normalisés via `git mv`, chemins mis à jour. `resources/` : 124 Mo → 8,9 Mo.
+- [x] 8 images inutilisées supprimées (≈ 18 Mo).
+- [x] Galerie : `srcset` sans descripteur remplacé par `src`.
+- [x] `loading="lazy"` sur les images du contenu, `fetchpriority="high"` sur l'image d'en-tête.
+- Poids des images par page, avant → après : accueil 8,6 → 0,9 Mo ; réalisations 35,4 → 4,2 Mo ;
+  vente 49,8 → 2,8 Mo ; contact 2,1 → 0,3 Mo.
+- [ ] Mesurer avec PageSpeed Insights (mobile) une fois en ligne et noter les scores ici.
+- Reporté en phase 2 (fait automatiquement par eleventy-img) : vignettes réduites pour la
+  galerie et la boutique (elles chargent aujourd'hui l'image 1600 px), `width`/`height` sur les `<img>`.
 
 ## Phase 2 — Architecture maintenable (proposition : Eleventy)
 Problèmes : nav/footer/head copiés dans 7 pages ; coordonnées en dur partout ;
@@ -51,6 +63,8 @@ et pousse le résultat (`_site/`) sur une branche `deploy`, que OVH suit à la p
 - [ ] `main.js` découpé en modules ES (`nav.js`, `gallery.js`, `before-after.js`…),
       une seule modale réutilisable au lieu de trois implémentations.
 - [ ] Commandes `npm run dev` / `npm run build`, déploiement documenté dans `CLAUDE.md`.
+- [ ] Seul `_site/` est publié : `CLAUDE.md`, `docs/`, `scripts/`, `package.json` ne seront plus
+      accessibles publiquement (ils le sont tant qu'OVH copie tout le dépôt).
 
 ## Phase 3 — SEO local & contenu
 - [ ] Un seul `<h1>` par page (l'accueil en a 4, dont un caché dans la nav mobile).
