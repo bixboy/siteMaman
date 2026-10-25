@@ -12,8 +12,8 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 
 ## À confirmer par la propriétaire
 - [x] Email : `mainemerveille@gmail.com` partout (mentions légales corrigées, tirées de `site.yml`).
-- [ ] « Numéro SIRET : 979063310 » n'a que 9 chiffres (= SIREN). SIRET complet (14 chiffres) ?
-- [ ] Fautes dans `produits.yml` à corriger ? (« velour », « légèrment vielli », « impecable »…)
+- [x] SIRET complet (979 063 310 00010) et informations RNE dans les mentions légales (`site.legal`).
+- [x] Fautes corrigées dans `produits.yml` et noms des fournisseurs.
 
 ## Phase 2 — Eleventy
 - [x] Structure `src/` : layout + partials (nav, footer, JSON-LD), pages `.njk`, données YAML
@@ -70,7 +70,8 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [x] Validation HTML (`html-validate`, règles recommandées) dans `npm test` et la CI ; 0 erreur.
 - [ ] Confirmer le contenu du conteneur GTM (Google Analytics seul ? autre balise ?) : la politique
       de confidentialité mentionne Google Analytics.
-- [ ] Mentions légales : nom du responsable de la publication (obligatoire) et SIRET complet.
+- [x] Mentions légales : éditrice, responsable de la publication, SIRET, TVA, APE, RNE ; adresse limitée
+      à « 14000 Caen » (choix de la propriétaire, alors que la LCEN demande l'adresse complète de l'éditeur).
 - Lighthouse mobile sur l'aperçu (25/10/2026), accueil / réalisations / vente : performance 97,
   accessibilité 100, bonnes pratiques 100 ; SEO 66 uniquement à cause du `noindex` de l'aperçu.
   LCP 2,0–2,1 s, CLS 0, TBT ≤ 20 ms.
