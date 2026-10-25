@@ -68,5 +68,5 @@
 }
 
 .carte-produit__lien:hover .lien-fleche {
-  color: var(--or);
+  color: var(--or-fonce);
 }

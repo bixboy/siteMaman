@@ -56,7 +56,7 @@
 }
 
 .produit__fleche:hover {
-  background-color: var(--or);
+  background-color: var(--or-fonce);
   color: var(--papier);
 }
 

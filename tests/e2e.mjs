@@ -15,8 +15,21 @@ const isOpen = (page, selector) => page.$eval(selector, (el) => !el.hidden);
 const visibleProducts = (page) => page.$$eval('[data-etat]', (els) => els.filter((el) => !el.hidden).map((el) => el.dataset.etat));
 const scrollY = (page) => page.evaluate(() => window.scrollY);
 
-async function open(url, viewport = { width: 1280, height: 900 }) {
-  const page = await browser.newPage();
+// Chaque page a son propre stockage. `choixCookies` : choix de consentement déjà enregistré
+// (par défaut « refuse », pour que le bandeau ne gêne pas les autres tests) ; null = première visite.
+// Les appels à Google Tag Manager sont interceptés (script vide) : aucun accès réseau externe.
+async function open(url, { viewport = { width: 1280, height: 900 }, choixCookies = 'refuse' } = {}) {
+  const context = await browser.createBrowserContext();
+  const page = await context.newPage();
+  if (choixCookies) {
+    await page.evaluateOnNewDocument((choix) => {
+      localStorage.setItem('consentement-audience', JSON.stringify({ choix, date: Date.now() }));
+    }, choixCookies);
+  }
+  await page.setRequestInterception(true);
+  page.on('request', (request) => (request.url().includes('googletagmanager.com')
+    ? request.respond({ status: 200, contentType: 'text/javascript', body: '' })
+    : request.continue()));
   await page.setViewport(viewport);
   page.on('pageerror', (err) => errors.push(`${url} : ${err.message}`));
   page.on('console', (msg) => { if (msg.type() === 'error') errors.push(`${url} : ${msg.text()}`); });
@@ -44,6 +57,10 @@ try {
     await page.keyboard.press('ArrowRight');
     const afterKey = await page.$eval('[data-avant-apres]', (el) => Number(el.style.getPropertyValue('--pos')));
     check('avant/après : flèche du clavier', afterKey > position, `position ${afterKey}`);
+
+    for (let i = 0; i < 4; i++) await page.keyboard.press('Tab');
+    check('avant/après : le focus reste dans la modale (Tab)',
+      await page.evaluate(() => document.getElementById('modale-avant-apres').contains(document.activeElement)));
 
     await page.keyboard.press('Escape');
     check('avant/après : fermeture Échap', !(await isOpen(page, '#modale-avant-apres')));
@@ -119,20 +136,47 @@ try {
 
   // Mobile : menu en panneau latéral
   {
-    const page = await open('/realisations.html', { width: 390, height: 844, isMobile: true, hasTouch: true });
+    const page = await open('/realisations.html', { viewport: { width: 390, height: 844, isMobile: true, hasTouch: true } });
     const menuOpen = () => page.$eval('[data-menu-bouton]', (b) => b.getAttribute('aria-expanded') === 'true');
     await page.click('[data-menu-bouton]');
     check('menu mobile : ouverture', await menuOpen());
     await page.mouse.click(15, 600); // le fond assombri, à gauche du panneau
     check('menu mobile : fermeture clic sur le fond', !(await menuOpen()));
     await page.click('[data-menu-bouton]');
+    check('menu mobile : focus sur le premier lien',
+      await page.evaluate(() => document.activeElement === document.querySelector('[data-menu] a')));
+    for (let i = 0; i < 12; i++) await page.keyboard.press('Tab');
+    check('menu mobile : le focus reste dans l\'en-tête (Tab)',
+      await page.evaluate(() => document.querySelector('[data-entete]').contains(document.activeElement)));
     await page.keyboard.press('Escape');
     check('menu mobile : fermeture Échap', !(await menuOpen()));
+    check('menu mobile : focus rendu au bouton',
+      await page.evaluate(() => document.activeElement === document.querySelector('[data-menu-bouton]')));
     await page.click('[data-menu-bouton]');
     await wait(500); // animation d'ouverture
     await page.click('[data-menu] a[href="/#prestations"]');
     await wait(2500);
     check('menu mobile : « Mes services » depuis une autre page', page.url() === `${BASE}/#prestations`, page.url());
+    await page.close();
+  }
+
+  // Consentement aux cookies (RGPD) : rien de Google avant un « Accepter »
+  {
+    const page = await open('/', { choixCookies: null });
+    const bannerOpen = () => isOpen(page, '[data-consentement]');
+    const tagManagerLoaded = async () => Boolean(await page.$('script[data-gtm]'));
+    check('cookies : bandeau affiché à la première visite', await bannerOpen());
+    check('cookies : aucun script Google avant consentement', !(await tagManagerLoaded()));
+    await page.click('[data-consentement-choix="refuse"]');
+    check('cookies : refus → bandeau fermé, rien de Google', !(await bannerOpen()) && !(await tagManagerLoaded()));
+    await page.reload({ waitUntil: 'networkidle0' });
+    check('cookies : refus mémorisé', !(await bannerOpen()));
+    await page.click('[data-consentement-ouvrir]');
+    check('cookies : « Gérer les cookies » rouvre le bandeau', await bannerOpen());
+    await page.click('[data-consentement-choix="accepte"]');
+    check('cookies : acceptation → Google Tag Manager chargé', await tagManagerLoaded());
+    await page.reload({ waitUntil: 'networkidle0' });
+    check('cookies : acceptation mémorisée', !(await bannerOpen()) && await tagManagerLoaded());
     await page.close();
   }
 

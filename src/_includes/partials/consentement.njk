@@ -1,0 +1,12 @@
+{#- Bandeau de consentement (RGPD / CNIL) : Google Tag Manager n'est chargé qu'après « Accepter » (js/consent.js).
+    Aperçu de test : aucun identifiant GTM, donc jamais de mesure d'audience. -#}
+<section class="consentement" aria-labelledby="consentement-titre" data-consentement
+  data-gtm="{{ '' if apercu else site.gtm }}" hidden>
+  <h2 class="consentement__titre" id="consentement-titre">Mesure d'audience</h2>
+  <p>Avec votre accord, des cookies de Google mesurent la fréquentation du site (pages vues, durée de visite).
+    Aucune publicité. <a href="/legal/politiqueConf.html#cookies">En savoir plus</a></p>
+  <div class="groupe-boutons consentement__choix">
+    <button class="bouton bouton--contour" type="button" data-consentement-choix="refuse">Refuser</button>
+    <button class="bouton bouton--contour" type="button" data-consentement-choix="accepte">Accepter</button>
+  </div>
+</section>

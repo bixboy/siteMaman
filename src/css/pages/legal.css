@@ -33,5 +33,5 @@
 }
 
 .prose li::marker {
-  color: var(--or);
+  color: var(--or-fonce);
 }

@@ -12,7 +12,7 @@
   --vert: #1f4e4a;            /* vert canard (le velours de l'atelier) : actions, pied de page */
   --vert-fonce: #163936;
   --or: #b08d4c;              /* or vieilli : filets, ornements */
-  --or-fonce: #8a6a32;
+  --or-fonce: #7a5c28;         /* or foncé : seule teinte dorée autorisée pour du texte (contraste AA) */
   --or-clair: #dcc89c;
   --filet: rgb(176 141 76 / 50%);
   --ombre: 0 12px 32px -14px rgb(47 42 36 / 40%);
@@ -90,7 +90,7 @@ a {
 }
 
 a:hover {
-  color: var(--or);
+  color: var(--or-fonce);
 }
 
 ul {
@@ -251,8 +251,8 @@ p + p {
 }
 
 .bouton--contour:hover {
-  background-color: var(--or);
-  border-color: var(--or);
+  background-color: var(--or-fonce);
+  border-color: var(--or-fonce);
   color: var(--papier);
 }
 

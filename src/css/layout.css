@@ -232,12 +232,15 @@
     border-left: 1px solid var(--or-clair);
     transform: translateX(100%);
     visibility: hidden;
-    transition: transform 0.35s ease, visibility 0.35s;
+    /* À la fermeture, masqué seulement après le glissement */
+    transition: transform 0.35s ease, visibility 0s linear 0.35s;
   }
 
+  /* À l'ouverture, visible tout de suite : le premier lien peut recevoir le focus */
   .navigation.is-open {
     transform: none;
     visibility: visible;
+    transition: transform 0.35s ease, visibility 0s;
   }
 
   .navigation__liens li + li {
@@ -354,6 +357,50 @@
   }
 }
 
+/* Lien « Gérer les cookies » : un bouton qui a l'apparence des liens du pied */
+.pied__lien-bouton {
+  color: var(--ivoire);
+  text-decoration: none;
+}
+
+.pied__lien-bouton:hover {
+  color: var(--or-clair);
+}
+
+/* --- Bandeau de consentement aux cookies (js/consent.js) --- */
+
+.consentement {
+  position: fixed;
+  left: var(--espace-s);
+  right: var(--espace-s);
+  bottom: var(--espace-s);
+  z-index: 1050;
+  max-width: 460px;
+  padding: var(--espace-m);
+  background-color: var(--papier);
+  border: 1px solid var(--or);
+  box-shadow: var(--ombre);
+  font-size: 0.95rem;
+}
+
+.consentement__titre {
+  margin-bottom: var(--espace-xs);
+  font-size: 1.5rem;
+}
+
+.consentement p {
+  color: var(--encre-douce);
+}
+
+.consentement__choix {
+  margin-top: var(--espace-s);
+}
+
+/* Les deux choix ont exactement le même poids visuel */
+.consentement__choix .bouton {
+  flex: 1;
+}
+
 /* --- Retour en haut (visible après défilement) --- */
 
 .retour-haut {
@@ -380,6 +427,6 @@
 }
 
 .retour-haut:hover {
-  background-color: var(--or);
+  background-color: var(--or-fonce);
   color: var(--papier);
 }
