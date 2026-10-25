@@ -1,6 +1,7 @@
 # Publication : à chaque push sur `main` (fusion de `Work`), construit le site (Eleventy),
 # lance les tests, puis envoie _site/ sur l'hébergement OVH par FTP.
-# Secrets du dépôt : FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+# Secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD : définis dans l'environnement GitHub `github-pages`
+# (Settings → Environments), d'où `environment:` ci-dessous ; branches autorisées : main et Work.
 # Variable facultative : FTP_DIR (dossier du site sur le FTP, par défaut /www/).
 name: Publication
 
@@ -16,6 +17,8 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Donne accès aux secrets FTP de cet environnement
+    environment: github-pages
     steps:
       - uses: actions/checkout@v5
 

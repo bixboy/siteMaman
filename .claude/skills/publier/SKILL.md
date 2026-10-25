@@ -20,6 +20,7 @@ même si la publication a été demandée plus tôt. Git : `git -c http.sslBacke
 6. Vérifier en ligne : `curl -I` sur `https://www.main-e-merveille.fr/`, une page modifiée, et les redirections
    `http://main-e-merveille.fr/` → `https://www.main-e-merveille.fr/` (301).
 
-Prérequis (une seule fois) : secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` dans GitHub et déploiement
+Prérequis (une seule fois) : secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` dans l'environnement GitHub
+`github-pages` (Settings → Environments) et déploiement
 Git désactivé dans OVH. S'ils ne sont pas confirmés, s'arrêter : sinon OVH publierait le code source et le
 site tomberait.
