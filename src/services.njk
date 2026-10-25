@@ -1,0 +1,139 @@
+---
+title: "Restauration de fauteuils et chaises à Caen | Main é Merveille"
+description: "Fauteuil abîmé ou tissu usé ? Tapissière à Caen, je restaure fauteuils, chaises et canapés à domicile dans tout le Calvados. Devis gratuit."
+permalink: services.html
+nav: services
+styles:
+  - components/bandeau.css
+  - components/appel.css
+  - pages/services.css
+---
+{%- from "partials/bandeau.njk" import bandeau with context -%}
+{#- Contenu : src/_data/services.yml, lexique.yml, faq.yml ; communes : site.communes #}
+
+{% call bandeau({
+  surTitre: "Restauration de sièges",
+  titre: "Faire refaire un fauteuil, une chaise ou un canapé",
+  texte: "Assise affaissée, tissu déchiré ou passé de mode, rembourrage tassé : je remets vos sièges en état et les recouvre du tissu de votre choix, à " + site.ville + " et dans tout le Calvados."
+}) %}
+  <a class="bouton" href="/contact/contact.html">Demander un devis gratuit</a>
+  <a class="bouton bouton--clair" href="/realisations.html">Voir mes réalisations</a>
+{% endcall %}
+
+<section class="section">
+  <div class="conteneur">
+    <div class="titre-section">
+      <span class="sur-titre">Savoir-faire</span>
+      <h2>Ce que je restaure</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+    </div>
+
+    <ul class="prestations">
+      {%- for service in services %}
+      <li class="panneau prestation" data-reveal>
+        <div class="cadre prestation__image">
+          {% image service.image, service.alt, "(max-width: 767px) 40vw, 160px" %}
+        </div>
+        <div>
+          <h3>{{ service.titre }}</h3>
+          <p>{{ service.texte }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="centre">Je réalise aussi des coussins : voir les <a href="/realisations.html">réalisations</a>.</p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="conteneur">
+    <div class="titre-section">
+      <span class="sur-titre">Simple et sans surprise</span>
+      <h2>Comment ça se passe ?</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+    </div>
+
+    <ol class="etapes">
+      <li data-reveal>
+        <h3>Vous me contactez</h3>
+        <p>Par téléphone ou par email, en me décrivant votre siège.</p>
+      </li>
+      <li data-reveal>
+        <h3>Je me déplace chez vous</h3>
+        <p>À {{ site.ville }} et dans tout le Calvados, pour voir le siège sur place.</p>
+      </li>
+      <li data-reveal>
+        <h3>Devis gratuit</h3>
+        <p>Selon l'état du siège et le tissu choisi.</p>
+      </li>
+      <li data-reveal>
+        <h3>Choix du tissu</h3>
+        <p>Parmi les tissus et passementeries de grandes maisons, avec mes conseils.</p>
+      </li>
+      <li data-reveal>
+        <h3>Restauration</h3>
+        <p>Votre siège retrouve son confort et son allure.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur conteneur--etroit">
+    <div class="titre-section">
+      <span class="sur-titre">Lexique</span>
+      <h2>Les mots du métier</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+      <p>Vous parlez de « refaire » ou de « retapisser » un fauteuil ? Voici ce que ces mots recouvrent chez un tapissier.</p>
+    </div>
+
+    <dl class="lexique">
+      {%- for entree in lexique %}
+      <div class="lexique__entree">
+        <dt>{{ entree.terme }} <span>({{ entree.aussi }})</span></dt>
+        <dd>{{ entree.definition }}</dd>
+      </div>
+      {%- endfor %}
+    </dl>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="conteneur conteneur--etroit">
+    <div class="titre-section">
+      <span class="sur-titre">À domicile</span>
+      <h2>Zone d'intervention</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+      <p>Je me déplace dans tout le Calvados, notamment à :</p>
+    </div>
+    <ul class="communes">
+      {%- for commune in site.communes %}
+      <li>{{ commune }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur conteneur--etroit">
+    <div class="titre-section">
+      <span class="sur-titre">Vos questions</span>
+      <h2>Questions fréquentes</h2>
+      <div class="ornement" aria-hidden="true"><span></span></div>
+    </div>
+
+    <div class="faq">
+      {%- for item in faq %}
+      <details class="faq__item">
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.reponse }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/appel.njk" %}
+
+{#- Données structurées des questions fréquentes (Google, assistants IA) #}
+<script type="application/ld+json">{{ faq | faqJsonLd | dump | safe }}</script>

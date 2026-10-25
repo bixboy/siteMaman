@@ -40,7 +40,8 @@ styles:
         {{ icone("lieu") }}
         <h3>Zone d'intervention</h3>
         <p>{{ site.ville }} et sa région, ainsi que tout le département du Calvados.</p>
-        <p class="contact__detail">Je me déplace à domicile.</p>
+        <p class="contact__detail">Je me déplace à domicile, notamment à {{ site.communes.slice(1, 9) | join(", ") }}…
+          (<a href="/services.html">toutes les communes</a>)</p>
       </li>
     </ul>
 

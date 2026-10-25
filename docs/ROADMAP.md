@@ -56,9 +56,12 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
       (identifiant repris de l'ancienne carte) ; la passer en « zone de service » (adresse masquée).
 - [ ] Après publication : vérifier les redirections du `.htaccess`, puis PageSpeed Insights (mobile)
       et Google Search Console (envoyer `sitemap.xml`).
-- [ ] Page « Services » détaillée : contenu à fournir par la propriétaire (techniques, tissus, délais,
-      fourchettes de prix ?). Idées dans le tag `archive/main-codex-2025-10` (dossier `services/`).
-- [ ] FAQ (données structurées `FAQPage`) et avis clients : questions/réponses et avis réels à fournir.
+- [x] Page `/services.html` (prestations, déroulé, lexique public ↔ métier, communes, FAQ + `FAQPage`),
+      `<h1>` d'accueil « Tapissière d'ameublement à Caen », légendes visibles des réalisations,
+      données structurées enrichies (communes, catalogue de services), IndexNow, sitemap complet (18 pages).
+- [ ] Faire valider `/services.html` et la FAQ par la propriétaire ; l'enrichir si elle le souhaite (délais,
+      garnissage traditionnel ou mousse, tissu fourni par le client, enlèvement/livraison…).
+- [ ] Actions hors site : voir `docs/REFERENCEMENT.md` (Search Console, Bing, fiche Google, avis, annuaires).
 
 ## Phase 4 — Accessibilité, RGPD, qualité
 - [x] Contrastes WCAG AA : or foncé `#7a5c28` pour tout texte doré ; or clair réservé au décor.

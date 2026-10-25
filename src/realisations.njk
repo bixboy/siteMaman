@@ -40,6 +40,9 @@ styles:
           <span class="galerie__survol">{{ icone("agrandir") }}<span class="visuellement-cache">Comparer avant et après</span></span>
         </button>
         {%- endif %}
+        {%- if realisation.alt %}
+        <p class="galerie__legende">{{ realisation.alt }}</p>
+        {%- endif %}
       </li>
       {%- endfor %}
     </ul>

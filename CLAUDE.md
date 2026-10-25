@@ -29,7 +29,7 @@ construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aper�
 
 ## Carte
 - `src/_data/` — **le contenu** : `site.yml` (coordonnées, horaires, SEO), `produits.yml`, `realisations.yml`,
-  `services.yml`, `fournisseurs.yml`, `etats.yml` (libellés des états produit)
+  `services.yml`, `faq.yml`, `lexique.yml`, `fournisseurs.yml`, `etats.yml` (libellés des états produit)
 - `src/_includes/layouts/base.njk` — `<head>` (SEO, Open Graph, polices, CSS), en-tête, pied, script
 - `src/_includes/partials/` — `entete.njk` (liste des liens), `pied.njk`, `jsonld.njk`, `icones.njk` (macro `icone`),
   `bandeau.njk` (macro `bandeau` : `<h1>` de la page), `appel.njk` (encart devis), `modale-photo.njk`, `modale-avant-apres.njk`
@@ -47,8 +47,9 @@ construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aper�
   `src/llms.njk` (résumé pour les assistants IA, généré depuis les données)
 - `eleventy.config.js` — filtres `produitUrl`, `nl2br`, `uneLigne` ; shortcode `image` ; plugin de préfixe (aperçu)
 - `tests/e2e.mjs` — tests d'interaction ; `tests/visual.mjs` — non-régression visuelle ; `tests/helpers.mjs` — serveur + Chrome
-- `scripts/optimize-images.mjs` — `npm run images`
-- `docs/CONTENU.md` — ajouter un contenu ; `docs/ROADMAP.md` — plan, points à confirmer, historique
+- `scripts/optimize-images.mjs` — `npm run images` ; `scripts/indexnow.mjs` — signale les pages à Bing après publication (CI)
+- `docs/CONTENU.md` — ajouter un contenu ; `docs/ROADMAP.md` — plan, points à confirmer, historique ;
+  `docs/REFERENCEMENT.md` — actions hors site (Search Console, fiche Google, avis, annuaires)
 - `.claude/settings.json` — commandes autorisées sans confirmation ; lecture de `node_modules`, `.cache` interdite
 
 ## Règles

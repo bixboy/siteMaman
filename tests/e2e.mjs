@@ -91,6 +91,12 @@ try {
     check('filtre « tous »', (await visibleProducts(page)).length === total);
     const href = await page.$eval('[data-etat] a', (el) => el.getAttribute('href'));
     check('lien vers la fiche produit', /^\/vente\/\d+-[a-z0-9-]+\.html$/.test(href), href);
+    const missing = await page.evaluate(async () => {
+      const sitemap = await (await fetch('/sitemap.xml')).text();
+      return [...document.querySelectorAll('[data-etat] a')].map((a) => a.getAttribute('href'))
+        .filter((url) => !sitemap.includes(`${url}</loc>`));
+    });
+    check('sitemap : toutes les fiches produit', missing.length === 0, missing.join(', '));
     await page.close();
   }
 
@@ -118,12 +124,29 @@ try {
     await page.close();
   }
 
-  // Accueil : ancre sur la même page, en-tête au défilement, retour en haut, animations
+  // Page services : FAQ (accordéon natif) et données FAQPage
+  {
+    const page = await open('/services.html');
+    const isDetailsOpen = () => page.$eval('.faq details', (el) => el.open);
+    check('FAQ : questions fermées au départ', !(await isDetailsOpen()));
+    await page.click('.faq summary');
+    check('FAQ : une question s\'ouvre au clic', await isDetailsOpen());
+    const faqCount = await page.$$eval('script[type="application/ld+json"]', (scripts) =>
+      scripts.map((s) => JSON.parse(s.textContent)).find((d) => d['@type'] === 'FAQPage')?.mainEntity.length ?? 0);
+    const visibleCount = await page.$$eval('.faq details', (els) => els.length);
+    check('FAQ : données structurées = questions affichées', faqCount > 0 && faqCount === visibleCount, `${faqCount}/${visibleCount}`);
+    await page.close();
+  }
+
+  // Accueil : ancre interne, en-tête au défilement, retour en haut, animations
   {
     const page = await open('/');
-    await page.click('.navigation__liens a[href="/#prestations"]');
+    await page.click('.navigation__liens a[href="/services.html"]');
     await wait(1200);
-    check('« Mes services » défile sans recharger', page.url() === `${BASE}/#prestations` && await scrollY(page) > 300);
+    check('« Mes services » mène à la page services', page.url() === `${BASE}/services.html`, page.url());
+    await page.goBack({ waitUntil: 'networkidle0' });
+    await page.evaluate(() => window.scrollTo({ top: 800, behavior: 'instant' }));
+    await wait(300);
     check('en-tête : ombre après défilement', await page.$eval('[data-entete]', (el) => el.classList.contains('is-scrolled')));
     await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
     await wait(300);
@@ -154,9 +177,9 @@ try {
       await page.evaluate(() => document.activeElement === document.querySelector('[data-menu-bouton]')));
     await page.click('[data-menu-bouton]');
     await wait(500); // animation d'ouverture
-    await page.click('[data-menu] a[href="/#prestations"]');
+    await page.click('[data-menu] a[href="/services.html"]');
     await wait(2500);
-    check('menu mobile : « Mes services » depuis une autre page', page.url() === `${BASE}/#prestations`, page.url());
+    check('menu mobile : lien « Mes services »', page.url() === `${BASE}/services.html`, page.url());
     await page.close();
   }
 

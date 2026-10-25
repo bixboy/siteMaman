@@ -17,7 +17,7 @@
     ],
     "deny": [
       "Read(./node_modules/**)",
-      "Read(./.cache/**)",
+      "Read(./.cache/visual/ref/**)",
       "Read(./package-lock.json)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)"

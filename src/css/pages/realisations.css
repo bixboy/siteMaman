@@ -45,6 +45,17 @@
   height: 36px;
 }
 
+/* Légende visible (texte lu par les visiteurs et par les moteurs de recherche) */
+.galerie__legende {
+  margin-top: var(--espace-xs);
+  font-family: var(--police-titre);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--encre-douce);
+  text-align: center;
+}
+
 .galerie__bouton:hover .galerie__survol,
 .galerie__bouton:focus-visible .galerie__survol {
   opacity: 1;

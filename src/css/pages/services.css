@@ -1,0 +1,173 @@
+/* Page Restauration de sièges (services.html) : prestations, étapes, lexique, communes, FAQ */
+
+.conteneur--etroit {
+  max-width: 860px;
+}
+
+/* --- Ce que je restaure --- */
+
+.prestations {
+  display: grid;
+  gap: var(--espace-m);
+}
+
+.prestation {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--espace-m);
+  align-items: center;
+  padding: var(--espace-m);
+}
+
+.prestation__image img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.prestation p {
+  margin-top: var(--espace-xs);
+  color: var(--encre-douce);
+}
+
+@media (min-width: 992px) {
+  .prestations {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .prestation {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .prestation__image {
+    max-width: 180px;
+    margin-inline: auto;
+  }
+}
+
+/* --- Étapes numérotées, chiffres romains dorés --- */
+
+.etapes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--espace-m);
+  list-style: none;
+  counter-reset: etape;
+}
+
+.etapes li {
+  counter-increment: etape;
+  text-align: center;
+}
+
+.etapes li::before {
+  content: counter(etape, upper-roman);
+  display: block;
+  margin-bottom: var(--espace-xs);
+  font-family: var(--police-capitales);
+  font-size: 1.6rem;
+  color: var(--or-fonce);
+}
+
+.etapes h3 {
+  font-size: 1.45rem;
+}
+
+.etapes p {
+  margin-top: var(--espace-xs);
+  color: var(--encre-douce);
+}
+
+/* --- Lexique --- */
+
+.lexique {
+  display: grid;
+  gap: var(--espace-s);
+}
+
+.lexique__entree {
+  padding-bottom: var(--espace-s);
+  border-bottom: 1px solid var(--filet);
+}
+
+.lexique dt {
+  font-family: var(--police-titre);
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.lexique dt span {
+  font-family: var(--police-texte);
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--encre-douce);
+}
+
+.lexique dd {
+  color: var(--encre-douce);
+}
+
+/* --- Communes --- */
+
+.communes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espace-xs);
+}
+
+.communes li {
+  padding: 0.3em 0.9em;
+  border: 1px solid var(--or-clair);
+  background-color: var(--papier);
+  font-size: 0.95rem;
+}
+
+/* --- Questions fréquentes (accordéon natif <details>) --- */
+
+.faq {
+  display: grid;
+  gap: var(--espace-xs);
+}
+
+.faq__item {
+  border: 1px solid var(--or-clair);
+  background-color: var(--papier);
+}
+
+.faq__item summary {
+  position: relative;
+  padding: var(--espace-s) 3rem var(--espace-s) var(--espace-m);
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Losange doré qui pivote à l'ouverture */
+.faq__item summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: var(--espace-m);
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--or-fonce);
+  transform: translateY(-50%) rotate(45deg);
+  transition: background-color var(--transition);
+}
+
+.faq__item[open] summary::after {
+  background-color: var(--or-fonce);
+}
+
+.faq__item p {
+  padding: 0 var(--espace-m) var(--espace-m);
+  color: var(--encre-douce);
+}

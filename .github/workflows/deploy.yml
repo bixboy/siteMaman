@@ -47,3 +47,8 @@ jobs:
           protocol: ftps
           local-dir: ./_site/
           server-dir: ${{ vars.FTP_DIR || '/www/' }}
+
+      # Signale les pages à Bing (qui alimente ChatGPT et Copilot) via IndexNow ; un échec ne bloque rien
+      - name: Signalement IndexNow
+        run: node scripts/indexnow.mjs
+        continue-on-error: true

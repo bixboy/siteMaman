@@ -50,7 +50,7 @@
   {% include "partials/entete.njk" %}
 
   <main id="contenu">
-    {{ content | safe }}
+    {{ content | trim | safe }}
   </main>
 
   {% include "partials/pied.njk" %}

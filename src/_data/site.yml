@@ -9,6 +9,8 @@ facebook: https://www.facebook.com/profile.php?id=61553945070512
 # Fiche Google Business (identifiant repris de l'ancienne carte de la page contact)
 googleMaps: https://www.google.com/maps?cid=623214297286068827
 gtm: GTM-5QGTNVK7
+# IndexNow (Bing, Yandex…) : clé publique publiée en /<clé>.txt ; scripts/indexnow.mjs signale les pages après publication
+indexNowKey: da42f5482b1ad1ec7b6d4d478bf68c8b
 
 # Mentions légales (Registre national des entreprises, données publiques).
 # Adresse du siège volontairement non affichée : « 14000 Caen » seulement (choix de la propriétaire).
@@ -26,6 +28,10 @@ codePostal: "14000"
 zoneIntervention:
   - Caen
   - Calvados
+# Principales communes desservies (tout le Calvados), affichées sur les pages services et contact
+communes: [Caen, Hérouville-Saint-Clair, Mondeville, Ifs, Colombelles, Bretteville-sur-Odon, Carpiquet,
+  Fleury-sur-Orne, Ouistreham, Douvres-la-Délivrande, Courseulles-sur-Mer, Bayeux, Cabourg, Dives-sur-Mer,
+  Deauville, Trouville-sur-Mer, Honfleur, Lisieux, Falaise, Vire Normandie]
 horaires:
   # jours/ouverture/fermeture : données Google (JSON-LD) ; texte : affiché sur la page contact
   jours: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]

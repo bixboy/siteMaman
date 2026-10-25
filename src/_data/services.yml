@@ -1,12 +1,21 @@
-# Cartes « Mes services » de la page d'accueil, dans l'ordre d'affichage.
+# Services : cartes de l'accueil et de la page services.html, dans l'ordre d'affichage.
 #   image   chemin dans src/resources/
+#   texte   phrase de la page services (mots simples : c'est aussi ce que les gens recherchent)
 
 - titre: Restauration de chaises
   image: chaise-icone.webp
   alt: Illustration d'une chaise ancienne restaurée
+  texte: >-
+    Chaises de salle à manger, chaises médaillon, chaises de nourrice : assise et dossier remis en état,
+    puis recouverts d'un nouveau tissu.
 - titre: Restauration de canapés
   image: canape-icone.webp
   alt: Illustration d'un canapé de style
+  texte: >-
+    Canapés anciens ou modernes : rembourrage repris et nouveau tissu, pour leur rendre confort et allure.
 - titre: Restauration de fauteuils
   image: siege-bergere.webp
   alt: Gravure d'un fauteuil bergère
+  texte: >-
+    Bergères, cabriolets, Voltaire, crapauds, fauteuils bridge ou vintage : de l'assise affaissée
+    au tissu usé, tout est repris.

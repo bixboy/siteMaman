@@ -21,6 +21,7 @@ les sièges à domicile, à {{ site.ville }} et dans tout le Calvados : il n'y a
 ## Pages
 
 - [Accueil]({{ site.url }}/) : présentation, services, fournisseurs
+- [Restauration de sièges]({{ site.url }}/services.html) : prestations, déroulé, lexique, communes desservies, questions fréquentes
 - [Réalisations]({{ site.url }}/realisations.html) : photos de sièges restaurés, avant / après
 - [Fauteuils à vendre]({{ site.url }}/market.html) : sièges restaurés ou à rénover
 - [Contact]({{ site.url }}/contact/contact.html) : téléphone, email, zone d'intervention, devis gratuit
@@ -38,4 +39,13 @@ les sièges à domicile, à {{ site.ville }} et dans tout le Calvados : il n'y a
 ## Fournisseurs de tissus et passementeries
 {% for fournisseur in fournisseurs %}
 - {{ fournisseur.nom | safe }}
+{%- endfor %}
+
+## Communes desservies (à domicile)
+
+{{ site.communes | join(", ") }}, et tout le Calvados.
+
+## Questions fréquentes
+{% for item in faq %}
+- {{ item.question | safe }} {{ item.reponse | uneLigne | safe }}
 {%- endfor %}
