@@ -3,6 +3,7 @@
 # Secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD : définis dans l'environnement GitHub `github-pages`
 # (Settings → Environments), d'où `environment:` ci-dessous ; branches autorisées : main et Work.
 # Variable facultative : FTP_DIR (dossier du site sur le FTP, par défaut /www/).
+# Variable facultative : FTP_PROTOCOL (ftp par défaut ; ftps si l'hébergeur le permet).
 name: Publication
 
 on:
@@ -47,7 +48,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
+          # OVH mutualisé : FTPS non pris en charge (« 500 This security scheme is not implemented »)
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
           local-dir: ./_site/
           server-dir: ${{ vars.FTP_DIR || '/www/' }}
 
