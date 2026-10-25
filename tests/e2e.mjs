@@ -109,6 +109,8 @@ try {
     await page.click('.prev');
     await page.click('.prev');
     check('produit : flèche précédente (boucle)', await active() === count - 1);
+    // Les photos suivantes sont en loading="lazy" : attendre qu'elle soit chargée pour cliquer
+    await page.waitForFunction(() => document.querySelector('.ImgSlider.active')?.naturalWidth > 0);
     await page.click('.ImgSlider.active');
     check('produit : modale photo', await display(page, '#myModalIMG') === 'block');
     await page.click('#myModalIMG .close');
