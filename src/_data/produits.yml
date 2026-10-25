@@ -1,0 +1,90 @@
+# Produits à vendre (page market.html + une page par produit dans /vente/).
+# Ordre d'affichage = ordre du fichier. Produit vendu : supprimer son bloc.
+#
+#   id           numéro unique, jamais réutilisé (plus grand id + 1) ; sert dans l'URL
+#   nom          titre affiché
+#   etat         restaure (prêt à l'emploi) | a-renover (à personnaliser)
+#   description  texte libre ; chaque retour à la ligne est conservé
+#   photos       chemins dans src/resources/, la première sert de vignette
+
+- id: 1
+  nom: Chaises Louis XVI
+  etat: restaure
+  description: |-
+    Paire de chaises Louis-XVI
+    Tissu velour et bois légèrment vielli.
+  photos:
+    - Produits/fauteuil1.webp
+    - Produits/fauteuil1.2.webp
+    - Produits/fauteuil1.3.webp
+
+- id: 2
+  nom: Pouf et coussins
+  etat: restaure
+  description: Pouf et coussins tissu en velour.
+  photos:
+    - Produits/fauteuil2.webp
+
+- id: 3
+  nom: Chaise de nourrice
+  etat: restaure
+  description: Chaise de nourrice assise basse tissu art déco.
+  photos:
+    - Produits/fauteuil3.webp
+
+- id: 4
+  nom: Duo cabriolet et chaise
+  etat: a-renover
+  description: Pour ce duo prevoir réfection peinture.
+  photos:
+    - Produits/siege1.webp
+
+- id: 5
+  nom: Paire de bergères
+  etat: a-renover
+  description: Deux bergères.
+  photos:
+    - Produits/siege2.webp
+
+- id: 7
+  nom: Fauteuil Chauffeuse
+  etat: a-renover
+  description: fauteuil Chauffeuse déja mis à blanc.
+  photos:
+    - Produits/siege3.webp
+    - Produits/siege3.2.webp
+
+- id: 8
+  nom: Fauteuil studio
+  etat: a-renover
+  description: fauteuil studio des années 50.
+  photos:
+    - Produits/siege4.webp
+
+- id: 9
+  nom: Paire de petits fauteuils
+  etat: a-renover
+  description: Deux petits fauteuils.
+  photos:
+    - Produits/siege5.webp
+
+- id: 10
+  nom: Bergère
+  etat: a-renover
+  description: Grosse bergère bois impecable déja cérusé.
+  photos:
+    - Produits/siege6.webp
+
+- id: 11
+  nom: Fauteuil Bergère
+  etat: a-renover
+  description: Fauteuil style bergère à personnaliser selon vos goûts.
+  photos:
+    - Produits/fauteuilbergere.webp
+
+- id: 12
+  nom: Fauteuil Bergère
+  etat: a-renover
+  description: Fauteuil style bergère à rénover.
+  photos:
+    - Produits/fauteauilbergere2.webp

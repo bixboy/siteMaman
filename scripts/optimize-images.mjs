@@ -1,5 +1,5 @@
-// Optimise les images de resources/ : WebP, plus grand côté ≤ 1600 px, noms en minuscules
-// sans espaces ni accents. Met à jour les chemins dans les fichiers HTML/CSS/JS/XML.
+// Optimise les images de src/resources/ : WebP, plus grand côté ≤ 1600 px, noms en minuscules
+// sans espaces ni accents. Met à jour les chemins dans src/ (gabarits, données YAML, CSS, JS).
 // Usage : npm run images (sans effet sur une image déjà conforme)
 import { execFileSync } from 'node:child_process';
 import { readdir, readFile, rename, stat, writeFile } from 'node:fs/promises';
@@ -7,11 +7,13 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
+const SRC = path.join(ROOT, 'src');
+const RESOURCES = path.join(SRC, 'resources');
 const MAX_SIDE = 1600;
 const QUALITY = 75;
 const IMAGE_EXT = new Set(['.jpg', '.jpeg', '.png', '.webp']);
-const TEXT_EXT = new Set(['.html', '.css', '.js', '.xml']);
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'scripts']);
+const TEXT_EXT = new Set(['.njk', '.yml', '.html', '.css', '.js']);
+const SKIP_DIRS = new Set(['.git', 'node_modules']);
 
 async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -22,7 +24,11 @@ async function* walk(dir) {
   }
 }
 
-const toUrl = (file) => path.relative(ROOT, file).split(path.sep).join('/');
+const toPosix = (from, file) => path.relative(from, file).split(path.sep).join('/');
+const toUrl = (file) => toPosix(ROOT, file);
+// Chemin tel qu'écrit dans les gabarits (/resources/<chemin>) et les données YAML (<chemin>)
+const toResourcePath = (file) => toPosix(RESOURCES, file);
+const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function normalizedPath(file) {
   const base = path.basename(file, path.extname(file))
@@ -66,18 +72,24 @@ async function optimize(file) {
 }
 
 async function updateReferences(renames) {
-  for await (const file of walk(ROOT)) {
+  // Chemin complet uniquement : « siege1.jpg » ne doit toucher ni « grand-siege1.jpg »
+  // ni « Realisations/siege1.jpg »
+  const patterns = renames.map(({ from, to }) => ({
+    regex: new RegExp(`(?<=/resources/|^|[\\s"'])${escapeRegExp(toResourcePath(from))}(?=$|[\\s"')\\],])`, 'gm'),
+    replacement: toResourcePath(to),
+  }));
+  for await (const file of walk(SRC)) {
     if (!TEXT_EXT.has(path.extname(file))) continue;
     const original = await readFile(file, 'utf8');
     let content = original;
-    for (const { from, to } of renames) content = content.replaceAll(toUrl(from), toUrl(to));
+    for (const { regex, replacement } of patterns) content = content.replace(regex, replacement);
     if (content !== original) await writeFile(file, content);
   }
 }
 
 const results = [];
 try {
-  for await (const file of walk(path.join(ROOT, 'resources'))) {
+  for await (const file of walk(RESOURCES)) {
     if (!IMAGE_EXT.has(path.extname(file).toLowerCase())) continue;
     const result = await optimize(file);
     if (result) results.push(result);
@@ -89,7 +101,7 @@ try {
 
 const ko = (bytes) => Math.round(bytes / 1024);
 console.table(results.map(({ from, to, before, after }) => ({
-  fichier: toUrl(to), avant_ko: ko(before), apres_ko: ko(after),
+  fichier: toResourcePath(to), avant_ko: ko(before), apres_ko: ko(after),
   ...(from !== to && { ancien_nom: path.basename(from) }),
 })));
 const total = (key) => ko(results.reduce((sum, r) => sum + r[key], 0));

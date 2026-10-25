@@ -1,5 +1,6 @@
 .vs/
 node_modules/
 _site/
+.cache/
 Thumbs.db
 .DS_Store

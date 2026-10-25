@@ -1,51 +1,47 @@
 # Main é Merveille — site vitrine
 
-Site d'une tapissière d'ameublement à Caen (14). Prod : https://www.main-e-merveille.fr
-Contenu, commentaires et commits en français.
+Tapissière d'ameublement à Caen (14), intervention à domicile : pas d'adresse d'atelier, ne jamais en inventer.
+Prod : https://www.main-e-merveille.fr — contenu, commentaires et commits en français.
 
 ## Stack
-HTML/CSS/JS statiques, sans build. npm ne sert qu'à l'outillage local (`npm install` une fois).
-Un seul script côté site : `main.js`
-(chaque `initX()` sort immédiatement si ses éléments ne sont pas dans la page).
-Analytics : Google Tag Manager `GTM-5QGTNVK7` dans le `<head>` de chaque page.
-Hébergement OVH, publié automatiquement depuis GitHub (`bixboy/siteMaman`), sans build :
-**un push sur `main` = mise en ligne immédiate**. Travailler sur une branche,
-ne jamais pousser sur `main` sans accord explicite.
-Pas de PHP, pas de formulaire (contact = `mailto:` + téléphone), pas d'Instagram.
-Activité à domicile (Caen et Calvados) : pas d'adresse d'atelier, ne jamais en inventer une.
+Eleventy 3 (gabarits Nunjucks + données YAML) → HTML statique dans `_site/`.
+JS natif en modules ES, CSS sans préprocesseur. Analytics : GTM (id dans `site.yml`).
 
-## Carte des fichiers
-- `index.html` — accueil : à propos, services (`#prestations`), fournisseurs
-- `realisations.html` — galerie : `.modal-trigger1` = avant/après (modale `#myModal`), `.modal-trigger2` = photo simple (`#myModalIMG`)
-- `market.html` — produits à vendre ; données dans les attributs `data-*` des `.product-item`
-- `product.html` — fiche produit remplie en JS depuis `localStorage` (pas d'URL propre par produit)
-- `contact/`, `legal/` — pages en sous-dossier : tous les chemins sont préfixés `../`
-- `css/body.css` — variables `:root` (couleurs, polices, espacements), reset, animations
-- `css/<page>-components/*.css` — un fichier par section de page
-- `resources/` — images WebP : `Realisations/`, `Produits/`, logos et icônes à la racine
-- `scripts/optimize-images.mjs` — `npm run images` : convertit/renomme les images et met à jour les chemins
-- `docs/` — documentation chargée à la demande (voir plus bas)
+## Mise en ligne
+Push sur `main` → GitHub Action (`.github/workflows/deploy.yml`) : `npm test`, puis publication
+de `_site/` sur la branche `deploy`, suivie par OVH. **Push sur `main` = mise en ligne** :
+jamais sans accord explicite. Ne jamais modifier `deploy` à la main.
+
+## Commandes
+- `npm run dev` — serveur local avec rechargement (http://localhost:8080)
+- `npm test` — build + tests navigateur (Chrome requis) ; à lancer après chaque modification
+- `npm run images` — convertit/renomme les nouvelles images de `src/resources/` et met à jour les chemins
+
+## Carte
+- `src/_data/` — **le contenu** : `site.yml` (coordonnées, SEO), `produits.yml`, `realisations.yml`,
+  `fournisseurs.yml`, `etats.yml` (libellés des états produit)
+- `src/_includes/layouts/base.njk` — `<head>` (SEO, Open Graph, polices, CSS), nav, footer, script
+- `src/_includes/partials/` — `nav.njk` (liste des liens), `footer.njk`, `jsonld.njk`
+- `src/*.njk`, `src/contact/`, `src/legal/` — pages ; en-tête : `title`, `description`, `permalink`,
+  `nav` (lien actif), `styles` (CSS propres à la page)
+- `src/vente/produit.njk` — une page par produit (`/vente/<id>-<slug>.html`)
+- `src/js/main.js` — point d'entrée ; un module par fonctionnalité ; `modal.js` partagé
+- `src/css/body.css` — variables `:root`, reset, animations ; `src/css/<page>-components/` — styles par section
+- `src/resources/` — images sources (WebP ≤ 1600 px) ; vignettes générées dans `/img/`
+- `eleventy.config.js` — filtres `produitUrl`, `nl2br` ; shortcode `image`
+- `tests/e2e.mjs` — tests navigateur ; `scripts/optimize-images.mjs` — `npm run images`
+- `docs/CONTENU.md` — ajouter un contenu ; `docs/ROADMAP.md` — plan, points à confirmer, historique
 
 ## Règles
-- Ne pas ouvrir les images de `resources/` sauf demande explicite : s'appuyer sur les noms de fichiers.
-- Nav et footer sont copiés dans les 7 pages HTML : toute modif doit être répercutée partout
-  (avec `../` dans `contact/` et `legal/`).
-- Coordonnées (07 68 31 76 08, mainemerveille@gmail.com) en dur dans toutes les pages
-  et dans le JSON-LD de `index.html` : les modifier partout.
-- Couleurs, polices, espacements : utiliser les variables de `css/body.css`, jamais de valeur en dur.
-- Nouveau code : pas de `style="..."` ni de `onclick` dans le HTML ; écouteurs dans `main.js`.
+- Contenu (texte, produit, réalisation, coordonnées) : modifier les YAML de `src/_data/`, pas les gabarits.
+- Images : les déposer dans `src/resources/` puis `npm run images` ; jamais de recompression à la main.
+  Ne pas ouvrir les images sauf demande : s'appuyer sur les noms de fichiers.
+- Vignette de grille : `{% image "Dossier/fichier.webp", "alt", "sizes" %}` ; image d'en-tête : `<img fetchpriority="high">`.
+- CSS : variables de `body.css` ; jamais de `style=""` ni de `onclick` ; comportements dans `src/js/` via `data-*`.
+- Chemins absolus partout (`/resources/…`, `/market.html`). Ne pas changer les URLs existantes (référencement).
 - Breakpoint mobile : `max-width: 767px` / `min-width: 768px`.
-- Nouvelle image : la déposer dans `resources/` puis lancer `npm run images` (WebP, plus grand
-  côté ≤ 1600 px, nom normalisé). Ne jamais recompresser une image à la main.
-- `<img>` : `alt` descriptif en français, `loading="lazy"` sauf l'image d'en-tête (`fetchpriority="high"`).
-- Respecter la casse exacte des noms de fichiers (l'hébergement est sensible à la casse, pas Windows) ;
-  renommer avec `git mv`, jamais par l'explorateur.
-- Les fichiers sont en CRLF : éviter `sed -i` (convertit en LF), préférer l'outil Edit.
-
-## Documentation
-- Ajouter une réalisation ou un produit : `docs/CONTENU.md`
-- Plan d'amélioration, bugs connus, avancement : `docs/ROADMAP.md` (cocher les cases une fois fait)
+- Fichiers en CRLF : préférer l'outil Edit à `sed -i` (qui convertit en LF).
 
 ## Vérifier
-Pas de tests automatisés. Servir le site en local (`npm run serve`) puis contrôler
-la page modifiée en mobile (375 px) et desktop, console navigateur sans erreur.
+`npm test` doit finir par « N tests OK ». Changement visuel : `npm run dev`, contrôler mobile (375 px) et desktop.
+Nouvelle interaction JS : ajouter un test dans `tests/e2e.mjs`.

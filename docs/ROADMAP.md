@@ -1,99 +1,59 @@
 # Plan d'amélioration
 
-Audit du 25/10/2026. Cocher `[x]` au fur et à mesure. Une phase = une branche / une PR.
-
-## ⚠ Branches et mise en ligne (à régler en premier)
-Constat du 25/10/2026 : le site en ligne est **identique au commit `aa0821f`** (ex-`BackUp`),
-pas à `main`. `main` (oct. 2025, refactoring Codex : page `services/`, dossier `recources/`,
-formulaire) a divergé de `Work` depuis `5c0ce3b` et n'a jamais été fusionnée.
-La branche `BackUp` a été supprimée sur GitHub. La faille PHP reste donc en ligne.
-- [x] Ancien `main` archivé (tag `archive/main-codex-2025-10`) puis fusionné en stratégie `ours` :
-      `main` = `Work`, sans réécriture d'historique. `main` est la branche de production.
-- [x] OVH suit `main` (déployé le 25/10/2026) : faille PHP fermée (404), 58 images vérifiées en ligne (200).
-- [ ] Récupérer éventuellement des idées du refactoring Codex (page services, sitemap) en phase 3.
+Cocher `[x]` au fur et à mesure. Une phase = une branche.
 
 ## Décisions
-- Hébergement OVH, publié automatiquement depuis le dépôt GitHub `bixboy/siteMaman`
-  (OVH copie les fichiers tels quels, **sans étape de build**).
-- Pas de formulaire de contact : email (`mailto:`) et téléphone uniquement.
-- Pas d'Instagram ; Facebook seul.
-- Pas d'atelier : intervention à domicile (Caen et Calvados) → SEO de « zone de service ».
+- Hébergement OVH, déployé depuis GitHub `bixboy/siteMaman`. OVH ne lance pas de build :
+  GitHub Actions construit le site et publie `_site/` sur la branche `deploy`, suivie par OVH.
+- Pas de formulaire (contact = `mailto:` + téléphone), pas d'Instagram (Facebook seul).
+- Pas d'atelier : intervention à domicile (Caen, Calvados) → SEO de « zone de service ».
+- URLs historiques conservées : `/`, `/realisations.html`, `/market.html`, `/contact/contact.html`, `/legal/*.html`.
 
-## Phase 0 — Corrections urgentes
-- [x] **Sécurité** : `contact/traitement_formulaire.php` supprimé (injection d'en-têtes
-      → relais de spam possible ; le formulaire n'existait plus).
-- [x] Polices Cinzel/Lato jamais chargées (`@import` mal placé dans `body.css`) → `<link>` + `preconnect` dans chaque `<head>`.
-- [x] `initAnimations` déclarée dans `initModalLogic` (`ReferenceError`, animations au scroll inactives) → sortie au niveau global.
-- [x] Références vers des CSS inexistants retirées (`prestations-components/top.css`, `contact-components/horaires.css`).
-- [x] `lang="fr"` sur `contact/` et `legal/`.
-- [x] Liens Instagram vides et icônes associées supprimés.
-- [x] `.gitignore` + retrait de `.vs/` du dépôt.
-- [x] Vérification visuelle desktop (Chrome headless) : mise en page identique au site en ligne,
-      seule la police des titres change. Reste à contrôler sur un vrai téléphone.
+## À confirmer par la propriétaire
+- [ ] Email : `mainemerveille@gmail.com` (site) ou `mainemerveille@outlook.fr` (mentions légales) ?
+- [ ] « Numéro SIRET : 979063310 » n'a que 9 chiffres (= SIREN). SIRET complet (14 chiffres) ?
+- [ ] Fautes dans `produits.yml` à corriger ? (« velour », « légèrment vielli », « impecable »…)
 
-## Phase 1 — Performance (gain le plus visible)
-- [x] `npm run images` (`scripts/optimize-images.mjs`, sharp) : WebP q75, plus grand côté ≤ 1600 px,
-      noms normalisés via `git mv`, chemins mis à jour. `resources/` : 124 Mo → 8,9 Mo.
-- [x] 8 images inutilisées supprimées (≈ 18 Mo).
-- [x] Galerie : `srcset` sans descripteur remplacé par `src`.
-- [x] `loading="lazy"` sur les images du contenu, `fetchpriority="high"` sur l'image d'en-tête.
-- Poids des images par page, avant → après : accueil 8,6 → 0,9 Mo ; réalisations 35,4 → 4,2 Mo ;
-  vente 49,8 → 2,8 Mo ; contact 2,1 → 0,3 Mo.
-- [ ] Mesurer avec PageSpeed Insights (mobile) une fois en ligne et noter les scores ici.
-- Reporté en phase 2 (fait automatiquement par eleventy-img) : vignettes réduites pour la
-  galerie et la boutique (elles chargent aujourd'hui l'image 1600 px), `width`/`height` sur les `<img>`.
-
-## Phase 2 — Architecture maintenable (proposition : Eleventy)
-Problèmes : nav/footer/head copiés dans 7 pages ; coordonnées en dur partout ;
-contenu (réalisations, produits) noyé dans le HTML ; fiche produit via `localStorage`
-(non indexable, lien non partageable, page vide si on arrive directement dessus).
-
-Eleventy (11ty) génère du HTML statique : même hébergement, aucun JS en plus côté visiteur.
-OVH ne lance pas de build : une GitHub Action construit le site à chaque push sur `main`
-et pousse le résultat (`_site/`) sur une branche `deploy`, que OVH suit à la place de `main`.
-- [ ] GitHub Action build → branche `deploy` ; basculer la branche suivie dans le manager OVH.
-- [ ] Structure `src/` : `_includes/` (layout, nav, footer, head SEO), `_data/`, pages.
-- [ ] `_data/site.json` : nom, téléphone, email, réseaux, adresse → une seule source.
-- [ ] `_data/realisations.yml` et `_data/produits.yml` : ajouter un contenu = ajouter 4 lignes.
-- [ ] Une page par produit générée (`/vente/<slug>/`) → supprime la logique `localStorage`.
-- [ ] Images via `@11ty/eleventy-img` : AVIF + WebP en plusieurs tailles, `srcset` automatique.
-- [ ] `sitemap.xml` généré (aujourd'hui : domaine sans `www` ≠ canonical, `market.html` absent, dates 2023).
+## Phase 2 — Eleventy (branche `eleventy`)
+- [x] Structure `src/` : layout + partials (nav, footer, JSON-LD), pages `.njk`, données YAML
+      (`site`, `produits`, `realisations`, `fournisseurs`, `etats`).
+- [x] Une page par produit (`/vente/<id>-<slug>.html`) ; `product.html` redirige vers `market.html`.
+- [x] Vignettes responsives (eleventy-img, 400/800/1200 px, `width`/`height`) : galerie, boutique, accueil.
+- [x] `sitemap.xml` généré (domaine `www`, toutes les pages). JSON-LD « zone de service » sur toutes les pages.
+- [x] JS en modules ES, une modale partagée (Échap, clic fond, croix) ; plus de `onclick` ni de `localStorage`.
+- [x] Bug corrigé : la navbar (z-index 1000) masquait la croix des modales (15).
+- [x] `npm test` : build + 23 tests navigateur (puppeteer-core) ; lancé par la CI avant chaque déploiement.
+- [x] Rendu comparé au site en ligne (desktop + mobile) : identique, hors rééchantillonnage des vignettes.
+- [ ] Bascule : workflow sur `eleventy` → branche `deploy` créée ; OVH : suivre `deploy` ;
+      puis fusion dans `main` et retrait de `eleventy` des déclencheurs de `.github/workflows/deploy.yml`.
 - [ ] CSS : regrouper en `base` / `components` / `pages`, supprimer le code mort,
-      unifier les breakpoints (aujourd'hui 767, 768, 480, 420, 355, 300 px).
-- [ ] `main.js` découpé en modules ES (`nav.js`, `gallery.js`, `before-after.js`…),
-      une seule modale réutilisable au lieu de trois implémentations.
-- [ ] Commandes `npm run dev` / `npm run build`, déploiement documenté dans `CLAUDE.md`.
-- [ ] Seul `_site/` est publié : `CLAUDE.md`, `docs/`, `scripts/`, `package.json` ne seront plus
-      accessibles publiquement (ils le sont tant qu'OVH copie tout le dépôt).
+      unifier les breakpoints (767, 768, 480, 420, 355, 300 px).
 
 ## Phase 3 — SEO local & contenu
-- [ ] Un seul `<h1>` par page (l'accueil en a 4, dont un caché dans la nav mobile).
-- [ ] `alt` descriptifs sur les réalisations (actuellement `"1"`, `"2"`…).
-- [ ] `title` / `description` / Open Graph propres à chaque page (description identique partout).
-- [ ] JSON-LD de zone de service sur toutes les pages : retirer `streetAddress` vide et `geo`
-      (pointe vers le centre de Caen), garder `addressLocality`/`postalCode`, ajouter
-      `areaServed` (Caen, Calvados), `sameAs` (Facebook, fiche Google), `@id` renseigné.
-- [ ] Fiche Google Business en mode « zone de service » (adresse masquée). Une fiche semble
-      exister : la carte de `contact.html` pointe vers « Main é merveille - Tapissier d'ameublement ».
-      Remplacer la carte (qui suggère un lieu d'accueil) par la liste des communes desservies.
+- [ ] Mesurer avec PageSpeed Insights (mobile) et noter les scores ici.
+- [ ] Un seul `<h1>` par page (l'accueil en a 4, dont `.nameNav` dans la nav mobile).
+- [ ] `alt` des réalisations (champ `alt` de `realisations.yml`, aujourd'hui « Réalisation N »).
+- [ ] `description` propre à chaque page (en-tête des `.njk` ; seule l'accueil en a une).
+- [ ] Fiche Google Business en « zone de service » ; ajouter son URL à `sameAs` (partial `jsonld.njk`).
+      Remplacer la carte Google Maps de la page contact par la liste des communes desservies.
 - [ ] Page « Services » détaillée (réfection traditionnelle / mousse, tissus, délais, devis).
-- [ ] Section avis clients / FAQ (données structurées `FAQPage`).
-- [ ] Lier la fiche Google Business Profile.
+      Idées dans le tag `archive/main-codex-2025-10` (dossier `services/`).
+- [ ] Avis clients / FAQ (données structurées `FAQPage`).
 
 ## Phase 4 — Accessibilité, RGPD, qualité
-- [ ] RGPD : GTM sans bandeau de consentement. Ajouter un bandeau (ex. tarteaucitron)
-      ou passer à une mesure d'audience sans cookie.
-- [ ] Réécrire la politique de confidentialité : texte générique qui cite newsletter,
-      formulaire et achats (inexistants) mais pas les cookies Google ; hébergeur OVH à mentionner.
-- [ ] Menu mobile et modales utilisables au clavier (`<button>`, `Échap`, focus piégé, `aria-*`).
-- [ ] « Mes services » : `<a onclick>` sans `href` → lien `#prestations` réel.
-- [ ] Iframe Google Maps : `title`, chargement au clic (performance + cookies tiers).
-- [ ] Remplacer les icônes PNG (tel, mail, réseaux) par des SVG inline.
-- [ ] © de l'année générée automatiquement.
-- [ ] Prettier + html-validate en `npm run lint`.
+- [ ] RGPD : GTM sans bandeau de consentement → bandeau (ex. tarteaucitron) ou mesure sans cookie.
+- [ ] Politique de confidentialité générique (newsletter, formulaire, achats inexistants ; rien sur les cookies).
+- [ ] Menu mobile au clavier (`<button>` au lieu de `<label for>` orphelin, `aria-expanded`), focus piégé dans les modales.
+- [ ] Iframe Google Maps : `title`, chargement au clic.
+- [ ] Icônes PNG/WebP (tel, mail, réseaux) → SVG inline.
+- [ ] Filtres de la boutique : supprimer le faux chargement de 500 ms.
 
-## Phase 5 — Outillage IA (après la phase 2)
-- [ ] Mettre à jour `CLAUDE.md` (nouvelle structure, commandes) et `docs/CONTENU.md`.
-- [ ] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`
-      (optimise les images, ajoute l'entrée YAML, lance le build).
+## Phase 5 — Outillage IA
+- [ ] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`.
 - [ ] `llms.txt` à la racine du site : résumé de l'activité pour les assistants IA de recherche.
+
+## Historique
+- Phase 0 (25/10/2026) : faille PHP supprimée (injection d'en-têtes), polices et animations
+  réparées, CSS manquants, `lang="fr"`, liens Instagram vides, `.vs/` hors dépôt.
+- Phase 1 (25/10/2026) : `npm run images` ; images 124 Mo → 8,9 Mo ; poids par page divisé par 10 à 18.
+- Branches : ancien `main` (refactoring Codex jamais publié) archivé sous `archive/main-codex-2025-10`.

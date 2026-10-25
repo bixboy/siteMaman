@@ -1,0 +1,24 @@
+# Logos du bandeau « Mes fournisseurs » (page d'accueil), dans l'ordre d'affichage.
+#   logo      chemin dans src/resources/
+#   contenu   true = logo affiché en entier (pas rogné)
+
+- nom: Casal tissus
+  logo: casal.webp
+- nom: Romo tissus
+  logo: logo-romo.webp
+- nom: Lelievre tissus
+  logo: lelievre-logo.webp
+- nom: Passementrie ile-de-france
+  logo: les-passementeries-de-lile-de-france-logo.webp
+  contenu: true
+- nom: Houles Paris
+  logo: houles-logo.webp
+- nom: Kobe tissus
+  logo: kobe-logo.webp
+- nom: Samuel and sons
+  logo: samuel-and-sons.webp
+  contenu: true
+- nom: Pierre frey
+  logo: logo-pierre-frey.webp
+- nom: Jab anstoetz
+  logo: teaser-jab-anstoetz-fabrics.webp

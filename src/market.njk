@@ -1,0 +1,51 @@
+---
+title: "Vente - Main é merveille - Tapissier d'ameublement"
+permalink: market.html
+nav: vente
+styles:
+  - index-components/top.css
+  - contact-components/top.css
+  - market-components/market.css
+---
+<div class="pcTop">
+  <div class="boxImgTop">
+    <img src="/resources/Realisations/background1.webp" alt="prestations" fetchpriority="high">
+    <div class="coverImg">
+      <h1>Vente et Refection</h1>
+      <span>Vous avez envie d'un fauteuil <br> mais vous n'en possedez pas : deux solutions <br> un fauteuil déjà
+        fait ou un fauteuil à refaire. </span>
+      <button data-scroll-to="listProduct">Voir les Produits <span class="fleche"> ^
+        </span></button>
+    </div>
+  </div>
+</div>
+
+<div class="Container" id="marketContainer">
+
+  <div class="category-filter">
+    <button class="filter-btn0" data-filter="all">Tous</button>
+    <button class="filter-btn1" data-filter="restaure">{{ etats.restaure.filtre }}</button>
+    <button class="filter-btn2" data-filter="a-renover">{{ etats["a-renover"].filtre }}</button>
+  </div>
+
+  {#- Contenu : src/_data/produits.yml ; une page par produit : src/vente/produit.njk #}
+  <div class="product-list" id="listProduct">
+    {%- for produit in produits %}
+    {%- set url = produit | produitUrl %}
+    <div class="product-item" data-etat="{{ produit.etat }}">
+      <a class="image-container" href="{{ url }}">
+        {% image produit.photos[0], produit.nom, "(max-width: 767px) 90vw, 300px" %}
+        <div class="overlay">{{ produit.nom }}</div>
+      </a>
+      <h2 class="product-name-mobile">{{ produit.nom }}</h2>
+      <a href="{{ url }}" class="view-details">Voir les détails</a>
+    </div>
+    {%- endfor %}
+  </div>
+
+  <div class="loader-container" id="loader">
+    <div class="loader-box">
+      <div class="loader"></div>
+    </div>
+  </div>
+</div>

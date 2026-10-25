@@ -1,0 +1,55 @@
+# Galerie de la page realisations.html. Ordre d'affichage = ordre du fichier.
+#
+# Avant/après (curseur de comparaison au clic) :
+#   avant, apres   chemins dans src/resources/
+#   vignette       image affichée dans la grille (par défaut : apres)
+# Photo simple (agrandie au clic) :
+#   photo          chemin dans src/resources/
+# Commun :
+#   alt            description de la photo (recommandé pour le référencement)
+#   format         portrait (photo en hauteur) | recadre (vignette rognée) ; absent = standard
+
+- avant: Realisations/siege1.3.webp
+  apres: Realisations/siege1.4.webp
+  format: recadre
+
+- avant: Realisations/siege2.webp
+  apres: Realisations/siege2.1.webp
+
+- avant: Realisations/siege3.webp
+  apres: Realisations/siege3.1.webp
+
+- avant: Realisations/siege4.webp
+  apres: Realisations/siege4.1.webp
+
+- avant: Realisations/siege6.1.webp
+  apres: Realisations/siege6.webp
+
+- avant: Realisations/siege7.1.webp
+  apres: Realisations/siege7.webp
+
+- avant: Realisations/siege11.webp
+  apres: Realisations/siege11.1.webp
+  vignette: Realisations/siege11.webp
+  format: portrait
+
+- photo: Realisations/siege5.webp
+
+- avant: Realisations/siege12.webp
+  apres: Realisations/siege12.1.webp
+
+- photo: Realisations/coussins1.webp
+
+- avant: Realisations/siege13.1.webp
+  apres: Realisations/siege13.webp
+  format: portrait
+
+- avant: Realisations/siege14.webp
+  apres: Realisations/siege14.1.webp
+  format: portrait
+
+- photo: Realisations/coussins2.webp
+
+- avant: Realisations/siege15.webp
+  apres: Realisations/siege15.1.webp
+  format: portrait

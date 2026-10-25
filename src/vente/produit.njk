@@ -1,0 +1,52 @@
+---
+# Une page par produit de src/_data/produits.yml
+pagination:
+  data: produits
+  size: 1
+  alias: produit
+permalink: "{{ produit | produitUrl }}"
+nav: vente
+styles:
+  - index-components/top.css
+  - contact-components/top.css
+  - market-components/product.css
+  - realisations-components/real.css
+eleventyComputed:
+  title: "{{ produit.nom }} - Main é merveille - Tapissier d'ameublement"
+  description: "{{ produit.nom }} : {{ produit.description }}"
+  image: "/resources/{{ produit.photos[0] }}"
+---
+<div class="Product">
+  <div class="product-container">
+
+    <div class="product-image">
+      <div class="slider-container">
+        <div class="sliderProduct">
+          {%- for photo in produit.photos %}
+          <img class="ImgSlider product-modal-trigger" src="/resources/{{ photo }}"
+            alt="{{ produit.nom }} - Image {{ loop.index }}"{% if not loop.first %} loading="lazy"{% endif %}>
+          {%- endfor %}
+        </div>
+        <div class="prev">&#10094;</div>
+        <div class="next">&#10095;</div>
+      </div>
+    </div>
+
+    <div class="product-details">
+      <div class="product-header">
+        <h1>{{ produit.nom }}</h1>
+        <div class="lines product-separator"></div>
+        <p class="price">{{ etats[produit.etat].statut | nl2br | safe }}</p>
+      </div>
+      <p class="description">{{ produit.description | nl2br | safe }}</p>
+      <a class="buy-button" href="tel:{{ site.telephone }}"> Contacter <img src="/resources/tel.webp"
+          alt="" loading="lazy"></a>
+    </div>
+  </div>
+</div>
+
+<div id="myModalIMG" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="image" alt="">
+  <div id="caption"></div>
+</div>

@@ -1,0 +1,11 @@
+# États possibles d'un produit (champ `etat` de produits.yml)
+restaure:
+  filtre: Fauteuils Restaurés
+  statut: |-
+    Fauteuil Prêt
+     à l'Emploi
+a-renover:
+  filtre: Fauteuils à Rénover
+  statut: |-
+    Fauteuil
+     à Personnaliser

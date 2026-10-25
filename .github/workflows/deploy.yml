@@ -1,0 +1,42 @@
+# Construit le site (Eleventy), lance les tests, puis publie _site/ sur la branche `deploy`.
+# OVH suit la branche `deploy` : un push sur `main` met donc le site en ligne si les tests passent.
+name: Build et déploiement
+
+on:
+  push:
+    # `eleventy` : temporaire, le temps de basculer OVH sur `deploy` ; à retirer après fusion dans main
+    branches: [main, eleventy]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build + tests
+        run: npm test
+
+      - name: Publier sur la branche deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: deploy
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          commit_message: "Déploiement ${{ github.sha }}"

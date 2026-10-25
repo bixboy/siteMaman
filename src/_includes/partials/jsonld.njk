@@ -1,0 +1,26 @@
+{#- Données structurées : entreprise sans adresse d'accueil, qui intervient sur une zone -#}
+{%- set entreprise = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": site.url + "/#entreprise",
+  "name": site.nom,
+  "url": site.url + "/",
+  "image": site.url + site.image,
+  "telephone": site.telephone,
+  "email": site.email,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": site.ville,
+    "postalCode": site.codePostal,
+    "addressCountry": "FR"
+  },
+  "areaServed": site.zoneIntervention,
+  "sameAs": [site.facebook],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": site.horaires.jours,
+    "opens": site.horaires.ouverture,
+    "closes": site.horaires.fermeture
+  }
+} -%}
+<script type="application/ld+json">{{ entreprise | dump | safe }}</script>
