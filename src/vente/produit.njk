@@ -11,7 +11,7 @@ styles:
   - components/appel.css
   - pages/produit.css
 eleventyComputed:
-  title: "{{ produit.nom }} à vendre | Main é Merveille, tapissière à Caen"
+  title: "{{ produit.nom }} à vendre | Main é Merveille, Caen"
   description: "{{ produit.nom }} ({{ etats[produit.etat].etiquette | lower }}) : {{ produit.description | uneLigne }} À voir chez Main é Merveille, tapissière d'ameublement à Caen."
   image: "/resources/{{ produit.photos[0] }}"
 ---

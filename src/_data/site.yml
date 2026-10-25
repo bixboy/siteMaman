@@ -2,7 +2,8 @@
 nom: Main é Merveille
 url: https://www.main-e-merveille.fr
 telephone: "+33768317608"
-telephoneAffiche: 07 68 31 76 08
+# Espaces insécables ( ) : le numéro n'est jamais coupé en fin de ligne
+telephoneAffiche: "07 68 31 76 08"
 email: mainemerveille@gmail.com
 facebook: https://www.facebook.com/profile.php?id=61553945070512
 # Fiche Google Business (identifiant repris de l'ancienne carte de la page contact)

@@ -61,9 +61,16 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [ ] FAQ (données structurées `FAQPage`) et avis clients : questions/réponses et avis réels à fournir.
 
 ## Phase 4 — Accessibilité, RGPD, qualité
-- [ ] RGPD : GTM (Google Tag Manager) sans bandeau de consentement → bandeau (ex. tarteaucitron) ou mesure sans cookie.
-- [ ] Politique de confidentialité générique (newsletter, formulaire, achats inexistants ; rien sur les cookies).
-- [ ] Focus piégé dans les modales (le reste de l'accessibilité clavier est fait).
+- [x] Contrastes WCAG AA : or foncé `#7a5c28` pour tout texte doré ; or clair réservé au décor.
+- [x] Focus clavier prisonnier dans les modales et le menu mobile, rendu à l'élément d'origine.
+- [x] RGPD : bandeau de consentement maison (`js/consent.js`) ; Google Tag Manager chargé seulement après
+      « Accepter », refus aussi simple, choix 6 mois, « Gérer les cookies » en pied de page, cookies
+      Google effacés en cas de retrait ; jamais chargé sur l'aperçu.
+- [x] Politique de confidentialité réécrite selon le fonctionnement réel du site (section `#cookies`).
+- [x] Validation HTML (`html-validate`, règles recommandées) dans `npm test` et la CI ; 0 erreur.
+- [ ] Confirmer le contenu du conteneur GTM (Google Analytics seul ? autre balise ?) : la politique
+      de confidentialité mentionne Google Analytics.
+- [ ] Mentions légales : nom du responsable de la publication (obligatoire) et SIRET complet.
 
 ## Phase 5 — Outillage IA
 - [ ] Skills `.claude/skills/` : `ajout-realisation`, `ajout-produit`, `produit-vendu`.

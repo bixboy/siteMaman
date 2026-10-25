@@ -32,6 +32,22 @@
   list-style: disc;
 }
 
+/* Bouton qui a l'apparence d'un lien dans le texte (« gérer les cookies ») */
+.lien-texte {
+  color: var(--vert);
+  text-decoration: underline;
+  text-decoration-color: var(--filet);
+  text-underline-offset: 3px;
+}
+
+.lien-texte:hover {
+  color: var(--or-fonce);
+}
+
+.prose code {
+  font-size: 0.9em;
+}
+
 .prose li::marker {
   color: var(--or-fonce);
 }

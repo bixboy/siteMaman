@@ -17,7 +17,7 @@ construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aper�
 
 ## Commandes
 - `npm run dev` — serveur local avec rechargement (http://localhost:8080)
-- `npm test` — build + tests navigateur (Chrome requis) ; à lancer après chaque modification
+- `npm test` — build + validation HTML + tests navigateur (Chrome requis) ; à lancer après chaque modification
 - `npm run test:visual [-- --rapide]` — compare le rendu (7 pages × 10 largeurs) avec `HEAD` ; ~40 s (~15 s en rapide)
 - `npm run images` — convertit/renomme les nouvelles images de `src/resources/` et met à jour les chemins
 
@@ -56,6 +56,10 @@ construit avec `APERCU=1` et `--pathprefix=/siteMaman/` (noindex, badge « Aper�
 - Chemins absolus partout (`/resources/…`, `/market.html`) : préfixés automatiquement pour l'aperçu dans
   `href`/`src`/`srcset`. Dans un attribut `data-*`, passer par le filtre : `{{ ("/resources/" ~ x) | url }}` ;
   dans le CSS, chemins relatifs. Ne pas changer les URLs existantes (référencement).
+- RGPD : aucun script ou service tiers (Google, Facebook, cartes, vidéos…) chargé sans passer par le
+  consentement (`js/consent.js`) ; tout nouveau traitement de données → mettre à jour `legal/politiqueConf.njk`.
+- Accessibilité : texte doré uniquement en `--or-fonce` ; éléments interactifs = `<button>` ou `<a>` ;
+  `npm test` valide aussi le HTML (`html-validate`) : corriger toute erreur plutôt que désactiver la règle.
 - SEO : chaque page a `title` (< 65 caractères, avec « Caen ») et `description` (< 160) dans son en-tête ;
   chaque photo a un `alt` qui décrit ce qu'on voit (siège, tissu, couleur).
 - Seuil mobile : `@media (max-width: 767px)` / ordinateur : `@media (min-width: 768px)` ; menu complet dès 992 px.
