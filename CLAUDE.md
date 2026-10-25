@@ -16,6 +16,7 @@ jamais sans accord explicite. Ne jamais committer directement sur `main`.
 ## Commandes
 - `npm run dev` — serveur local avec rechargement (http://localhost:8080)
 - `npm test` — build + tests navigateur (Chrome requis) ; à lancer après chaque modification
+- `npm run test:visual [-- --rapide]` — compare le rendu (7 pages × 10 largeurs) avec `HEAD` ; ~40 s (~15 s en rapide)
 - `npm run images` — convertit/renomme les nouvelles images de `src/resources/` et met à jour les chemins
 
 ## Carte
@@ -27,10 +28,13 @@ jamais sans accord explicite. Ne jamais committer directement sur `main`.
   `nav` (lien actif), `styles` (CSS propres à la page)
 - `src/vente/produit.njk` — une page par produit (`/vente/<id>-<slug>.html`)
 - `src/js/main.js` — point d'entrée ; un module par fonctionnalité ; `modal.js` partagé
-- `src/css/body.css` — variables `:root`, reset, animations ; `src/css/<page>-components/` — styles par section
+- `src/css/` — `base.css` (variables `:root`, reset, animations) et `layout.css` (nav, footer) sur toutes les pages ;
+  `components/` (hero, legal-hero, modal, before-after) et `pages/` (un fichier par page), déclarés dans `styles`.
+  Les CSS des pages légales stylent des balises nues (`h1`, `p`, `a`) : ne jamais les charger ailleurs.
 - `src/resources/` — images sources (WebP ≤ 1600 px) ; vignettes générées dans `/img/`
 - `eleventy.config.js` — filtres `produitUrl`, `nl2br` ; shortcode `image`
-- `tests/e2e.mjs` — tests navigateur ; `scripts/optimize-images.mjs` — `npm run images`
+- `tests/e2e.mjs` — tests d'interaction ; `tests/visual.mjs` — non-régression visuelle ; `tests/helpers.mjs` — serveur + Chrome
+- `scripts/optimize-images.mjs` — `npm run images`
 - `docs/CONTENU.md` — ajouter un contenu ; `docs/ROADMAP.md` — plan, points à confirmer, historique
 
 ## Règles
@@ -38,11 +42,13 @@ jamais sans accord explicite. Ne jamais committer directement sur `main`.
 - Images : les déposer dans `src/resources/` puis `npm run images` ; jamais de recompression à la main.
   Ne pas ouvrir les images sauf demande : s'appuyer sur les noms de fichiers.
 - Vignette de grille : `{% image "Dossier/fichier.webp", "alt", "sizes" %}` ; image d'en-tête : `<img fetchpriority="high">`.
-- CSS : variables de `body.css` ; jamais de `style=""` ni de `onclick` ; comportements dans `src/js/` via `data-*`.
+- CSS : variables de `base.css` ; jamais de `style=""` ni de `onclick` ; comportements dans `src/js/` via `data-*`.
 - Chemins absolus partout (`/resources/…`, `/market.html`). Ne pas changer les URLs existantes (référencement).
-- Breakpoint mobile : `max-width: 767px` / `min-width: 768px`.
+- Seuil mobile : `@media (max-width: 767px)` / ordinateur : `@media (min-width: 768px)` ; menu complet dès 992 px.
 - Fichiers en CRLF : préférer l'outil Edit à `sed -i` (qui convertit en LF).
 
 ## Vérifier
-`npm test` doit finir par « N tests OK ». Changement visuel : `npm run dev`, contrôler mobile (375 px) et desktop.
+`npm test` doit finir par « N tests OK ». Refactoring CSS/gabarit (rendu censé rester identique) :
+`npm run test:visual` doit finir par « captures identiques » ; sinon inspecter `.cache/visual/` (avant/après).
+Changement visuel voulu : `npm run dev`, contrôler mobile (375 px) et desktop.
 Nouvelle interaction JS : ajouter un test dans `tests/e2e.mjs`.

@@ -28,8 +28,8 @@ Cocher `[x]` au fur et à mesure. Une phase = une branche.
 - [ ] Bascule : secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` dans GitHub ; déploiement Git
       désactivé dans OVH ; fusion de `Work` dans `main` ; vérification en ligne ; suppression des
       fichiers laissés par l'ancien déploiement Git dans `www/` (`.git/`, `docs/`, `scripts/`, `CLAUDE.md`, `package*.json`).
-- [ ] CSS : regrouper en `base` / `components` / `pages`, supprimer le code mort,
-      unifier les breakpoints (767, 768, 480, 420, 355, 300 px).
+- [x] CSS : `base` / `layout` / `components` / `pages` (17 → 12 fichiers), code mort supprimé,
+      seuil unique 767/768 px (avant : 768 px mi-mobile mi-ordinateur). Rendu vérifié par `npm run test:visual`.
 
 ## Phase 3 — SEO local & contenu
 - [ ] Mesurer avec PageSpeed Insights (mobile) et noter les scores ici.
