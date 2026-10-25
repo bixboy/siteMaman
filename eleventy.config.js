@@ -36,7 +36,55 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('produitUrl', (produit) => `/vente/${produit.id}-${slugify(produit.nom)}.html`);
 
   // Texte sur une seule ligne (balises meta)
-  eleventyConfig.addFilter('uneLigne', (text = '') => String(text).replace(/\s+/g, ' ').trim());
+  const uneLigne = (text = '') => String(text).replace(/\s+/g, ' ').trim();
+  eleventyConfig.addFilter('uneLigne', uneLigne);
+
+  // Données structurées de l'entreprise (toutes les pages) : zone de service, sans adresse d'accueil
+  eleventyConfig.addFilter('entrepriseJsonLd', (site, services) => ({
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${site.url}/#entreprise`,
+    name: site.nom,
+    description: uneLigne(site.description),
+    url: `${site.url}/`,
+    image: site.url + site.image,
+    telephone: site.telephone,
+    email: site.email,
+    address: { '@type': 'PostalAddress', addressLocality: site.ville, postalCode: site.codePostal, addressCountry: 'FR' },
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Calvados' },
+      ...site.communes.map((name) => ({ '@type': 'City', name })),
+    ],
+    knowsAbout: ['Tapisserie d\'ameublement', 'Réfection de sièges', 'Restauration de fauteuils anciens',
+      'Garnissage', 'Couverture de sièges'],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Restauration de sièges',
+      itemListElement: services.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: service.titre, description: uneLigne(service.texte) },
+      })),
+    },
+    hasMap: site.googleMaps,
+    sameAs: [site.facebook, site.googleMaps],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: site.horaires.jours,
+      opens: site.horaires.ouverture,
+      closes: site.horaires.fermeture,
+    },
+  }));
+
+  // Données structurées FAQPage à partir de src/_data/faq.yml
+  eleventyConfig.addFilter('faqJsonLd', (faq) => ({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(({ question, reponse }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: uneLigne(reponse) },
+    })),
+  }));
 
   // Échappe le texte puis conserve les retours à la ligne
   eleventyConfig.addFilter('nl2br', (text = '') => String(text)
